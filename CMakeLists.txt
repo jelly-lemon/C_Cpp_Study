@@ -1,6 +1,8 @@
 # cmake_minimum_required(VERSION <specify CMake version here>)
-project(normal C)
+project(C_C++_Study)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(normal 912.c)
+add_executable(912 912.c)
+
+add_executable(str_study str_study.cpp)
