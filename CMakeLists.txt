@@ -8,3 +8,5 @@ add_executable(912 912.c)
 add_executable(str_study str_study.cpp)
 
 add_executable(pointer c/pointer.c)
+
+add_executable(thread_test c/thread_test.c)
