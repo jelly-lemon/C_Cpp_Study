@@ -7,6 +7,8 @@ add_executable(912 912.c)
 
 add_executable(str_study str_study.cpp)
 
-add_executable(pointer c/pointer.c)
+add_executable(change_pointer c/change_pointer.c)
 
-add_executable(thread_test c/thread_test.c)
+add_executable(thread_basic_create c/thread_basic_create.c)
+
+add_executable(thread_mutex c/thread_mutex.c)
