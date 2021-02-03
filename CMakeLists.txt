@@ -3,9 +3,9 @@ project(C_C++_Study)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(912 912.c)
+add_executable(912 c/leetcode/912.c)
 
-add_executable(str_study str_study.cpp)
+add_executable(str_study Cpp/str_study.cpp)
 
 add_executable(change_pointer c/change_pointer.c)
 
@@ -15,6 +15,7 @@ add_executable(big_number c/big_number.c)
 
 add_executable(variable_arg c/variable_arg.c)
 
+add_executable(for_char c/for_char.c)
 
 add_executable(thread_basic_create c/thread_example/thread_basic_create.c)
 

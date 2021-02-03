@@ -60,6 +60,7 @@ int* SelectionSort(int nums[], int numsSize) {
 
 /**
  * 归并排序：归并两个有序的数组为一个有序数组
+ *
  * @param nums
  * @param numsSize
  * @return
@@ -205,33 +206,33 @@ int* copy(const int* nums, int numsSize) {
 }
 
 
-//int main(void) {
-//
-//    int nums[] = {5, 2, 3, 1};
-//
-//    //
-//    // 排序前
-//    //
-//    int i;
-//    for (i = 0; i < N; i++) {
-//        printf("%d ", nums[i]);
-//    }
-//    printf("\n");
-//
-//    //
-//    // 排序
-//    //
-//    int* p = MergerSort(nums, N);
-//
-//    //
-//    // 排序后
-//    //
-//    for (i = 0; i < N; i++) {
-//        printf("%d ", p[i]);
-//    }
-//    printf("\n");
-//
-//
-//    return 0;
-//}
+int main(void) {
+
+    int nums[] = {5, 2, 3, 1};
+
+    //
+    // 排序前
+    //
+    int i;
+    for (i = 0; i < N; i++) {
+        printf("%d ", nums[i]);
+    }
+    printf("\n");
+
+    //
+    // 排序
+    //
+    int* p = MergerSort(nums, N);
+
+    //
+    // 排序后
+    //
+    for (i = 0; i < N; i++) {
+        printf("%d ", p[i]);
+    }
+    printf("\n");
+
+
+    return 0;
+}
 
