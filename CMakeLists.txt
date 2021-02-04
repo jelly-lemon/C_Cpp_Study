@@ -17,8 +17,14 @@ add_executable(variable_arg c/variable_arg.c)
 
 add_executable(for_char c/for_char.c)
 
+add_executable(write_file c/write_file.c)
+
 add_executable(thread_basic_create c/thread_example/thread_basic_create.c)
 
 add_executable(thread_mutex c/thread_example/thread_mutex.c)
 
 add_executable(thread_scanf c/thread_example/thread_scanf.c)
+
+add_executable(test test.c)
+
+add_executable(643 c/leetcode/643.c)
