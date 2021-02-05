@@ -28,3 +28,6 @@ add_executable(thread_scanf c/thread_example/thread_scanf.c)
 add_executable(test test.c)
 
 add_executable(643 c/leetcode/643.c)
+
+add_executable(1208 c/leetcode/1208.c)
+add_executable(fast_slow_pointer c/algorithm_example/fast_slow_pointer.c)
