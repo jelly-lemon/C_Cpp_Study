@@ -31,3 +31,5 @@ add_executable(643 c/leetcode/643.c)
 
 add_executable(1208 c/leetcode/1208.c)
 add_executable(fast_slow_pointer c/algorithm_example/fast_slow_pointer.c)
+
+add_executable(global_variable c/global_init/global_variable.cpp)
