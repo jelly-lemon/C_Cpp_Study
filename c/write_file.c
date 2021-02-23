@@ -9,14 +9,13 @@
 #include <stdio.h>
 
 int main() {
-
     FILE *file;
-    char *fileName = "log.txt";
+    char *fileName = "test.txt";
 
     file = fopen(fileName, "w");
 
     if (file == NULL) {
-        printf("文件不存在！\n");
+        printf("文件创建失败！\n");
         return 0;
     }
 

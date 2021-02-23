@@ -37,3 +37,27 @@ add_executable(global_variable c/global_init/global_variable.cpp)
 add_executable(hash_table c/hash_table.c)
 
 add_executable(const_test c/const_test.c)
+
+add_executable(c_or_cpp c/c_or_cpp.c)
+
+add_executable(words_reverse c/algorithm_example/words_reverse.c)
+
+add_executable(string Cpp/string.cpp)
+
+add_executable(macro c/macro.c)
+
+add_executable(basic_data_type c/basic_data_type.c)
+
+# 我觉得 add_executable 两个参数应该调换一下位置，用起来才方便
+
+add_executable(style_input_output c/style_input_output.c)
+
+add_executable(clear_number_3rd c/clear_number_3rd.c)
+
+add_executable(use_error Cpp/use_error.c)
+
+add_executable(shared_pointer Cpp/shared_pointer.cpp)
+
+add_executable(use_linked_list Cpp/use_linked_list.cpp)
+
+add_executable(sample_linked_list Cpp/sample_linked_list.cpp)

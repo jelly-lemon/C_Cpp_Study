@@ -1,7 +1,8 @@
 /*
  * 哈希表
  *
- * 难点：当 key 是字符串时，怎么计算 hash 呢？
+ * 通过 key --> hash 值 --> 找到 value 存储位置 --> 取出 value
+ *
  */
 #include <stdio.h>
 #include <string.h>
@@ -16,13 +17,13 @@
 typedef struct HashNode_Struct HashNode;
 
 struct HashNode_Struct {
-    char *sKey;
-    int nValue;
-    HashNode *pNext;
+    char *sKey; // key
+    int nValue; // value
+    HashNode *pNext;    // 链地址法
 };
 
 
-HashNode *hashTable[HASH_TABLE_MAX_SIZE]; // 创建一个容量为 HASH_TABLE_MAX_SIZE 的哈希表
+HashNode *hashTable[HASH_TABLE_MAX_SIZE]; // 创建一个容量为 HASH_TABLE_MAX_SIZE 的哈希表（线性表）
 int hash_table_size;  // 哈希表中目前存在的键值对数目
 
 /**
@@ -30,7 +31,7 @@ int hash_table_size;  // 哈希表中目前存在的键值对数目
  */
 void hash_table_init() {
     hash_table_size = 0;
-    memset(hashTable, 0, sizeof(HashNode *) * HASH_TABLE_MAX_SIZE); // 数组里的每一个指针变量全部置为 0
+    memset(hashTable, 0, sizeof(HashNode *) * HASH_TABLE_MAX_SIZE); // 数组里的每一个字节全部置为 0
 }
 
 /**
@@ -69,6 +70,7 @@ void hash_table_insert(const char *skey, int nvalue) {
     HashNode *pHead = hashTable[pos];
     while (pHead) {
         // 判断是否存在相同的 key
+        // 如果存在，就遍历链表，找到最后一个节点
         if (strcmp(pHead->sKey, skey) == 0) {
             printf("%s already exists!\n", skey);
             return;
@@ -76,23 +78,27 @@ void hash_table_insert(const char *skey, int nvalue) {
         pHead = pHead->pNext;
     }
 
-    // 创建节点，保存键值对（如何处理冲突的呢？链接起来的）
+    // 创建节点，保存键值对（如何处理冲突的呢？链地址法）
     HashNode *pNewNode = (HashNode *) malloc(sizeof(HashNode));
     memset(pNewNode, 0, sizeof(HashNode));  // 将结构体里面所有字节置为 0 有何用处？
     pNewNode->sKey = (char *) malloc(sizeof(char) * (strlen(skey) + 1));
     strcpy(pNewNode->sKey, skey);
     pNewNode->nValue = nvalue;
 
-    // 将键值对节点地址保存在指针变量中，如果有冲突，链接起来
+    // 将键值对节点地址保存在指针变量中
     pNewNode->pNext = hashTable[pos];
     hashTable[pos] = pNewNode;
-
 
     hash_table_size++;
 }
 
-//remove key-value frome the hash table
+/**
+ * 从哈希表中删除键值对
+ *
+ * @param skey key 值
+ */
 void hash_table_remove(const char *skey) {
+    // 计算哈希值，得到存储位置
     unsigned int pos = hash_table_hash_str(skey) % HASH_TABLE_MAX_SIZE;
     if (hashTable[pos]) {
         HashNode *pHead = hashTable[pos];
@@ -106,11 +112,14 @@ void hash_table_remove(const char *skey) {
             pLast = pHead;
             pHead = pHead->pNext;
         }
+        // 如果存在，则删除
         if (pRemove) {
-            if (pLast)
+            if (pLast) {
                 pLast->pNext = pRemove->pNext;
-            else
+            }
+            else {
                 hashTable[pos] = NULL;
+            }
 
             free(pRemove->sKey);
             free(pRemove);
@@ -118,7 +127,12 @@ void hash_table_remove(const char *skey) {
     }
 }
 
-//lookup a key in the hash table
+/**
+ * 根据 key 查找 value
+ *
+ * @param skey
+ * @return value
+ */
 HashNode *hash_table_lookup(const char *skey) {
     unsigned int pos = hash_table_hash_str(skey) % HASH_TABLE_MAX_SIZE;
     if (hashTable[pos]) {
@@ -132,7 +146,9 @@ HashNode *hash_table_lookup(const char *skey) {
     return NULL;
 }
 
-//print the content in the hash table
+/**
+ * 打印哈希表
+ */
 void hash_table_print() {
     printf("===========content of hash table=================\n");
     int i;
@@ -148,7 +164,9 @@ void hash_table_print() {
         }
 }
 
-//free the memory of the hash table
+/**
+ * 释放哈希表
+ */
 void hash_table_release() {
     int i;
     for (i = 0; i < HASH_TABLE_MAX_SIZE; ++i) {
@@ -167,7 +185,11 @@ void hash_table_release() {
     }
 }
 
-
+/**
+ * 随机生成字符串
+ *
+ * @param r
+ */
 void rand_str(char r[]) {
     int i;
     int len = MIN_STR_LEN + rand() % (MAX_STR_LEN - MIN_STR_LEN);

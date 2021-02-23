@@ -5,14 +5,13 @@
 #include <stdio.h>
 #include <math.h>
 
-/**
- * 全局变量
- */
+
 const int N = 8;
 
 
 /**
  * 检查这八皇后的位置是否可行
+ *
  * @param pos 八皇后的当前位置
  * @return 可行返回 1，不可行返回 0
  */
@@ -43,6 +42,7 @@ int check(const int pos[]) {
 
 /**
  * 检查当前已放置的皇后是否满足约束条件
+ *
  * @param pos 皇后位置数组
  * @param n 检查的个数，或者说已放置的皇后个数
  * @return 满足约束条件返回 1，不满足则返回 0
@@ -72,6 +72,7 @@ int check_constraint(const int pos[], int n) {
 
 /**
  * 打印输出数组
+ *
  * @param pos 八皇后的位置数组
  */
 void printPos(int pos[]) {
@@ -84,7 +85,7 @@ void printPos(int pos[]) {
 }
 
 /**
- * for循环实现的回溯法
+ * for 循环实现的回溯法
  */
 void BacktrackByForCircle() {
     int i1, i2, i3, i4, i5, i6, i7, i8;
@@ -203,6 +204,7 @@ void enumeration() {
 /**
  * 递归形式的回溯法
  * 求解八皇后问题
+ *
  * @param k 皇后的编号，从 0 开始
  * @param pos 皇后位置数组
  * @param count 计数，有多少合适的排列
@@ -239,11 +241,11 @@ void BacktrackByRecursion(int k, int pos[], int *count, int n) {
 
 
 
-//int main() {
-//    //enumeration();
-////    iterative();
-//    int pos[N];
-//    int count = 0;
-//    backtrack(0, pos, &count, N);
-//    printf("count=%d\n", count);
-//}
+int main() {
+    //enumeration();
+    //iterative();
+    int pos[N];
+    int count = 0;
+    backtrack(0, pos, &count, N);
+    printf("count=%d\n", count);
+}

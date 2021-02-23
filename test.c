@@ -1,7 +1,7 @@
-#include <stdio.h>
 
-int main() {
-    printf("1");
 
-    return 0;
-}
+#ifdef __cplusplus
+cout<<"C++";
+#else
+cout<<"c";
+#endif
