@@ -1,5 +1,5 @@
 /*
- *
+ * 遍历二叉树
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +39,7 @@ void createBiTreeByPre(BiTree *T) {
 }
 
 /**
- * 按层输入二叉树
+ * TODO 按层输入二叉树
  *
  * @param T 指向根节点的指针变量的地址
  */
@@ -57,14 +57,12 @@ void createBiTreeByLevel(BiTree *T) {
             exit(-1);
         else {
             (*T)->data = ch;
-
         }
     }
-
 }
 
 /**
- * 先序遍历
+ * 递归先序遍历
  *
  * @param T
  */
@@ -77,7 +75,7 @@ void PreOrderTraverse(BiTree T) {
 }
 
 /**
- * 中序遍历
+ * 递归中序遍历
  *
  * @param T
  */
@@ -89,6 +87,11 @@ void InOrderTraverse(BiTree T) {
     InOrderTraverse(T->rchild);
 }
 
+/**
+ * 递归后序遍历
+ *
+ * @param T
+ */
 void PostOrderTraverse(BiTree T) {
     if (T == NULL)
         return;
@@ -96,6 +99,15 @@ void PostOrderTraverse(BiTree T) {
     PostOrderTraverse(T->lchild);
     PostOrderTraverse(T->rchild);
     printf("%c ", T->data);
+}
+
+/**
+ * 递归按层遍历
+ *
+ * @param T
+ */
+void LevelTraverse(BiTree T) {
+
 }
 
 int main() {
