@@ -132,7 +132,7 @@ void createBiTreeByLevel(BiTree *T) {
         p->tree_node = &t->rchild;
         add(pHead, p);
     }
-    
+
     while ((p = pop(pHead)) != NULL) {
         if ((ch = getchar()) == '#') {
             *(p->tree_node) = NULL;
@@ -206,6 +206,7 @@ void LevelTraverse(BiTree T) {
 int main() {
     BiTree root;    // 指向二叉树根节点的指针变量
 
+    // 输入二叉树
 //    createBiTreeByPre(&root);    // 先序输入二叉树
     createBiTreeByLevel(&root);
 
