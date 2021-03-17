@@ -1,4 +1,4 @@
-# cmake_minimum_required(VERSION <specify CMake version here>)
+cmake_minimum_required(VERSION 3.13)
 project(C_C++_Study)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -26,6 +26,7 @@ add_executable(thread_mutex c/thread_example/thread_mutex.c)
 add_executable(thread_scanf c/thread_example/thread_scanf.c)
 
 add_executable(test test.c)
+target_link_libraries(test Xinput.lib)
 
 add_executable(643 c/leetcode/643.c)
 
@@ -66,3 +67,26 @@ add_executable(tranverse_tree c/binary_tree/tranverse_tree.c)
 
 
 add_executable(messagebox win32/messagebox.cpp)
+
+add_executable(1 wmi/1.cpp)
+# target_link_libraries(1 wbemuuid.lib)
+
+
+add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
+#target_link_libraries(socket_server wsock32.lib)
+
+add_executable(Client Win_Socket/base_socket/socket_client.cpp)
+target_link_libraries(Client wsock32.lib)
+
+add_executable(web_server Win_Socket/web_socket/http_web_server.c)
+target_link_libraries(web_server wsock32.lib)
+
+add_executable(pipe_server Win_Socket/namedpipe/pipe_server.c)
+
+add_executable(pipe_client Win_Socket/namedpipe/pipe_client.c)
+
+add_executable(ano_pipe_server Win_Socket/AnonymousPipes/ano_pipe_server.c)
+
+add_executable(overload_operators Cpp/overload_operators.cpp)
+
+add_executable(override_study Cpp/override_study.cpp)

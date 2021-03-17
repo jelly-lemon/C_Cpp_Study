@@ -1,5 +1,5 @@
 /*
- * 学习 C++ 字符串的使用
+ * 学习 C++ 字符串的使用以及对象的创建方式
  */
 #include <string>
 #include <iostream>
@@ -13,9 +13,11 @@ int main() {
     string s2("Hello");
     cout << "s2:" << s2 << endl;
 
+    // 重复次数
     string s3(4, 'K');
     cout << "s3:" << s3 << endl;
 
+    // 取字串
     string s4("12345", 1, 3);
     cout << "s4:" << s4 << endl;
 
@@ -26,6 +28,11 @@ int main() {
     s6 = "Ni hao";
     cout << "s6:" << s6 << endl;
     cout << "s6 length= " << s6.length() << endl;
+
+    string *s7 = new string("malloc in heap");
+    cout << *s7 << endl;
+    cout << "the value of pointer:" << s7 << endl;
+    delete s7;
 
 
     return 0;

@@ -1,7 +1,8 @@
 
+#include <perflib.h>
 
-#ifdef __cplusplus
-cout<<"C++";
-#else
-cout<<"c";
-#endif
+int main() {
+
+
+    return 0;
+}

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <winsock2.h>
 #include <inaddr.h>
-
+// #pragma commetn(lib, "wsock32.lib") // 需要在 CMakLists 中隐式链接才行
 int main() {
     WORD wVersionRequested;
     WSADATA wsaData;
