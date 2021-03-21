@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 2.8)
 project(C_C++_Study)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -26,7 +26,9 @@ add_executable(thread_mutex c/thread_example/thread_mutex.c)
 add_executable(thread_scanf c/thread_example/thread_scanf.c)
 
 add_executable(test test.c)
-target_link_libraries(test Xinput.lib)
+#target_link_libraries(test Xinput.lib)
+
+add_executable(test2 test2.c)
 
 add_executable(643 c/leetcode/643.c)
 
