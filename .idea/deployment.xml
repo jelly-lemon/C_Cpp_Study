@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="Remote Host (f488f7ea-b550-489c-bb62-02b79daee00f)">
     <serverData>
-      <paths name="Remote Host (1e3362a9-8cc1-4092-9492-61269ff29625)">
+      <paths name="Remote Host (f488f7ea-b550-489c-bb62-02b79daee00f)">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/sftp_ssh/sftpuser4/C_Cpp_Study" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/ssh_sftp/sftpuser1/CLionProject/C_Cpp_Study" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>
         </serverdata>

@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-project(C_C++_Study)
+project(C_Cpp_Study)
 
 set(CMAKE_CXX_STANDARD 11)
+
+# 指定使用 c++11
+SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
 
 add_executable(912 c/leetcode/912.c)
 
@@ -72,6 +75,11 @@ add_executable(messagebox win32/messagebox.cpp)
 
 add_executable(1 wmi/1.cpp)
 # target_link_libraries(1 wbemuuid.lib)
+
+add_executable(gtest1 g_test_study/gtest1.cpp)
+
+target_link_libraries(gtest1 gtest gmock pthread)
+
 
 
 add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
