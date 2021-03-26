@@ -4,7 +4,11 @@ project(C_Cpp_Study)
 set(CMAKE_CXX_STANDARD 11)
 
 # 指定使用 c++11
-SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
+# SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
+
+include_directories(include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
 
 add_executable(912 c/leetcode/912.c)
 
@@ -30,8 +34,6 @@ add_executable(thread_scanf c/thread_example/thread_scanf.c)
 
 add_executable(test test.c)
 #target_link_libraries(test Xinput.lib)
-
-add_executable(test2 test2.c)
 
 add_executable(643 c/leetcode/643.c)
 
@@ -64,9 +66,8 @@ add_executable(use_error Cpp/use_error.c)
 
 add_executable(shared_pointer Cpp/shared_pointer.cpp)
 
-add_executable(use_linked_list Cpp/use_linked_list.cpp)
 
-add_executable(sample_linked_list Cpp/sample_linked_list.cpp)
+add_executable(sample_linked_list Cpp/list_study.cpp)
 
 add_executable(tranverse_tree c/binary_tree/tranverse_tree.c)
 
@@ -76,9 +77,7 @@ add_executable(messagebox win32/messagebox.cpp)
 add_executable(1 wmi/1.cpp)
 # target_link_libraries(1 wbemuuid.lib)
 
-add_executable(gtest1 g_test_study/gtest1.cpp)
 
-target_link_libraries(gtest1 gtest gmock pthread)
 
 
 
@@ -100,3 +99,9 @@ add_executable(ano_pipe_server Win_Socket/AnonymousPipes/ano_pipe_server.c)
 add_executable(overload_operators Cpp/overload_operators.cpp)
 
 add_executable(override_study Cpp/override_study.cpp)
+
+add_executable(vector_study Cpp/vector_study.cpp)
+
+add_executable(gtest_study Cpp/gtest_study.cpp)
+# 静态链接库
+target_link_libraries(gtest_study gtest)
