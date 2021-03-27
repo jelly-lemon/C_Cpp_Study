@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 # SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
 
 include_directories(include)
+# link_directories 不能用相对路径
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 
@@ -104,4 +105,6 @@ add_executable(vector_study Cpp/vector_study.cpp)
 
 add_executable(gtest_study Cpp/gtest_study.cpp)
 # 静态链接库
-target_link_libraries(gtest_study gtest)
+target_link_libraries(gtest_study libgtest.a)
+
+add_executable(print_format c/print_format.c)
