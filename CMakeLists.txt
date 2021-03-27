@@ -84,7 +84,7 @@ add_executable(1 wmi/1.cpp)
 add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
 #target_link_libraries(socket_server wsock32.lib)
 
-add_executable(Client Win_Socket/base_socket/socket_client.cpp)
+add_executable(Client Win_Socket/base_socket/socket_client.c)
 target_link_libraries(Client wsock32.lib)
 
 add_executable(web_server Win_Socket/web_socket/http_web_server.c)
