@@ -61,7 +61,7 @@ add_executable(basic_data_type c/basic_data_type.c)
 
 add_executable(style_input_output c/style_input_output.c)
 
-add_executable(clear_number_3rd c/clear_number_3rd.c)
+add_executable(clear_number_3rd c/algorithm_example/clear_number_3rd.c)
 
 add_executable(use_error Cpp/use_error.c)
 
@@ -70,7 +70,7 @@ add_executable(shared_pointer Cpp/shared_pointer.cpp)
 
 add_executable(sample_linked_list Cpp/list_study.cpp)
 
-add_executable(tranverse_tree c/binary_tree/tranverse_tree.c)
+add_executable(tranverse_tree c/algorithm_example/tranverse_tree.c)
 
 
 add_executable(messagebox win32/messagebox.cpp)
@@ -108,3 +108,11 @@ add_executable(gtest_study Cpp/gtest_study.cpp)
 target_link_libraries(gtest_study libgtest.a)
 
 add_executable(print_format c/print_format.c)
+
+add_executable(thread_study c/thread_example/thread_study.c)
+
+add_executable(control_cpu_ratio c/algorithm_example/control_cpu_ratio.c)
+
+add_executable(time_study c/time_study.c)
+
+add_executable(math_study c/math_study.c)

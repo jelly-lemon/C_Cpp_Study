@@ -44,13 +44,14 @@ void* thread2(void *args) {
     }
     return NULL;
 }
-int main() {
+
+void startThread() {
     pthread_t t1;
     pthread_t t2;
     pid_t pid;
     pthread_t tid;
 
-    pid = getpid(); // 获取进程程 id
+    pid = getpid(); // 获取进程 id
     tid = pthread_self();   // 获取主线程 id
 
     printf("start t1\n");
@@ -63,6 +64,10 @@ int main() {
     printf("t1 end\n");
     pthread_join(t2, NULL);
     printf("t2 end\n");
+}
+
+int main() {
+    startThread();
 
     return 0;
 }
