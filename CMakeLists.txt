@@ -1,15 +1,26 @@
+# 指定 CMake 最低版本要求
 cmake_minimum_required(VERSION 2.8)
+
+# 指定项目名
 project(C_Cpp_Study)
 
+# 指定 C++ 标准
 set(CMAKE_CXX_STANDARD 11)
 
-# 指定使用 c++11
-# SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
+# c 标准
+set(CMAKE_C_STANDARD 11)
 
-include_directories(include)
-# link_directories 不能用相对路径
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
+# 打印信息
+message("CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
+message("PROJECT_SOURCE_DIR=${PROJECT_SOURCE_DIR}")
+message("CMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}")
+message("CMAKE_C_STANDARD=${CMAKE_C_STANDARD}")
 
+# 指定可用头文件目录
+include_directories(include/my_gtest1.10)
+
+# 指定可用链接库目录
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/my_gtest1.10) # link_directories 不能用相对路径
 
 add_executable(912 c/leetcode/912.c)
 
@@ -39,7 +50,7 @@ add_executable(test test.c)
 add_executable(643 c/leetcode/643.c)
 
 add_executable(1208 c/leetcode/1208.c)
-add_executable(fast_slow_pointer c/algorithm_example/fast_slow_pointer.c)
+add_executable(fast_slow_pointer c/algorithm_study/fast_slow_pointer.c)
 
 add_executable(global_variable c/global_init/global_variable.cpp)
 
@@ -49,7 +60,7 @@ add_executable(const_test c/const_test.c)
 
 add_executable(c_or_cpp c/c_or_cpp.c)
 
-add_executable(words_reverse c/algorithm_example/words_reverse.c)
+add_executable(words_reverse c/algorithm_study/words_reverse.c)
 
 add_executable(string Cpp/string.cpp)
 
@@ -59,9 +70,7 @@ add_executable(basic_data_type c/basic_data_type.c)
 
 # 我觉得 add_executable 两个参数应该调换一下位置，用起来才方便
 
-add_executable(style_input_output c/style_input_output.c)
-
-add_executable(clear_number_3rd c/algorithm_example/clear_number_3rd.c)
+add_executable(clear_number_3rd c/algorithm_study/set_3rd_number.c)
 
 add_executable(use_error Cpp/use_error.c)
 
@@ -70,17 +79,13 @@ add_executable(shared_pointer Cpp/shared_pointer.cpp)
 
 add_executable(sample_linked_list Cpp/list_study.cpp)
 
-add_executable(tranverse_tree c/algorithm_example/tranverse_tree.c)
+add_executable(tranverse_tree c/algorithm_study/tranverse_tree.c)
 
 
 add_executable(messagebox win32/messagebox.cpp)
 
 add_executable(1 wmi/1.cpp)
 # target_link_libraries(1 wbemuuid.lib)
-
-
-
-
 
 add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
 #target_link_libraries(socket_server wsock32.lib)
@@ -105,14 +110,20 @@ add_executable(vector_study Cpp/vector_study.cpp)
 
 add_executable(gtest_study Cpp/gtest_study.cpp)
 # 静态链接库
-target_link_libraries(gtest_study libgtest.a)
+# 链接 libgtest_main_w64-6.0.a 会出现 undefined reference to `testing::Message::Message()'
+target_link_libraries(gtest_study libgtest_w64-6.0.a)
 
 add_executable(print_format c/print_format.c)
 
 add_executable(thread_study c/thread_example/thread_study.c)
 
-add_executable(control_cpu_ratio c/algorithm_example/control_cpu_ratio.c)
+add_executable(control_cpu_ratio c/algorithm_study/control_cpu_ratio.c)
 
 add_executable(time_study c/time_study.c)
 
 add_executable(math_study c/math_study.c)
+
+add_executable(tell_me_which_std c/tell_me_which_std.c)
+
+add_executable(sort Cpp/sort.cpp)
+target_link_libraries(sort libgtest_w64-6.0.a)
