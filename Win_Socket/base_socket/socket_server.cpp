@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <winsock2.h>
 #include <inaddr.h>
-// #pragma comment(lib, "wsock32.lib") // 需要在 CMakLists 中隐式链接才行
+
 int main() {
     WORD wVersionRequested;
     WSADATA wsaData;
@@ -29,9 +29,10 @@ int main() {
     // 创建监听 socket
     SOCKET sockSrv = socket(AF_INET, SOCK_STREAM, 0);
     SOCKADDR_IN addrSrv;
+    // INADDR_ANY 表示监听所有网卡
     addrSrv.sin_addr.S_un.S_addr = htonl(INADDR_ANY);   // htonl 将主机数转换成无符号长整型的网络字节顺序。
     addrSrv.sin_family = AF_INET;
-    addrSrv.sin_port = htons(6000);
+    addrSrv.sin_port = htons(12345);
     bind(sockSrv, (SOCKADDR*)&addrSrv, sizeof(SOCKADDR));
     listen(sockSrv, 5); // 监听是否有请求，非阻塞
 
@@ -51,5 +52,4 @@ int main() {
         printf("%s\n", recvBuf);
         closesocket(sockConn);  // 关闭与该客户端的socket连接
     }
-
 }

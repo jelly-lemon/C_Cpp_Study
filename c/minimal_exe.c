@@ -1,0 +1,10 @@
+/**
+ * 最小的 exe 程序？
+ */
+#include <stdio.h>
+
+int main() {
+    printf("hello world\n");
+    return 0;
+}
+

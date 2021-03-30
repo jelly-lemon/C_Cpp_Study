@@ -1,10 +1,13 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
+using namespace std;
+
 int Add(int a, int b) {
     return a + b;
 }
 
+// ====== 一组测试用例 ======
 // 测试用例名，测试名
 TEST(testCase, test0) {
     // 期望相等：期望值，返回值
@@ -23,17 +26,60 @@ TEST(testCase, test2) {
     EXPECT_EQ(28, Add(8, 10)) << "bugs";
 }
 
-/**
- * 判断两个数组是否相等
- */
+// ====== 一组测试用例 ======
 TEST(testCase_1, test_0) {
-    int data[2] = {1,2};
-    int expect[2] = {1,2};
+    // 判断两个数组是否相等
+    int data[2] = {1, 2};
+    int expect[2] = {1, 2};
     EXPECT_EQ(memcmp(data, expect, 2 * sizeof(int)), 0);
 }
 
+// ====== 自定义测试用例 ======
+class TestMap : public testing::Test {
+public:
+    map<int, int> test_map;
+
+    // 日志
+    static void SetUpTestCase() {
+        cout << "My SetUpTestCase" << endl;
+    }
+
+    static void TearDownTestCase() {
+        cout << "My TearDownTestCase" << endl;
+    }
+
+    virtual void SetUp() {
+        cout << "My SetUp" << endl;
+        test_map.insert(make_pair(1, 0));
+        test_map.insert(make_pair(2, 1));
+        test_map.insert(make_pair(3, 2));
+        test_map.insert(make_pair(4, 3));
+        test_map.insert(make_pair(5, 4));
+    }
+
+    virtual void TearDown() {
+        cout << "My TearDown" << endl;
+        test_map.clear();
+    }
+};
+
+// TEST_F 对单独创建一个 TestMap 对象，
+// 会执行 setUp 和 tearDown
+// 还可以在函数里访问属性
+// 各个 TEST_F 相互独立
+TEST_F(TestMap, Find) {
+    map<int, int>::iterator it = test_map.find(1);
+    // NE 表示 not equal
+    ASSERT_NE(it, test_map.end());
+}
+
+TEST_F(TestMap, Size) {
+    ASSERT_EQ(test_map.size(), 5);
+}
+
+
 int main(int argc, char **argv) {
-    std::cout << "Hello, World!" << std::endl;
+    cout << "Hello, World!" << endl;
 
     // 初始化测试用例环境
     testing::InitGoogleTest(&argc, argv);

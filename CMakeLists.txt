@@ -88,10 +88,10 @@ add_executable(1 wmi/1.cpp)
 # target_link_libraries(1 wbemuuid.lib)
 
 add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
-#target_link_libraries(socket_server wsock32.lib)
+target_link_libraries(socket_server wsock32.lib)
 
-add_executable(Client Win_Socket/base_socket/socket_client.c)
-target_link_libraries(Client wsock32.lib)
+add_executable(socket_client Win_Socket/base_socket/socket_client.c)
+target_link_libraries(socket_client wsock32.lib)
 
 add_executable(web_server Win_Socket/web_socket/http_web_server.c)
 target_link_libraries(web_server wsock32.lib)
@@ -127,3 +127,13 @@ add_executable(tell_me_which_std c/tell_me_which_std.c)
 
 add_executable(sort Cpp/sort.cpp)
 target_link_libraries(sort libgtest_w64-6.0.a)
+
+add_executable(str_format Cpp/str_format.cpp)
+
+add_executable(dos_query Win_Socket/base_socket/dos_query.c)
+target_link_libraries(web_server wsock32.lib)
+
+
+add_executable(minimal_exe c/minimal_exe.c)
+
+add_executable(reverse_linkedlist Cpp/reverse_linkedlist.cpp)
