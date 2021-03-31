@@ -55,6 +55,7 @@ void startThread() {
     tid = pthread_self();   // 获取主线程 id
 
     printf("start t1\n");
+    // TODO 第二个参数？
     pthread_create(&t1, NULL, thread1, NULL);   // 启动 t1 线程
     printf("start t2\n");
     pthread_create(&t2, NULL, thread2, NULL);   // 启动 t2 线程

@@ -5,6 +5,8 @@
  * 互斥变量的创建；
  * 给互斥变量加锁、解锁；
  * 轮询等待锁；
+ *
+ * 加锁 == 获得锁 == 拥有资源
  */
 
 
@@ -24,7 +26,8 @@ void *threadA() {
     b += 50;
     pthread_mutex_unlock(&lock);
     printf("thread A released the lock! a=%d, b=%d\n", a, b);
-    a -= 50;    // 未加锁的情况下进行赋值操作，有可能其它线程正在读取或修改 a
+    // 未加锁的情况下进行赋值操作，有可能其它线程正在读取或修改 a
+    a -= 50;
 }
 
 void *threadB() {

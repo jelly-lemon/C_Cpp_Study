@@ -137,3 +137,13 @@ target_link_libraries(web_server wsock32.lib)
 add_executable(minimal_exe c/minimal_exe.c)
 
 add_executable(reverse_linkedlist Cpp/reverse_linkedlist.cpp)
+
+add_executable(binary_one_number Cpp/binary_one_number.cpp)
+target_link_libraries(binary_one_number libgtest_w64-6.0.a)
+
+
+add_executable(cmake_test_1 c/cmake_test/1.c)
+
+add_executable(cpp_thread Cpp/cpp_thread.cpp)
+
+add_executable(thread_error c/thread_example/thread_error.c)
