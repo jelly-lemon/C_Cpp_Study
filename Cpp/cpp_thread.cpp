@@ -1,6 +1,7 @@
 /**
  * 如果直接传 类成员函数，会报错：
  * cannot convert 'Test::threadFunc' from type 'void* (Test::)(void*)' to type 'void* (*)(void*)'
+ * 因为类成员函数必须由实例化对象来调用。
  */
 
 #include<pthread.h>

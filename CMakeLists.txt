@@ -147,3 +147,11 @@ add_executable(cmake_test_1 c/cmake_test/1.c)
 add_executable(cpp_thread Cpp/cpp_thread.cpp)
 
 add_executable(thread_error c/thread_example/thread_error.c)
+
+add_executable(empty_class_size Cpp/empty_class_size.cpp)
+
+add_executable(read_write_lock c/thread_example/read_write_lock.c)
+
+add_executable(async_log c/thread_example/async_log.c)
+
+add_executable(mutual_include Cpp/mutual_include.cpp)

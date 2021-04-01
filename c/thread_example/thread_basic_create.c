@@ -6,6 +6,8 @@
  * 使用 getpid() 和 pthread_self() 获取进程 id 和线程 id；
  * 使用 pthread_join() 等待线程完成；
  *
+ * 线程运行的函数必须是非成员函数，因为成员函数第一个参数是 this 指针。
+ * 所以，要么是 static 方法，要么就是一个普通函数
  */
 
 #include <stdio.h>
