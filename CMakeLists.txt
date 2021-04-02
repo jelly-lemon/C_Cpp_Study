@@ -87,7 +87,7 @@ add_executable(messagebox win32/messagebox.cpp)
 add_executable(1 wmi/1.cpp)
 # target_link_libraries(1 wbemuuid.lib)
 
-add_executable(socket_server Win_Socket/base_socket/socket_server.cpp)
+add_executable(socket_server Win_Socket/base_socket/socket_server.c)
 target_link_libraries(socket_server wsock32.lib)
 
 add_executable(socket_client Win_Socket/base_socket/socket_client.c)
@@ -155,3 +155,5 @@ add_executable(read_write_lock c/thread_example/read_write_lock.c)
 add_executable(async_log c/thread_example/async_log.c)
 
 add_executable(mutual_include Cpp/mutual_include.cpp)
+
+add_executable(map_study Cpp/map_study.cpp)

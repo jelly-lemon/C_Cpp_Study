@@ -262,7 +262,7 @@ void test_3() {
 
 
 int main() {
-    test_3();
+    test_1();
 
     return 0;
 }
