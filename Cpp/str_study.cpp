@@ -3,6 +3,7 @@
  */
 #include <string>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 void test_1() {
@@ -45,7 +46,6 @@ void test_2() {
 
     s1 += s2;
     s1 += s3;
-
     cout << s1 << endl;
     cout << s1.size() << endl;
     cout << s1.length() << endl;
@@ -66,6 +66,44 @@ void test_2() {
     s1 += s5;
     free(s5);
     cout << s1 << endl;
+
+    // 取 string 首地址
+    string s6("hello");
+    printf("s6=%s\n", &s6[0]);
+}
+
+/**
+ * 字符串查找
+ */
+void test_3() {
+    int n;
+    string s = "hello\r\nnihao\r\n\r\n";
+    // 如果找到字串，返回首字母下标
+    n = s.find("\r\n\r\n");
+    cout << n << endl;
+
+    // 如果查找不到字串，返回 -1
+    n = s.find("abc");
+    cout << n << endl;
+}
+
+/**
+ * 字符串转数字
+ */
+void test_4() {
+    string s(" 123");   // 即使字符串前面有空格也没关系
+    int n = stoi(s);
+    cout << n << endl;
+
+    try {
+        string s2("abc");
+        n = stoi(s2);
+        cout << n << endl;
+    } catch (...) {
+        // 捕获到任何异常都抛出
+        throw ;
+    }
+
 }
 
 int main() {

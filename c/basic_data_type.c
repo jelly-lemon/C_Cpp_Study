@@ -20,7 +20,27 @@ void test_2() {
     printf("%d\n", b);
 }
 
+void test_3() {
+    int n = sizeof("\r\n");
+    printf("\\r\\n=%d\n", n);
+
+    n = sizeof("\r\n\0");
+    printf("\\r\\n\\0=%d\n", n);
+
+    n = sizeof("\r");
+    printf("\\r=%d\n", n);
+
+    n = sizeof("\n");
+    printf("\\n=%d\n", n);
+
+    n = sizeof("");
+    printf("\"\"=%d\n", n);
+
+    n = sizeof("abc\r\n");
+    printf("abc\\r\\n=%d\n", n);
+}
+
 int main() {
-    test_1();
+    test_3();
     return 0;
 }

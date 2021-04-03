@@ -111,7 +111,7 @@ add_executable(vector_study Cpp/vector_study.cpp)
 add_executable(gtest_study Cpp/gtest_study.cpp)
 # 静态链接库
 # 链接 libgtest_main_w64-6.0.a 会出现 undefined reference to `testing::Message::Message()'
-target_link_libraries(gtest_study libgtest_w64-6.0.a)
+target_link_libraries(gtest_study libgtest_gcc8.1.0.a)
 
 add_executable(print_format c/print_format.c)
 
@@ -126,7 +126,7 @@ add_executable(math_study c/math_study.c)
 add_executable(tell_me_which_std c/tell_me_which_std.c)
 
 add_executable(sort Cpp/sort.cpp)
-target_link_libraries(sort libgtest_w64-6.0.a)
+target_link_libraries(sort libgtest_gcc8.1.0.a)
 
 add_executable(str_format Cpp/str_format.cpp)
 
@@ -139,7 +139,7 @@ add_executable(minimal_exe c/minimal_exe.c)
 add_executable(reverse_linkedlist Cpp/reverse_linkedlist.cpp)
 
 add_executable(binary_one_number Cpp/binary_one_number.cpp)
-target_link_libraries(binary_one_number libgtest_w64-6.0.a)
+target_link_libraries(binary_one_number libgtest_gcc8.1.0.a)
 
 
 add_executable(cmake_test_1 c/cmake_test/1.c)
@@ -157,3 +157,5 @@ add_executable(async_log c/thread_example/async_log.c)
 add_executable(mutual_include Cpp/mutual_include.cpp)
 
 add_executable(map_study Cpp/map_study.cpp)
+
+add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
