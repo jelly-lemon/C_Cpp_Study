@@ -6,6 +6,9 @@
 #include <stdio.h>
 using namespace std;
 
+/**
+ * string 对象创建
+ */
 void test_1() {
     // 这是创建了一个对象吗？对，s5 就是该对象的首地址（个人理解）
     string s1; // string s1() 写法不能创建一个对象，空参数被当作函数声明，和 Java 不同
@@ -103,11 +106,45 @@ void test_4() {
         // 捕获到任何异常都抛出
         throw ;
     }
+}
 
+/**
+ * 字符串编码
+ * string, char s[10] 都是字节串
+ */
+void test_5() {
+    // 设置控制台编码为 UTF-8，默认为 GBK
+    system("chcp 65001");
+
+    // 文件编码为 UTF-8 时，char 数字存储“你好”：\344\275\240\345\245\275
+    // 文件编码为 GBK 时，char 数字存储“你好”：\304\343\272\303
+    // 所以，在文件中输入的字符串，C++ 中存储的是文件编码对应的字节
+    // 打印到控制台时，我猜测 C++ 应该是直接把字节串传过去了
+    char s[10] = "你好";
+    cout << s << endl;
+
+    string s1("你好");
+    cout << s1 << endl;
+}
+
+
+/**
+ * 字符串替换
+ */
+void test_6() {
+    string s = "/abc/def/a/b/c";
+
+    //替换所有指定子串
+    int pos = 0;
+    while((pos = s.find('/')) != -1){
+        s.replace(pos, 1, "\\");
+    }
+
+    cout << s << endl;
 }
 
 int main() {
-    test_2();
+    test_6();
 
     return 0;
 }

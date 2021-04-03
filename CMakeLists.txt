@@ -159,3 +159,5 @@ add_executable(mutual_include Cpp/mutual_include.cpp)
 add_executable(map_study Cpp/map_study.cpp)
 
 add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
+
+add_executable(file_study Cpp/file_study.cpp)
