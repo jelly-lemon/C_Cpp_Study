@@ -21,8 +21,8 @@ void test_1() {
     string s3(4, 'K');
     cout << "s3:" << s3 << endl;
 
-    // 取子串
-    string s4("12345", 1, 3);
+    // 取子串。结束位置超过了原字符串长度也没关系，有多少返回多少
+    string s4("12345", 1, 36);
     cout << "s4:" << s4 << endl;
 
     string s6;
@@ -88,6 +88,10 @@ void test_3() {
     // 如果查找不到字串，返回 -1
     n = s.find("abc");
     cout << n << endl;
+
+
+    n = s.find_last_of('\n');
+    cout << n << endl;
 }
 
 /**
@@ -144,7 +148,7 @@ void test_6() {
 }
 
 int main() {
-    test_6();
+    test_1();
 
     return 0;
 }

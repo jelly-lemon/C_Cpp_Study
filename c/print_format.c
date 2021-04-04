@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <windows.h>
+#include <c++/bits/exception_defines.h>
 
+/**
+ * 十六进制输出
+ */
 void test_1() {
     // %#x 输出 十六进制时会在前面加 0x
     printf("%#x\n", 0xABC);
@@ -16,6 +20,11 @@ void test_2() {
     printf("hello\n");
     Sleep(1000);
 }
+
+/**
+ * printf 实现方式
+ */
+
 
 int main() {
     test_2();
