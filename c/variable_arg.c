@@ -1,15 +1,21 @@
 /**
  * 可变个数参数
  *
- * -- 学习目标 ----------------
- * va_start、va_arg、va_end 的使用
+ *
+ 下面是 <stdarg.h> 里面重要的几个宏定义如下：
+ typedef char* va_list; // 指向当前参数的一个指针变量
+ void va_start ( va_list ap, prev_param ); // 对指针变量初始化
+ type va_arg ( va_list ap, type );  // 按指定类型获取参数的值，然后指针变量指向下一个参数
+ void va_end ( va_list ap );    // 关闭指针变量
  */
 
 #include <stdio.h>
 #include <stdarg.h>
 
-double average(int num,...) {
-
+/**
+ * 求平均值，所有参数类型相同
+ */
+double average(int num, ...) {
     va_list valist;
     double sum = 0.0;
     int i;
@@ -25,10 +31,10 @@ double average(int num,...) {
     /* 清理为 valist 保留的内存 */
     va_end(valist);
 
-    return sum/num;
+    return sum / num;
 }
 
 int main() {
-    printf("Average of 2, 3, 4, 5 = %f\n", average(4, 2,3,4,5));
-    printf("Average of 5, 10, 15 = %f\n", average(3, 5,10,15));
+    printf("Average of 2, 3, 4, 5 = %f\n", average(4, 2, 3, 4, 5));
+    printf("Average of 5, 10, 15 = %f\n", average(3, 5, 10, 15));
 }
