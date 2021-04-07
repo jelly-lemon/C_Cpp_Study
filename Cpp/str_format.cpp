@@ -67,6 +67,7 @@ void test_3() {
  * 前 10 位字符输出
  */
 void test_4() {
+    // 注意有个点，如果没有点，表示右对齐
     printf("%.10s...", "hello,world,abc");
 }
 

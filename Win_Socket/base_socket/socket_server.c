@@ -53,9 +53,18 @@ int main() {
         // 接收数据
         char recvBuf[200];
         int n = recv(sockConn, recvBuf, 200, 0); // 接收来自客户端的内容
-        printf("%s said(%d bytes):\n", inet_ntoa(addrClient.sin_addr), n);
-        recvBuf[n] = '\0';
-        printf("%s\n", recvBuf);
+        if (n > 0) {
+            printf("%s said(%d bytes):\n", inet_ntoa(addrClient.sin_addr), n);
+            recvBuf[n] = '\0';
+            printf("%s\n", recvBuf);
+        } else if (n == 0){
+            printf("client closed socket.\n");
+            char msg[100] = "ok";
+            send(sockConn, msg, sizeof("ok"), 0);
+        } else {
+            printf("SOCKET ERROR\n");
+        }
+
         closesocket(sockConn);  // 关闭与该客户端的socket连接
         fflush(stdout);
     }

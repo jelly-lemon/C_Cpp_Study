@@ -23,9 +23,6 @@ int* sortArray(int* nums, int numsSize, int* returnSize){
 /**
  * 选择排序，升序排序
  * 每次选择待排序数组中最小的数，放在已排序数组最后面
- * @param nums
- * @param numsSize
- * @return
  */
 int* SelectionSort(int nums[], int numsSize) {
     int i, j;
@@ -60,10 +57,6 @@ int* SelectionSort(int nums[], int numsSize) {
 
 /**
  * 归并排序：归并两个有序的数组为一个有序数组
- *
- * @param nums
- * @param numsSize
- * @return
  */
 int* MergerSort(int nums[], int numsSize) {
     //
@@ -114,6 +107,9 @@ int* MergerSort(int nums[], int numsSize) {
     return returnNums;
 }
 
+/**
+ * 快速排序
+ */
 int* QuickSort(int nums[], int numsSize) {
     //
     // 递归终止条件
@@ -179,7 +175,7 @@ int* QuickSort(int nums[], int numsSize) {
 }
 
 
-/*
+/**
  * 交换两个数
  */
 void swap(int *a, int *b) {
@@ -190,9 +186,6 @@ void swap(int *a, int *b) {
 
 /**
  * 复制一个数组
- * @param nums
- * @param numsSize
- * @return
  */
 int* copy(const int* nums, int numsSize) {
     int* returnNums = malloc(sizeof(int) * numsSize);

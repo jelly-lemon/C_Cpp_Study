@@ -22,7 +22,7 @@ void showLocalSocketInfo(SOCKET local_sock) {
     printf("hostname:%s\n", hostname);
 
     // getsockname 函数用于获取与某个套接字关联的本地协议地址
-    if (getsockname(local_sock, (struct sockaddr*)&local_sockaddr, &local_sockaddr_len) != 0) {
+    if (getsockname(local_sock, (struct sockaddr *) &local_sockaddr, &local_sockaddr_len) != 0) {
         printf("can't get local sock address info:%d\n", WSAGetLastError());
     } else {
         printf("local addr info %s:%d\n", inet_ntoa(local_sockaddr.sin_addr), ntohs(local_sockaddr.sin_port));
@@ -36,7 +36,7 @@ void showPeerSocketInfo(SOCKET peer_sock) {
     struct sockaddr_in peerAddr;
     int peerLen = sizeof(peerAddr);
     // 连接上的对端地址
-    if (getpeername(peer_sock, (struct sockaddr *)&peerAddr, &peerLen) == 0) {
+    if (getpeername(peer_sock, (struct sockaddr *) &peerAddr, &peerLen) == 0) {
         printf("connected peer address = %s:%d\n", inet_ntoa(peerAddr.sin_addr), ntohs(peerAddr.sin_port));
     } else {
         printf("can't get peer sock address info:%d\n", WSAGetLastError());
@@ -132,13 +132,30 @@ void test_1() {
         return;
     } else if (result == 0) {
         printf("Connection closed\n");
-    } else{
+    } else {
         printf("Bytes received: %d\n", result);
         printf("Server reply:\n");
         printf("%s\n", recvBuf);
     }
 
+    printf("closing socket...\n");
     close(sockClient);
+    // 看看服务端有没有什么还每发送完
+    while (1) {
+        int n;
+        n = recv(sockClient, recvBuf, 50, 0);
+        if (n > 0) {
+            recvBuf[n] = '\0';
+            printf("server said:%s\n", recvBuf);
+        } else if (n == 0) {
+            printf("server closed socket.\n");
+            break;
+        } else {
+            printf("SOCKET ERROR\n");
+            break;
+        }
+    }
+    printf("socket closed.\n");
 }
 
 /**
@@ -168,8 +185,8 @@ void test_2() {
 
     // 直接向目标地址发送数据，不需要建立连接
     // 从 sclient --> sin
-    char *sendData  = "data from client";
-    ret = sendto(sclient, sendData, strlen(sendData), 0, (struct sockaddr*)&sin, len);
+    char *sendData = "data from client";
+    ret = sendto(sclient, sendData, strlen(sendData), 0, (struct sockaddr *) &sin, len);
     if (ret > 0) {
         printf("send successful, but we don't know whether destination received\n");
     } else if (ret == SOCKET_ERROR) {
@@ -180,7 +197,7 @@ void test_2() {
 
     // 接收服务端数据
     // 从 sclient <-- sin
-    ret = recvfrom(sclient, recvData, 1024, 0, (struct sockaddr*)&sin, &len);
+    ret = recvfrom(sclient, recvData, 1024, 0, (struct sockaddr *) &sin, &len);
     if (ret > 0) {
         recvData[ret] = '\0';
         printf("recv %s\n", recvData);
@@ -204,12 +221,12 @@ void test_3() {
     char recvBuf[50];
     int result;
     int errorNumber;
-    unsigned long ul=1;
+    unsigned long ul = 1;
 
     // 创建 socket 套接字
     SOCKET sockClient = socket(AF_INET, SOCK_STREAM, 0);
     //设置成非阻塞模式，即使没有数据，recv 也立即返回
-    result = ioctlsocket(sockClient, FIONBIO, (unsigned long *)&ul);
+    result = ioctlsocket(sockClient, FIONBIO, (unsigned long *) &ul);
     printf("result=%d\n", result);
 
     // 配置待请求服务端参数
@@ -251,7 +268,7 @@ void test_3() {
         return;
     } else if (result == 0) {
         printf("Connection closed\n");
-    } else{
+    } else {
         printf("Bytes received: %d\n", result);
         printf("Server reply:\n");
         printf("%s\n", recvBuf);
