@@ -180,3 +180,5 @@ add_executable(delete_list_node Cpp/algorithm_study/delete_list_node.cpp)
 add_library(my_dll SHARED c/dll_study/my_dll.c) # 咋会生成 libmy_dll.dll 和 lib123.a ？后面这个是什么东西？
 
 add_executable(load_dll c/dll_study/load_dll.c)
+
+add_executable(main_args c/main_args.c)
