@@ -1,6 +1,21 @@
+/**
+ * 文件打开模式：
+ * r：只读，文件不存在则打开失败，文件指针在开头
+ * w：只写，文件不存在则创建，文件指针在开头
+ * a：只追加，文件不存在则创建，文件指针在末尾
+ * r+：读写，不存在则失败，文件指针在开头
+ * w+：读写，不存在则创建，文件指针在开头
+ * a+：读写，不存在则创建，文件指针在末尾
+ *
+ *
+ * 文本模式：ios::in，ios::out
+ * 二进制模式：ios::binary
+ */
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <direct.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -44,8 +59,26 @@ void test_2() {
     outFile.close();
 }
 
+/**
+ * 创建文件
+ */
+void test_3() {
+    // mkdir 只能创建单级目录
+    // 返回是个啥？感觉是随机数
+    int n = mkdir("./test");
+    printf("n=%d\n");
+}
+
+void test_4() {
+    // 只能创建单集目录
+    char dir[] = "./test/hello";
+    CreateDirectory(dir, NULL);
+}
+
+
+
 int main() {
-    test_1();
+    test_4();
 
     return 0;
 }

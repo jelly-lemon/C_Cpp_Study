@@ -34,6 +34,11 @@ double average(int num, ...) {
     return sum / num;
 }
 
+void myPrint(char *fmt, ...) {
+    // TODO
+
+}
+
 int main() {
     printf("Average of 2, 3, 4, 5 = %f\n", average(4, 2, 3, 4, 5));
     printf("Average of 5, 10, 15 = %f\n", average(3, 5, 10, 15));

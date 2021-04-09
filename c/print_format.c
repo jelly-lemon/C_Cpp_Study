@@ -22,12 +22,20 @@ void test_2() {
 }
 
 /**
+ * 填充和对齐
+ */
+void test_3() {
+    // 占 5 位，不够 0 填充
+    printf("%05d\n", 12);
+}
+
+/**
  * printf 实现方式
  */
 
 
 int main() {
-    test_2();
+    test_3();
 
     return 0;
 }

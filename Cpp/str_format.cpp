@@ -40,8 +40,8 @@ void test_1() {
     memset(msg, 'a', 100);
     // 格式化后的字符串（自动带有\0），然后写入目标字符数组当中。
     // 返回值是格式化后的字符串长度（要记住字符串长度不含\0）
-    // 如果格式化后的字符串长度超过了给的可写入长度，返回-1
-    int n = snprintf(msg, 12, "hello,%s\n", "world");
+    // 如果格式化后的字符串长度超过了给的可写入长度，就会截取写入，同时返回-1。
+    int n = snprintf(msg, 10, "hello,%s\n", "world");
     puts(msg);
     printf("%d\n", n);
 }
@@ -68,11 +68,22 @@ void test_3() {
  */
 void test_4() {
     // 注意有个点，如果没有点，表示右对齐
-    printf("%.10s...", "hello,world,abc");
+    printf("%.10s...\n", "hello,world,abc");
+
+    printf("%.10s...\n", "hello");
+}
+
+/**
+ * 字符数组初始化
+ */
+void test_5() {
+    // 只要初始化了第一个字符，其余没给值的元素会被初始化为 \0
+    char s[100] = {'\0'};
+    puts(s);
 }
 
 
 int main() {
-    test_4();
+    test_5();
     return 0 ;
 }

@@ -24,7 +24,7 @@ message("CXX_FLAGS=${CXX_FLAGS}")
 include_directories(include/my_gtest1.10)
 
 # 指定可用链接库目录
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/my_gtest1.10) # link_directories 不能用相对路径
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) # link_directories 不能用相对路径
 
 add_executable(912 c/leetcode/912.c)
 
@@ -48,7 +48,7 @@ add_executable(thread_mutex c/thread_example/thread_mutex.c)
 
 add_executable(thread_scanf c/thread_example/thread_scanf.c)
 
-add_executable(test test.c)
+add_executable(test test.cpp)
 #target_link_libraries(test Xinput.lib)
 
 add_executable(643 c/leetcode/643.c)
@@ -129,7 +129,7 @@ add_executable(math_study c/math_study.c)
 
 add_executable(tell_me_which_std c/tell_me_which_std.c)
 
-add_executable(sort Cpp/sort.cpp)
+add_executable(sort Cpp/algorithm_study/sort.cpp)
 target_link_libraries(sort libgtest.a)
 
 add_executable(str_format Cpp/str_format.cpp)
@@ -140,9 +140,9 @@ target_link_libraries(web_server wsock32.lib)
 
 add_executable(minimal_exe c/minimal_exe.c)
 
-add_executable(reverse_linkedlist Cpp/reverse_linkedlist.cpp)
+add_executable(reverse_linkedlist Cpp/algorithm_study/reverse_linkedlist.cpp)
 
-add_executable(binary_one_number Cpp/binary_one_number.cpp)
+add_executable(binary_one_number Cpp/algorithm_study/binary_one_number.cpp)
 target_link_libraries(binary_one_number libgtest.a)
 
 
@@ -171,3 +171,12 @@ add_executable(static_study Cpp/static_study.cpp)
 add_executable(hello c/hello.c)
 
 add_executable(hello_cpp Cpp/hello_cpp.cpp)
+
+add_executable(delete_list_node Cpp/algorithm_study/delete_list_node.cpp)
+
+
+# STATIC 生成 lib
+# SHARED 生成 DLL
+add_library(my_dll SHARED c/dll_study/my_dll.c) # 咋会生成 libmy_dll.dll 和 lib123.a ？后面这个是什么东西？
+
+add_executable(load_dll c/dll_study/load_dll.c)
