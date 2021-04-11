@@ -67,7 +67,7 @@ void test_3() {
  * 前 10 位字符输出
  */
 void test_4() {
-    // 注意有个点，如果没有点，表示右对齐
+    // 注意有个点，如果没有点，表示宽度为10且右对齐
     printf("%.10s...\n", "hello,world,abc");
 
     printf("%.10s...\n", "hello");
@@ -82,6 +82,10 @@ void test_5() {
     puts(s);
 }
 
+
+void test_6() {
+    fprintf(stdout, );
+}
 
 int main() {
     test_5();

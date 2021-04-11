@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <getopt.h>
+#include <stdlib.h>
 
 /**
  * 短格式写法
@@ -65,17 +66,17 @@ void test_1(int argc, char *argv[]) {
     // optional_argument(或者是2)时，参数输入格式只能为：
     // --选项=值
     static struct option long_options[] = {
-                    // 结构体最后一项，val 表示用户输入了相关参数，返回的参数名
-                    {"help", no_argument, NULL, 'h'},
-                    {"file", required_argument, NULL, 'f'},
-                    {"output", optional_argument, NULL, 'o'},
-                    {0, 0, 0, 0}};
+            // 结构体最后一项，val 表示用户输入了相关参数，返回的参数名
+            {"help",   no_argument,       NULL, 'h'},
+            {"file",   required_argument, NULL, 'f'},
+            {"output", optional_argument, NULL, 'o'},
+            {0,        0, 0,                    0}};
     // 数组的最后一个元素必须填充为0，用于标记结束
 
 
-    static char* const short_options=(char *)"hf:o::";  // 短参数
+    static char *const short_options = (char *) "hf:o::";  // 短参数
     int option_index = 0;
-    int ret=0;
+    int ret = 0;
 
     while ((ret = getopt_long(argc, argv, short_options, long_options, &option_index)) != -1) {
         switch (ret) {
@@ -93,6 +94,110 @@ void test_1(int argc, char *argv[]) {
             case '?':
                 break;
         }
+    }
+}
+
+/**
+ * 只支持长参数
+ */
+void test_2(int argc, char *argv[]) {
+    char c;
+
+    struct option long_options[] =
+            {
+                    {"mass-ratio",         required_argument, 0, 'q'},
+                    {"low-freq (Hz)",      required_argument, 0, 'f'},
+                    {"total-mass (M_sun)", required_argument, 0, 'm'},
+                    {"sample-rate",        required_argument, 0, 's'},
+                    {"output-file",        required_argument, 0, 'o'},
+                    {"help",               no_argument,       0, 'h'},
+                    {"version",            no_argument,       0, 'V'},
+                    {0,                    0,                 0, 0}
+            };
+    /* parse the arguments */
+    while (1) {
+        /* getopt_long stores long option here */
+        int option_index = 0;
+
+        // getopt_long_only会将--name和-name两种选项都当作长参数来匹配。
+        // 在getopt_long在遇到-name时，会拆解成-n -a -m -e到optstring中进行匹配，
+        // 而getopt_long_only只在-name不能在longopts中匹配时才将其拆解成-n -a -m -e这样的参数到optstring中进行匹配
+        c = getopt_long_only(argc, argv, "q:t:d:hV",
+                             long_options, &option_index);
+
+        /* detect the end of the options */
+        if (c == -1) {
+            break;
+        }
+
+        switch (c) {
+            case 0:
+                fprintf(stderr, "Error parsing option '%s' with argument '%s'\n",
+                        long_options[option_index].name, optarg);
+                //exit(1);
+                break;
+
+            case 'h':
+                /* help message */
+                //print_usage(argv[0]);
+
+                exit(0);
+                break;
+
+            case 'V':
+                /* print version information and exit */
+//                fprintf(stdout, "%s - Compute Ajith's Phenomenological Waveforms " \
+//         "(arXiv:0710.2335) and output them to a plain text file\n" \
+//            "CVS Version: %s\nCVS Tag: %s\n", PROGRAM_NAME, CVS_ID_STRING, \
+//            CVS_NAME_STRING);
+                exit(0);
+                break;
+
+            case 'q':
+                /* set mass ratio */
+                //massRatio = atof(optarg);
+                break;
+
+            case 'f':
+                /* set low freq */
+                //lowFreq = atof(optarg);
+                break;
+
+            case 'm':
+                /* set total mass */
+                //totalMass = atof(optarg);
+                break;
+
+            case 's':
+                /* set sample rate */
+                //sampleRate = atof(optarg);
+                break;
+
+            case 'o':
+                /* set name of output file */
+                //optarg_len = strlen(optarg) + 1;
+                //outFile = (CHAR *) calloc(optarg_len, sizeof(CHAR));
+                //memcpy(outFile, optarg, optarg_len);
+                break;
+
+            case '?':
+                //print_usage(argv[0]);
+                exit(1);
+                break;
+
+            default:
+                fprintf(stderr, "ERROR: Unknown error while parsing options\n");
+                //print_usage(argv[0]);
+                exit(1);
+        }
+    }
+
+    if (optind < argc) {
+        fprintf(stderr, "ERROR: Extraneous command line arguments:\n");
+        while (optind < argc) {
+            fprintf(stderr, "%s\n", argv[optind++]);
+        }
+        exit(1);
     }
 }
 

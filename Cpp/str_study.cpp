@@ -99,6 +99,7 @@ void test_3() {
  */
 void test_4() {
     string s(" 123");   // 即使字符串前面有空格也没关系
+    // atoi == alphanumeric to integer
     int n = stoi(s);
     cout << n << endl;
 
