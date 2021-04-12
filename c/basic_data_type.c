@@ -20,6 +20,9 @@ void test_2() {
     printf("%d\n", b);
 }
 
+/**
+ * sizeof(字符串) 实际上得到的是字符串长度 + 1，因为字符串常量包含 \0
+ */
 void test_3() {
     int n = sizeof("\r\n");
     printf("\\r\\n=%d\n", n);
