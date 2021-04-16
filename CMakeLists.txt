@@ -25,6 +25,8 @@ link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
 add_executable(min_neighbor_diff Cpp/algorithm_study/min_neighbor_diff.cpp)
+add_executable(2 2.cpp)
+add_executable(1 1.cpp)
 add_executable(mem_bio OpenSSL_Study/base_BIO_example/mem_bio.c)
 target_link_libraries(mem_bio libcrypto)
 #add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
@@ -103,7 +105,7 @@ add_executable(basic_data_type c/basic_data_type.c)
 #add_executable(mutual_include Cpp/mutual_include.cpp)
 #add_executable(map_study Cpp/map_study.cpp)
 #add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
-add_executable(file_study Cpp/file_study.cpp)
+#add_executable(file_study Cpp/file_study.cpp)
 #add_executable(static_study Cpp/static_study.cpp)
 #add_executable(hello c/hello.c)
 #add_executable(hello_cpp Cpp/hello_cpp.cpp)
@@ -112,4 +114,4 @@ add_executable(file_study Cpp/file_study.cpp)
 ## SHARED 生成 DLL
 #add_library(my_dll SHARED c/dll_study/my_dll.c) # 咋会生成 libmy_dll.dll 和 lib123.a ？后面这个是什么东西？
 #add_executable(load_dll c/dll_study/load_dll.c)
-add_executable(main_args c/main_args.c)
+#add_executable(main_args c/main_args.c)
