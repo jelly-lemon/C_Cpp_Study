@@ -77,8 +77,10 @@ void test_4() {
 
 
 
-int main() {
-    test_4();
-
+int main(int argc, char *argv[]) {
+    int i;
+    for (i = 0; i < argc; i++) {
+        cout << argv[i];
+    }
     return 0;
 }

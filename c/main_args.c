@@ -5,6 +5,8 @@
  * getopt.h不是 ANSI C 标准库的一部分
  *
  * getopt()只支持短格式选项，而getopt_long()既支持短格式选项，又支持长格式选项
+ *
+ * 在 windows 中，文件拖入其实就是给 main 函数传参，传的文件路径
  */
 
 #include <stdio.h>
@@ -203,5 +205,10 @@ void test_2(int argc, char *argv[]) {
 
 
 int main(int argc, char *argv[]) {
-    test_1(argc, argv);
+    int i;
+    for (i = 0; i < argc; i++) {
+        printf("%s\n", argv[i]) ;
+    }
+    system("pause");
+    return 0;
 }
