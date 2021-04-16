@@ -24,6 +24,7 @@ include_directories(include/my_openssl1.1.0g)
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(min_neighbor_diff Cpp/algorithm_study/min_neighbor_diff.cpp)
 add_executable(mem_bio OpenSSL_Study/base_BIO_example/mem_bio.c)
 target_link_libraries(mem_bio libcrypto)
 #add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
