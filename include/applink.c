@@ -1,3 +1,6 @@
+/**
+ * 用于解决 OPENSSL_Uplink(00007FF9805603A8,08): no OPENSSL_Applink
+ */
 #define APPLINK_STDIN   1
 #define APPLINK_STDOUT  2
 #define APPLINK_STDERR  3

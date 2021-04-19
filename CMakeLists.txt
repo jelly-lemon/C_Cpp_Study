@@ -1,6 +1,6 @@
 # CMake 设置
 cmake_minimum_required(VERSION 2.8) # 指定 CMake 最低版本要求
-project(C_Cpp_Study)# 指定项目名
+project(C_Cpp_Study) # 指定项目名
 set(CMAKE_CXX_STANDARD 11)  # 指定 C++ 标准
 set(CMAKE_C_STANDARD 11)    # c 标准
 
@@ -20,16 +20,18 @@ include_directories(include/my_gtest1.10)   # 依赖头文件
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) # 链接库目录，link_directories 不能用相对路径
 # openssl
 include_directories(C:\\OpenSSL-Win64\\include) # 头文件夹
-include_directories(include/my_openssl1.1.0g)
+include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
-add_executable(tx_0418_2 Cpp/algorithm_study/tx_0418_2.cpp)
-add_executable(tx_0418_1 Cpp/algorithm_study/tx_0418_1.cpp)
+add_executable(explicitly_study Cpp/explicitly_study.cpp)
+add_executable(min_heap_study Cpp/min_heap_study.cpp)
+add_executable(tx_0418_2 Cpp/leetcode/tx_0418_2.cpp)
+add_executable(tx_0418_1 Cpp/leetcode/tx_0418_1.cpp)
 add_executable(two_D_array Cpp/two_D_array.cpp)
 add_executable(min_neighbor_diff Cpp/algorithm_study/min_neighbor_diff.cpp)
-add_executable(ali_0416_2 Cpp/algorithm_study/ali_0416_2.cpp)
-add_executable(ali_0416_1 Cpp/algorithm_study/ali_0416_1.cpp)
+add_executable(ali_0416_2 Cpp/leetcode/ali_0416_2.cpp)
+add_executable(ali_0416_1 Cpp/leetcode/ali_0416_1.cpp)
 add_executable(mem_bio OpenSSL_Study/base_BIO_example/mem_bio.c)
 target_link_libraries(mem_bio libcrypto)
 #add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标

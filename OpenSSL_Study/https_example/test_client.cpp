@@ -9,7 +9,7 @@
 #include "openssl/ssl.h"
 #include "openssl/bio.h"
 #include "openssl/err.h"
-#include "applink.c"
+#include "../../include/applink.c"
 
 #define CLIENTCERT  "..\\cert\\client-cert.pem"  // 客户端的证书(需经CA签名)
 #define CLIENTKEY  "..\\cert\\client-key.pem"   // 客户端的私钥

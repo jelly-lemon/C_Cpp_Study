@@ -7,7 +7,7 @@
 
 #include "openssl/bio.h"
 #include "openssl/err.h"
-#include "applink.c"
+#include "../../include/applink.c"
 
 #define CERTF   "..\\cert\\server-cert.pem" // 服务端的证书(需经CA签名)
 #define KEYF   "..\\cert\\server-key.pem"  // 服务端的私钥(建议加密存储)

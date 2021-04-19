@@ -10,7 +10,7 @@
 
 #include "openssl/bio.h"
 #include "openssl/err.h"
-#include "applink.c"
+#include "../../include/applink.c"
 
 
 int main() {

@@ -41,11 +41,18 @@ EmptyClass_2::~EmptyClass_2() {
 
 }
 
-int main() {
+/**
+ * 空类型大小
+ */
+void test_0() {
     cout << "EmptyClass:" << sizeof(EmptyClass) << endl;
     cout << "EmptyClass_1:" << sizeof(EmptyClass_1) << endl;
     cout << "EmptyClass_2:" << sizeof(EmptyClass_2) << endl;
     cout << "EmptyStruct:" << sizeof(EmptyStruct) << endl;
+}
+
+int main() {
+
 
     return 0;
 }
