@@ -65,6 +65,7 @@ int compare(ListNode *p1, ListNode *p2) {
     p1 = p1->next;
     p2 = p2->next;
 
+    // TODO
     while (1) {
 
     }
