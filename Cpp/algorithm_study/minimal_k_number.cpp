@@ -34,7 +34,6 @@ vector<int> GetLeastNumbers_1(vector<int> input, int k) {
         minHeap.push(*iter);
     }
 
-
     for (int i = 0; i < k; i++) {
         out.push_back(minHeap.top());
         minHeap.pop();
