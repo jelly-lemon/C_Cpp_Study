@@ -65,7 +65,7 @@ int compare(ListNode *p1, ListNode *p2) {
     p1 = p1->next;
     p2 = p2->next;
 
-    // TODO
+    // TODO 判断两个链表是否相等
     while (1) {
 
     }
@@ -75,10 +75,13 @@ int compare(ListNode *p1, ListNode *p2) {
  * 反转链表
  */
 ListNode* reverseLinkedList(ListNode *pHead) {
+    // 非法输入检查
     if (pHead == NULL)
         return NULL;
     if (pHead->next == NULL)
         return pHead;
+
+    // 借助 3 个指针变量反转链表
     ListNode *p1 = NULL;
     ListNode *p2 = pHead;
     ListNode *p3 = p2->next;

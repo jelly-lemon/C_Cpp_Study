@@ -24,6 +24,8 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(hash_study Cpp/hash_study.cpp)
+add_executable(NC61 Cpp/newcoder/NC61.cpp)
 add_executable(minimal_k_number Cpp/algorithm_study/minimal_k_number.cpp)
 add_executable(explicitly_study Cpp/explicitly_study.cpp)
 add_executable(min_heap_study Cpp/min_heap_study.cpp)
@@ -109,7 +111,7 @@ add_executable(overload_operators Cpp/overload_operators.cpp)
 #add_executable(read_write_lock c/thread_example/read_write_lock.c)
 #add_executable(async_log c/thread_example/async_log.c)
 #add_executable(mutual_include Cpp/mutual_include.cpp)
-#add_executable(map_study Cpp/map_study.cpp)
+add_executable(map_study Cpp/map_study.cpp)
 add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
 #add_executable(file_study Cpp/file_study.cpp)
 #add_executable(static_study Cpp/static_study.cpp)
