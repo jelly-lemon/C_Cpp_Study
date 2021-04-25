@@ -148,8 +148,16 @@ void test_6() {
     cout << s << endl;
 }
 
+/**
+ * 字符串长度
+ */
+void test_7() {
+    string s = "hello";
+    cout << s << "," << " length = " << s.length() << endl;
+}
+
 int main() {
-    test_1();
+    test_7();
 
     return 0;
 }
