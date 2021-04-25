@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8) # 指定 CMake 最低版本要求
 project(C_Cpp_Study) # 指定项目名
 set(CMAKE_CXX_STANDARD 11)  # 指定 C++ 标准
 set(CMAKE_C_STANDARD 11)    # c 标准
+# set(CMAKE_CXX_FLAGS "-static ${CMAKE_CXX_FLAGS}")   # 强制静态链接
 
 # 打印信息
 #message("CMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}")
@@ -24,7 +25,9 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(NC52 Cpp/newcoder/NC52.cpp)
 add_executable(set_study Cpp/set_study.cpp)
+add_executable(printf_sleep c/printf_sleep.c)
 add_executable(hash_study Cpp/hash_study.cpp)
 add_executable(NC61 Cpp/newcoder/NC61.cpp)
 add_executable(minimal_k_number Cpp/algorithm_study/minimal_k_number.cpp)
@@ -85,14 +88,14 @@ add_executable(basic_data_type c/basic_data_type.c)
 #add_executable(ano_pipe_server Win_Socket/AnonymousPipes/ano_pipe_server.c)
 add_executable(overload_operators Cpp/overload_operators.cpp)
 #add_executable(override_study Cpp/override_study.cpp)
-#add_executable(vector_study Cpp/vector_study.cpp)
+add_executable(vector_study Cpp/vector_study.cpp)
 #add_executable(gtest_study Cpp/gtest_study.cpp)
 ## 静态链接库
 ## 链接 libgtest_main_w64-6.0.a 会出现 undefined reference to `testing::Message::Message()'
 #target_link_libraries(gtest_study libgtest.a)
 #add_executable(print_format c/print_format.c)
 #add_executable(thread_study c/thread_example/thread_study.c)
-#add_executable(control_cpu_ratio c/algorithm_study/control_cpu_ratio.c)
+add_executable(control_cpu_ratio c/algorithm_study/control_cpu_ratio.c)
 #add_executable(time_study c/time_study.c)
 #add_executable(math_study c/math_study.c)
 #add_executable(tell_me_which_std c/tell_me_which_std.c)

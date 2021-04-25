@@ -8,16 +8,15 @@
 
 #include <pthread.h>
 #include <windows.h>
-#include <time.h>
 #include <stdio.h>
-#include <malloc.h>
 #include <math.h>
 
 
 /**
- * sin 函数，幅值[-0.5, 0.5]，中间轴为 y = 0.5
+ * 自定义 sin 函数，幅值 [0, 1]，中间轴为 y = 0.5
  *
- * @param x 角度
+ * @param x 角度，0~360
+ * @return sin 函数值，[0, 1]
  */
 double my_sin(int x) {
     double PI = 3.14159265;
@@ -83,7 +82,7 @@ void *thread_run_and_sleep_once(void *args) {
 
 
 /**
- * 获取CPU 核心数
+ * 获取 CPU 逻辑核心数
  */
 int getMaxThreadNumber() {
     SYSTEM_INFO info;
@@ -125,13 +124,21 @@ void sin_ratio() {
     int count = 0;
 
     p = (pthread_t *) malloc(sizeof(pthread_t) * n_thread);
+
     while (1) {
-        ratio = my_sin(((float_t) count / sin_epoch) * 360);
+        // 计算本次 1s 时间内 CPU 应该忙率时间占比
+        ratio = my_sin(((double) count / sin_epoch) * 360);
         printf("ratio=%f\n", ratio);
+
+        // 根据 CPU 逻辑核心数创建线程并执行耗时函数
         for (i = 0; i < n_thread; i++) {
             pthread_create(&p[i], NULL, thread_run_and_sleep_once, (void *) &ratio);
         }
+
+        // 主线程同样也执行耗时函数
         thread_run_and_sleep_once((void *) &ratio);
+
+        // 循环计数
         count++;
         if (count >= sin_epoch) {
             count = 0;
@@ -141,6 +148,9 @@ void sin_ratio() {
 
 
 int main() {
+    // 关闭 stdout 缓冲
+    setbuf(stdout, NULL);
+
     sin_ratio();
 
     return 0;

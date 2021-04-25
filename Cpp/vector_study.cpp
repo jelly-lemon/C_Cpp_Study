@@ -6,6 +6,7 @@ void print_vector(vector<int> v) {
     for (vector<int>::iterator it=v.begin(); it != v.end(); it++) {
         cout << *it << " ";
     }
+    cout << endl;
 }
 
 /**
@@ -31,12 +32,15 @@ void test_1() {
 
 
 /**
- * 插入元素，容量不足时，容量乘2扩大
+ * 插入元素，容量不足时，容量乘 2 扩大
  */
 void test_2() {
     int a[10] = {4,5,6,3,1,2,9,8,7,0};
 
+    // 容量为 10，并且全部初始化为 1
     vector<int> v1(10, 1);
+    print_vector(v1);
+    // 存量 vs 容量
     cout << "v1 " << "size:" << v1.size() << " capacity:" << v1.capacity() << endl;
 
     // 末尾插入元素
@@ -52,9 +56,19 @@ void test_2() {
     cout << "v1 " << "size:" << v1.size() << " capacity:" << v1.capacity() << endl;
 }
 
+/**
+ * 访问元素
+ */
+void test_3() {
+    // 像数组一样访问
+    int a[] = {1,2,3,4,5};
+    vector<int> v1(a, a+5);
+    cout << a[0] << " " << a[1] << endl;
+}
+
 
 int main() {
-    test_2();
+    test_3();
 
     return 0;
 }
