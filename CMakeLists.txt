@@ -25,6 +25,8 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(NC3 Cpp/newcoder/NC3.cpp)
+add_executable(NC73 Cpp/newcoder/NC73.cpp)
 add_executable(NC17 Cpp/newcoder/NC17.cpp)
 add_executable(NC52 Cpp/newcoder/NC52.cpp)
 add_executable(set_study Cpp/set_study.cpp)
@@ -45,7 +47,7 @@ target_link_libraries(mem_bio libcrypto)
 #add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
 #target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
 #add_executable(base64_encode c/base64_encode.c)
-#add_executable(912 c/leetcode/912.c)
+add_executable(912 c/leetcode/912.c)
 add_executable(str_study Cpp/str_study.cpp)
 #add_executable(change_pointer c/change_pointer.c)
 #add_executable(byte_alignment c/byte_alignment.c)

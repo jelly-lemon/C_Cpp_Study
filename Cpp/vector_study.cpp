@@ -28,6 +28,10 @@ void test_1() {
     vector<int> v3(a, a+5);
     print_vector(v3);
     cout << endl;
+
+    // 类似数组的写法
+    vector<int> v4{3,5,2,6,4};
+    print_vector(v4);
 }
 
 

@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include <malloc.h>
-#define N 4
 
 void swap(int *a, int *b);
 int* SelectionSort(int nums[], int numsSize);
@@ -8,6 +7,14 @@ int* sortArray(int* nums, int numsSize, int* returnSize);
 int* copy(const int* nums, int numsSize);
 int* QuickSort(int nums[], int numsSize);
 int* MergerSort(int nums[], int numsSize);
+
+void printNum(int nums[], int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        printf("%d ", nums[i]);
+    }
+    printf("\n");
+}
 
 /*
  * 912. 排序数组
@@ -108,67 +115,70 @@ int* MergerSort(int nums[], int numsSize) {
 }
 
 /**
- * 快速排序
+ * 快速排序，写法 1。fixme 此算法有问题
+ * 具体思路：
+ * 中轴元素先不动。先交换：前大 <--> 后小。
+ *
+ * @param nums 数组
+ * @param numsSize 数组大小
  */
 int* QuickSort(int nums[], int numsSize) {
-    //
     // 递归终止条件
-    //
     if (numsSize <= 1) {
         return nums;
     }
 
-    int key, i, j;
+    // 中轴元素的值，前下标，后下标
+    int midValue, i, j;
 
     i = 0, j = numsSize - 1;
-    key = nums[0];
+    midValue = nums[0];
     while (i < j) {
-        //
-        // j 找比 key 小的数
-        //
-        while (nums[j] >= key) {
+        // j 找比中轴元素小的数，找到就跳出 while
+        while (nums[j] >= midValue) {
             j--;
             if (j == i) {
                 break;
             }
         }
-
         if (j == i) {
             break;
         }
 
-
-        //
-        // i 找比 key 大的数
-        //
-        while (nums[i] <= key) {
+        // i 找比中轴元素大的数，找到就跳出 while
+        while (nums[i] <= midValue) {
             i++;
             if (i == j) {
                 break;
             }
         }
 
+        // 判断是否遍历完毕
         if (i == j) {
             break;
         } else {
+            // 【易错点】进行交换的是：一个比中轴大的数，一个是比中轴小的数，不是和中轴进行交换
             swap(nums + i, nums + j);
         }
     }
 
-    //
-    // 把 key 放到中间
-    //
+    // 前面大小元素交换完了，最后才把中轴元素放到正确的位置上
+    // 把中轴元素放到中间，此时 i == j
     swap(nums, nums + i);
 
-    //
+    for (int k = 0; k < i; k++) {
+        printf("%d ", nums[k]);
+    }
+    printf("_%d_ ", nums[i]);
+    for (int k = i+1; k < numsSize; k++) {
+        printf("%d ", nums[k]);
+    }
+    printf("\n");
+
     // 对左边进行快排
-    //
     QuickSort(nums, i);
 
-
-    //
     // 对右边进行快排
-    //
     QuickSort(&nums[i + 1], numsSize - (i + 1));
 
     return nums;
@@ -199,31 +209,30 @@ int* copy(const int* nums, int numsSize) {
 }
 
 
+
+/**
+ * 测试快排
+ */
+void test_0() {
+    int nums[] = {23, 2, 11, 6, 22, 34, 3, 61, 15, 11, 15, 37, 40, 44};
+    int N = sizeof(nums)/ sizeof(int);
+
+    // 排序前
+    printf("before: ");
+    printNum(nums, N);
+
+    // 排序
+    int* p = QuickSort(nums, N);
+
+    // 排序后
+    printf("after: ");
+    printNum(nums, N);
+}
+
+
 int main(void) {
 
-    int nums[] = {5, 2, 3, 1};
-
-    //
-    // 排序前
-    //
-    int i;
-    for (i = 0; i < N; i++) {
-        printf("%d ", nums[i]);
-    }
-    printf("\n");
-
-    //
-    // 排序
-    //
-    int* p = MergerSort(nums, N);
-
-    //
-    // 排序后
-    //
-    for (i = 0; i < N; i++) {
-        printf("%d ", p[i]);
-    }
-    printf("\n");
+    test_0();
 
 
     return 0;
