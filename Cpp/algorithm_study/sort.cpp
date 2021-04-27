@@ -1,7 +1,9 @@
 /**
  * 排序算法
  */
+#include <iostream>
 #include <gtest/gtest.h>
+using namespace std;
 
 
 void showArray(int a[], int len) {
@@ -15,7 +17,7 @@ void showArray(int a[], int len) {
 
 
 /**
- * 递归形式的快速排序
+ * 快速排序（递归）
  * 三 while(i_front < i_back)
  */
 void QuickSort(int* a, int len) {
@@ -34,7 +36,7 @@ void QuickSort(int* a, int len) {
     while (i_front < i_back) {
         // 从后往前找比中轴元素小的元素
         while (i_front < i_back) {
-            // 找到
+            // 找到后就和中轴元素交换
             if(a[i_center] > a[i_back]) {
                 t = a[i_center];
                 a[i_center] = a[i_back];
@@ -153,6 +155,7 @@ void mergeSort_1(int a[], int len) {
         return;
     }
 
+    // TODO
     int b[len];
     int i, j, k, subLen;
     k = 0;
@@ -162,8 +165,6 @@ void mergeSort_1(int a[], int len) {
         k = 0;
         while(i + subLen < len) {
             j = i + subLen;
-
-
 
             i = j + subLen;
         }

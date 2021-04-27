@@ -1,8 +1,12 @@
-/*
+/**
  * 基本数据类型的长度
  */
 #include <stdio.h>
 
+/**
+ * 基本数据类型所占字节长度
+ * long 和 int 都占 4 个字节
+ */
 void test_1() {
     printf("int=%d\n", sizeof(int));
     printf("long=%d\n", sizeof(long));
@@ -14,6 +18,9 @@ void test_1() {
     printf("int *=%d\n", sizeof(int *));
 }
 
+/**
+ * 地址类型可以随意转换
+ */
 void test_2() {
     int a = 1;
     int b = *(int *)((void *)&a);
@@ -21,7 +28,7 @@ void test_2() {
 }
 
 /**
- * sizeof(字符串) 实际上得到的是字符串长度 + 1，因为字符串常量包含 \0
+ * sizeof(字符串) 得到所占字节长度，字符串常量末尾包含 \0，所以看起来要多一个字节
  */
 void test_3() {
     int n = sizeof("\r\n");
@@ -44,6 +51,6 @@ void test_3() {
 }
 
 int main() {
-    test_3();
+    test_1();
     return 0;
 }

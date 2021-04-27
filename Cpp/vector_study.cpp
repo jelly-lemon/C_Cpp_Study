@@ -70,9 +70,27 @@ void test_3() {
     cout << a[0] << " " << a[1] << endl;
 }
 
+/*
+ * 判断 vector 相等
+ */
+void test_4() {
+    int a1[] = {1,2,3,4,5};
+    vector<int> v1(a1, a1+5);
+    int a2[] = {1,2,3,4,5};
+    vector<int> v2(a2, a2+5);
+    vector<int> v3(a1, a1+4);
+
+    if (v1 == v2) {
+        cout << "v1 == v2" << endl;
+    }
+    if (v1 == v3) {
+        cout << "v1 == v3" << endl;
+    }
+}
+
 
 int main() {
-    test_3();
+    test_4();
 
     return 0;
 }

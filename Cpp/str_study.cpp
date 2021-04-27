@@ -24,7 +24,10 @@ void test_1() {
     // 取子串。结束位置超过了原字符串长度也没关系，有多少返回多少
     string s4("12345", 1, 36);
     cout << "s4:" << s4 << endl;
+    string s5(s4, 0, 3);
+    cout << "s5:" << s5 << endl;
 
+    // 获取字符串长度
     string s6;
     s6 = "Ni hao";
     cout << "s6:" << s6 << endl;
@@ -156,8 +159,17 @@ void test_7() {
     cout << s << "," << " length = " << s.length() << endl;
 }
 
+/**
+ * 字符替换
+ */
+void test_8() {
+    string s = "hello";
+    s[0] = 'a';
+    cout << s << endl;
+}
+
 int main() {
-    test_7();
+    test_1();
 
     return 0;
 }
