@@ -14,7 +14,34 @@
  */
 #include <vector>
 #include <iostream>
+#include <unordered_map>
 using namespace std;
+
+
+/*
+ 运行时间：3ms
+超过30.10%用C++提交的代码
+占用内存：376KB
+超过89.58%用C++提交的代码
+ */
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+    if (numbers.size() == 0)
+        return 0;
+    unordered_map<int, int> map1;
+    int halfLen = numbers.size()/2;
+    for (int &i : numbers) {
+        if (map1.find(i) == map1.end()) {
+            map1[i] = 1;
+            if (map1[i] > halfLen)
+                return i;
+        } else {
+            map1[i]++;
+            if (map1[i] > halfLen)
+                return i;
+        }
+    }
+    return 0;
+}
 
 void printVector(vector<int> v) {
     for (int &n : v) {
