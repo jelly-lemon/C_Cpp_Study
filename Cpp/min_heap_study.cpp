@@ -54,6 +54,12 @@ void test_1() {
     cout << endl;
 }
 
+/**
+ * 设置堆的容量
+ */
+void test_2() {
+
+}
 
 int main() {
     test_1();
