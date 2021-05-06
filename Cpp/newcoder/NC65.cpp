@@ -4,7 +4,7 @@ n <= 39
  */
 
 /**
- * 递归写法，运行时间 603ms
+ * 递归写法（自顶向下），运行时间 603ms
  */
 int Fibonacci(int n) {
     if (n == 0) return 0;
@@ -14,7 +14,7 @@ int Fibonacci(int n) {
 }
 
 /**
- * 迭代写法，运行时间 3ms
+ * 迭代写法（自底向上），运行时间 3ms
  */
 int Fibonacci_1(int n) {
     if (n == 0) return 0;

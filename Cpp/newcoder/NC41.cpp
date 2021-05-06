@@ -4,6 +4,7 @@
  * 给定一个数组arr，返回arr的最长无的重复子串的长度(无重复指的是所有数字都不相同)。
  */
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <set>
 using namespace std;
@@ -16,7 +17,6 @@ using namespace std;
  * @return int整型
  */
 int maxLength(vector<int> &arr) {
-    // write code here
     vector<int>::iterator iter_i = arr.begin();
     int maxLen = 0;
     for (; iter_i != arr.end(); iter_i++) {
@@ -52,6 +52,37 @@ int maxLength(vector<int> &arr) {
 };
 
 /**
+ * 哈希表实现
+ * 超时
+ */
+int maxLength(vector<int> &arr) {
+    vector<int>::iterator iter_i = arr.begin();
+    int maxLen = 0;
+    for (; iter_i != arr.end(); iter_i++) {
+        // 创建一个 map，用来保存子数组
+        unordered_map<int, int> mymap;
+        for (vector<int>::iterator iter_j = iter_i; iter_j != arr.end(); iter_j++) {
+            // 如果没在 map 中，就添加到 map 中
+            if (mymap.find(*iter_j) == mymap.end()) {
+                mymap[*iter_j] = *iter_j;
+                if (iter_j + 1 == arr.end()) {
+                    if (mymap.size() == arr.size()) {
+                        return arr.size();
+                    } else {
+                        maxLen = maxLen < mymap.size() ? mymap.size() : maxLen;
+                    }
+                }
+            } else {
+                // 在 map 中，说明从起点开始，已经到最大长度了。
+                maxLen = maxLen < mymap.size() ? mymap.size() : maxLen;
+                break;
+            }
+        }
+    }
+    return maxLen;
+};
+
+/**
  * 使用 set，超时
  */
 int maxLength(vector<int> &arr) {
@@ -80,6 +111,7 @@ int maxLength(vector<int> &arr) {
                 break;
             }
         }
+        
     }
     return maxLen;
 };
