@@ -25,6 +25,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(NC145 Cpp/newcoder/NC145.cpp)
 add_executable(NC59 Cpp/newcoder/NC59.cpp)
 add_executable(hash_table_study Cpp/hash_table_study.cpp)
 add_executable(quote_study Cpp/quote_study.cpp)

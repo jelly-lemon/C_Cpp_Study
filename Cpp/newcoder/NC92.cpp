@@ -20,3 +20,8 @@ using namespace std;
 string LCS(string s1, string s2) {
 
 }
+
+/**
+ * 思路 2：动态规划
+ * 构建 c[i][j] 表需要 Θ(mn)，输出 1 个 LCS 的序列需要 Θ(m+n)
+ */

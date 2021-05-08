@@ -64,7 +64,12 @@ int getLongestPalindrome(string A, int n) {
 }
 
 /**
- * 枚举法，居然通过了，不过是效率最低的算法
+ * 思路 1：枚举法
+ *
+ * 运行时间：45ms
+超过5.07%用C++提交的代码
+占用内存：376KB
+超过93.20%用C++提交的代码
  */
 int getLongestPalindrome_3(string A, int n) {
     if (A.empty())
@@ -84,6 +89,41 @@ int getLongestPalindrome_3(string A, int n) {
     }
 
     return maxLen;
+}
+
+/**
+ * 思路 2：动态规划
+ *
+ * TODO 待完成
+ */
+int getLongestPalindrome_4(string A, int n) {
+    if (n == 0)
+        return 0;
+    int dp[n+1];
+    dp[0] = 0;
+    dp[1] = 1;
+
+    for (int i = 2; i <= n; i++) {
+        int start = (i-1) - dp[i-1] - 1;    // 开始下标
+        if (start < 0) {
+            dp[i] = dp[i-1];
+            continue;
+        }
+
+        int len = dp[i-1] + 2;
+        string s(A, start, len);
+        if (!isPalindrome(s)) {
+            dp[i] = dp[i-1];
+        } else {
+            if (len > dp[i-1]) {
+                dp[i] = len;
+            } else {
+                dp[i] = dp[i-1];
+            }
+        }
+    }
+
+    return dp[n];
 }
 
 /**
