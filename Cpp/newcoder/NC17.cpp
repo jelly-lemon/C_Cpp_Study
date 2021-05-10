@@ -94,7 +94,10 @@ int getLongestPalindrome_3(string A, int n) {
 /**
  * 思路 2：动态规划
  *
- * TODO 待完成
+ * 运行时间：3ms
+超过72.69%用C++提交的代码
+占用内存：504KB
+超过54.76%用C++提交的代码
  */
 int getLongestPalindrome_4(string A, int n) {
     if (n == 0)
@@ -103,22 +106,26 @@ int getLongestPalindrome_4(string A, int n) {
     dp[0] = 0;
     dp[1] = 1;
 
-    for (int i = 2; i <= n; i++) {
-        int start = (i-1) - dp[i-1] - 1;    // 开始下标
-        if (start < 0) {
-            dp[i] = dp[i-1];
-            continue;
-        }
-
-        int len = dp[i-1] + 2;
-        string s(A, start, len);
-        if (!isPalindrome(s)) {
-            dp[i] = dp[i-1];
-        } else {
-            if (len > dp[i-1]) {
-                dp[i] = len;
+    // m 表示前 m 个数
+    for (int m = 2; m <= n; m++) {
+        int start = (m-1) - dp[m-1] - 1;    // 回文串开始下标
+        // start 为 -1 表示前面这几个字符 构不成 典型回文串
+        if (start == -1) {
+            string s2(A, start+1, dp[m-1] + 1);
+            if (isPalindrome(s2)) {
+                dp[m] = dp[m-1] + 1;
             } else {
-                dp[i] = dp[i-1];
+                dp[m] = dp[m - 1];
+            }
+        } else {
+            string s1(A, start, dp[m-1] + 2);
+            string s2(A, start+1, dp[m-1] + 1);
+            if (isPalindrome(s1)) {
+                dp[m] = dp[m-1] + 2;
+            } else if (isPalindrome(s2)) {
+                dp[m] = dp[m-1] + 1;
+            } else {
+                dp[m] = dp[m - 1];
             }
         }
     }
