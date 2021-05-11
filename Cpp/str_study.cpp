@@ -38,6 +38,11 @@ void test_1() {
     cout << *s7 << endl;
     cout << "the value of pointer:" << s7 << endl;
     delete s7;
+
+
+    char t[10] = "hello";
+    string s8(t);
+    cout << "s8: " << s8 << endl;
 }
 
 /**

@@ -32,10 +32,10 @@ string LCS_1(string s1, string s2) {
     int len2 = s2.size();
 
     int dp[len1+1][len2+2];
-//    int **dp = new int* [len1+1];
-    // 这里 len1+1 很容易忘记，容易误写成 len1
+    //    int **dp = new int* [len1+1];
+    // 这里 len+1 很容易忘记
     for (int i = 0; i < len1+1; i++) {
-//        dp[i] = new int[len2+1];
+        //        dp[i] = new int[len2+1];
         dp[i][0] = 0;
     }
     for (int j = 0; j < len2+1; j++) {
@@ -55,20 +55,23 @@ string LCS_1(string s1, string s2) {
             }
         }
     }
-    if (dp[m][n] == -1) {
-        return -1;
-    }
+
     // TODO 找出该序列
-    string s;
-    int count = 1;
-    for (int m = 1; m <= len1; m++) {
-        for (int n = 1; n <= len2; n++) {
-            if (dp[m][n] == count) {
-                s += s1[m-1];
-                count++;
-                break;
-            }
+    int subLen = dp[len1][len2];
+    int count = 0;
+    int i = len1;
+    int j = len2;
+    char s[subLen];
+    while (count <= subLen - 1) {
+        while (subLen - count == dp[i-1][j]) {
+            i--;
         }
+        while (subLen - count == dp[i][j-1]) {
+            j--;
+        }
+        s[subLen-count-1] = s1[i-1];
+        count++;
     }
-    return s;
+    string subStr(s);
+    return subStr;
 }
