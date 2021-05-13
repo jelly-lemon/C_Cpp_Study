@@ -24,25 +24,31 @@ void test_1() {
     // 取子串。结束位置超过了原字符串长度也没关系，有多少返回多少
     string s4("12345", 1, 36);
     cout << "s4:" << s4 << endl;
+
     string s5(s4, 0, 3);
     cout << "s5:" << s5 << endl;
 
+    // 取子串，只给定起始位置
+    string s6("hello", 1);
+    cout << "s6: " << s6 << endl;
+
+
     // 获取字符串长度
-    string s6;
-    s6 = "Ni hao";
-    cout << "s6:" << s6 << endl;
-    cout << "s6 length= " << s6.length() << endl;
+    string s7;
+    s7 = "Ni hao";
+    cout << "s7:" << s7 << endl;
+    cout << "s7 length= " << s7.length() << endl;
 
     // 在堆中开启空间
-    string *s7 = new string("malloc in heap");
-    cout << *s7 << endl;
-    cout << "the value of pointer:" << s7 << endl;
-    delete s7;
+    string *s8 = new string("malloc in heap");
+    cout << *s8 << endl;
+    cout << "the value of pointer:" << s8 << endl;
+    delete s8;
 
 
     char t[10] = "hello";
-    string s8(t);
-    cout << "s8: " << s8 << endl;
+    string s9(t);
+    cout << "s9: " << s9 << endl;
 }
 
 /**
