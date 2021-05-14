@@ -32,6 +32,10 @@ void test_1() {
     // 类似数组的写法
     vector<int> v4{3,5,2,6,4};
     print_vector(v4);
+
+    // 创建数组写法
+    vector<int> v5 = {1,2,3,4,5};
+    print_vector(v5);
 }
 
 
@@ -70,7 +74,7 @@ void test_3() {
     cout << a[0] << " " << a[1] << endl;
 }
 
-/*
+/**
  * 判断 vector 相等
  */
 void test_4() {

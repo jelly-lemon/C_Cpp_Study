@@ -6,6 +6,9 @@
 using namespace std;
 
 
+/**
+ * 打印数组
+ */
 void showArray(int a[], int len) {
     int i;
     for(i = 0; i < len; i++) {
@@ -17,7 +20,7 @@ void showArray(int a[], int len) {
 
 
 /**
- * 快速排序（递归）
+ * 快速排序（递归结构）
  * 三 while(i_front < i_back)
  */
 void QuickSort(int* a, int len) {
@@ -172,7 +175,9 @@ void mergeSort_1(int a[], int len) {
     }
 }
 
-
+/**
+ * 测试冒泡排序
+ */
 TEST(testcase0, test_BubbleSort) {
     int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
     int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
@@ -197,6 +202,10 @@ TEST(testcase0, test_BubbleSort) {
     EXPECT_EQ(memcmp(data_4, expect, 10 * sizeof(int)), 0);
 }
 
+
+/**
+ * 测试快速排序
+ */
 TEST(testcase0, test_QuickSort) {
     int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
     int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
@@ -221,6 +230,9 @@ TEST(testcase0, test_QuickSort) {
     EXPECT_EQ(memcmp(data_4, expect, 10 * sizeof(int)), 0);
 }
 
+/**
+ * 测试归并排序
+ */
 TEST(testcase0, test_MergeSort) {
     int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
     int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
