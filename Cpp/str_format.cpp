@@ -10,22 +10,25 @@ using namespace std;
 
 /**
  * sprintf
- * 所以很容易出问题！
  */
 void test_0() {
     char msg[10];
     int n;
 
-    // 存在字符串数组空间溢出风险
+    //
+    // 存在字符串数组空间溢出风险版本
+    //
     memset(msg, 10, '\0');
     // 不会管你空间够不够，不够就直接使用后面得空间，永远会成功
     n = sprintf(msg, "hello,%s", "world");    // 格式化后的字符串长度已经超过了字符数组，存在溢出风险
     printf("n=%d,%s\n", n, msg);
 
+    //
     // 安全版本
+    //
     memset(msg, 10, '\0');
-    // sprintf_s()是sprintf()的安全版本，通过指定缓冲区长度来避免sprintf()存在的溢出风险
-    // 字符串长度+\0 超过 目标长度时，写入失败。其余和 sprintf 一样
+    // sprintf_s() 是 sprintf() 的安全版本，通过指定缓冲区长度来避免 sprintf() 存在的溢出风险
+    // 字符串长度+'\0' 超过目标长度时，会写入失败。其余和 sprintf 一样
     n = sprintf_s(msg, 30, "hello,%s", "world");
     printf("n=%d,%s\n", n, msg);
 }
@@ -84,7 +87,7 @@ void test_5() {
 
 
 void test_6() {
-    fprintf(stdout, );
+
 }
 
 int main() {

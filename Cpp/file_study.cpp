@@ -60,27 +60,31 @@ void test_2() {
 }
 
 /**
- * 创建文件
+ * 创建文件夹 1
  */
 void test_3() {
     // mkdir 只能创建单级目录
-    // 返回是个啥？感觉是随机数
+    // TODO 返回是个啥？感觉是随机数
     int n = mkdir("./test");
     printf("n=%d\n");
 }
 
+/**
+ * 创建文件夹 2
+ *
+ */
 void test_4() {
-    // 只能创建单集目录
-    char dir[] = "./test/hello";
-    CreateDirectory(dir, NULL);
+    // CreateDirectory 只能创建单级目录，创建成功返回非 0
+    // 如果文件夹已存在、创建失败返回 0
+    char dir[] = "./hello/hello";
+    int n = CreateDirectory(dir, NULL);
+    cout << n << endl;
 }
 
 
 
-int main(int argc, char *argv[]) {
-    int i;
-    for (i = 0; i < argc; i++) {
-        cout << argv[i];
-    }
+int main() {
+    test_4();
+
     return 0;
 }
