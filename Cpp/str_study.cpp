@@ -179,8 +179,27 @@ void test_8() {
     cout << s << endl;
 }
 
+/**
+ * string 末尾有 \0 吗？有
+ */
+void test_9() {
+    string s = "nihao";
+    char c = s[5];
+    printf("%d\n", c);
+}
+
+
+/**
+ * 访问单个字符
+ */
+void test_10() {
+    string s = "nihao";
+    char c1 = s[0];
+    cout << c1 << endl;
+}
+
 int main() {
-    test_1();
+    test_10();
 
     return 0;
 }
