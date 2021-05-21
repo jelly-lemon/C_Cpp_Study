@@ -9,7 +9,7 @@ using namespace std;
 
 
 /**
- * sprintf
+ * sprintf，格式化字符串，存在风险
  */
 void test_0() {
     char msg[10];
@@ -36,7 +36,6 @@ void test_0() {
 /**
  * snprintf 使用
  * 和 sprintf 没有什么区别，只是多了个可以控制的字符数量
- * 没有对越界做处理
  */
 void test_1() {
     char msg[100];
@@ -91,6 +90,6 @@ void test_6() {
 }
 
 int main() {
-    test_5();
+    test_1();
     return 0 ;
 }

@@ -29,13 +29,18 @@ void test_3() {
     printf("%05d\n", 12);
 }
 
+
 /**
- * printf 实现方式
+ * printf 非常用技巧
  */
+void test_4() {
+    // * 表示空格，表示打印数字前打印 10 个空格，然后再打印数字
+    printf("%*d\n ", 10, 5);
+}
 
 
 int main() {
-    test_3();
+    test_4();
 
     return 0;
 }
