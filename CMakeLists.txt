@@ -25,6 +25,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(select_study Win_Socket/base_socket/select_study.c)
 add_executable(NC83 Cpp/newcoder/NC83.cpp)
 add_executable(NC145 Cpp/newcoder/NC145.cpp)
 add_executable(NC59 Cpp/newcoder/NC59.cpp)
@@ -64,7 +65,7 @@ add_executable(variable_arg c/variable_arg.c)
 #add_executable(thread_basic_create c/thread_example/thread_basic_create.c)
 #add_executable(thread_mutex c/thread_example/thread_mutex.c)
 #add_executable(thread_scanf c/thread_example/thread_scanf.c)
-#add_executable(test test.cpp)
+add_executable(test test.cpp)
 ##target_link_libraries(test Xinput.lib)
 #add_executable(643 c/leetcode/643.c)
 #add_executable(1208 c/leetcode/1208.c)
@@ -103,7 +104,7 @@ add_executable(vector_study Cpp/vector_study.cpp)
 ## 链接 libgtest_main_w64-6.0.a 会出现 undefined reference to `testing::Message::Message()'
 #target_link_libraries(gtest_study libgtest.a)
 add_executable(print_format c/print_format.c)
-#add_executable(thread_study c/thread_example/thread_study.c)
+add_executable(thread_study c/thread_example/thread_study.c)
 add_executable(control_cpu_ratio c/algorithm_study/control_cpu_ratio.c)
 #add_executable(time_study c/time_study.c)
 #add_executable(math_study c/math_study.c)

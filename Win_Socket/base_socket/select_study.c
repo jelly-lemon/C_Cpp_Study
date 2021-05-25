@@ -4,8 +4,7 @@
  * Linux 系统上的 poll 函数，在 Windows 上对应着 WSAPoll 函数，你可能在一些开源的 pc 端软件中看到该函数的用法。这个函数是在 Windows Vista 和  Windows Server 2008  及以后版本引入的，也就是说在 Windows XP 和 Windows Server 2003 不可用。
  *
  */
-#include <windows.h>
-
+#include <winsock2.h>
 
 /**
  * select read

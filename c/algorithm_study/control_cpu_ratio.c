@@ -84,7 +84,7 @@ void *thread_run_and_sleep_once(void *args) {
 /**
  * 获取 CPU 逻辑核心数
  */
-int getMaxThreadNumber() {
+int getLogicCores() {
     SYSTEM_INFO info;
     GetSystemInfo(&info);
     printf("NumberOfProcessors=%d\n", info.dwNumberOfProcessors);
@@ -99,7 +99,7 @@ int getMaxThreadNumber() {
  */
 void run_by_ratio(float ratio) {
     pthread_t *p;
-    int n_thread = getMaxThreadNumber() - 1;
+    int n_thread = getLogicCores() - 1;
     int i;
 
     p = (pthread_t *) malloc(sizeof(pthread_t) * n_thread);
@@ -116,7 +116,7 @@ void run_by_ratio(float ratio) {
  */
 void sin_ratio() {
     pthread_t *p;
-    int n_thread = getMaxThreadNumber() - 1;
+    int n_thread = getLogicCores() - 1;
     int i;
     float ratio;
 

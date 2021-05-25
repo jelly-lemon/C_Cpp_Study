@@ -64,15 +64,15 @@ void test_1() {
 /**
  * 获取CPU 核心数
  */
-int getMaxThreadNumber() {
+int getLogicCores() {
     SYSTEM_INFO info;
     GetSystemInfo(&info);
-    printf("NumberOfProcessors=%d\n", info.dwNumberOfProcessors);
+    printf("logic_cores=%d\n", info.dwNumberOfProcessors);
     return info.dwNumberOfProcessors;
 }
 
 int main() {
-    getMaxThreadNumber();
+    getLogicCores();
 
     return 0;
 }
