@@ -11,3 +11,107 @@ IPv6 地址由8组16进制的数字来表示，每组表示 16 比特。这些�
 
 说明: 你可以认为给定的字符串里没有空格或者其他特殊字符。
  */
+
+
+/**
+ * 思路 1：正则表达式
+ */
+string solve(string IP) {
+    // write code here
+}
+
+/**
+ * 思路 2：字符串分割
+ * 运行时间：3ms
+超过9.82% 用C++提交的代码
+占用内存：400KB
+超过31.74%用C++提交的代码
+ */
+string solve(string IP) {
+    vector<string> v = split(IP);
+    int n = v.size();
+    if (n == 4) {
+        if (isIPv4(v))
+            return "IPv4";
+    } else if (n == 8) {
+        if (isIPv6(v))
+            return "IPv6";
+    }
+    return "Neither";
+}
+
+bool isIPv6(vector<string> v) {
+    for(auto s : v) {
+        if (s.length() <= 0 or s.length() >4)
+            return false;
+        try {
+            long n = strtol(s.c_str(), NULL, 16);
+            if (n < 0x0000 or n > 0xFFFF)
+                return false;
+        } catch(...) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isIPv4(vector<string> v) {
+    for(auto s : v) {
+        if (s.length() >= 2) {
+            if (s[0] == '0')
+                return false;
+        }
+        if (s.length() <= 0 or s.length() > 3)
+            return false;
+        try {
+            int n = atoi(&s[0]);
+            if (n < 0 or n > 255)
+                return false;
+        } catch (...) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
+vector<string> split(string ip) {
+    vector<string> v;
+    if (ip.find('.') != -1) {
+        int p = 0;
+        while (1) {
+            int start = p;
+            p = ip.find('.', p);
+            if (p != -1) {
+                int end = p;
+                string s(ip, start, end-start);
+                v.push_back(s);
+            } else {
+                string s = ip.substr(start);
+                v.push_back(s);
+                break;
+            }
+            p++;
+        }
+    } else if (ip.find(':') != -1) {
+        int p = 0;
+        while (1) {
+            int start = p;
+            p = ip.find(':', p);
+            if (p != -1) {
+                int end = p;
+                string s(ip, start, end-start);
+                v.push_back(s);
+            } else {
+                string s = ip.substr(start);
+                v.push_back(s);
+                break;
+            }
+            p++;
+        }
+    }
+//         for (auto s:v) {
+//             cout << s << endl;
+//         }
+    return v;
+}

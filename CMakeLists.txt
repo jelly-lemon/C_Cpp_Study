@@ -25,6 +25,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(reg_study Cpp/reg_study.cpp)
 add_executable(select_study Win_Socket/base_socket/select_study.c)
 add_executable(NC83 Cpp/newcoder/NC83.cpp)
 add_executable(NC145 Cpp/newcoder/NC145.cpp)
@@ -45,7 +46,7 @@ add_executable(explicitly_study Cpp/explicitly_study.cpp)
 add_executable(min_heap_study Cpp/min_heap_study.cpp)
 add_executable(tx_0418_2 Cpp/leetcode/tx_0418_2.cpp)
 add_executable(tx_0418_1 Cpp/leetcode/tx_0418_1.cpp)
-add_executable(two_D_array Cpp/two_D_array.cpp)
+add_executable(two_D_array Cpp/arr_study.cpp)
 add_executable(min_neighbor_diff Cpp/algorithm_study/min_neighbor_diff.cpp)
 add_executable(ali_0416_2 Cpp/leetcode/ali_0416_2.cpp)
 add_executable(ali_0416_1 Cpp/leetcode/ali_0416_1.cpp)

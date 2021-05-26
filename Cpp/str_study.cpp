@@ -1,23 +1,26 @@
-/*
+/**
  * 学习 C++ 字符串的使用以及对象的创建方式
  */
 #include <string>
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
+#include <vector>
+
 using namespace std;
 
 /**
  * string 对象创建
  */
 void test_1() {
-    // 这是创建了一个对象吗？对，s5 就是该对象的首地址（个人理解）
+    // 这是创建了一个对象吗？对
     string s1; // string s1() 写法不能创建一个对象，空参数被当作函数声明，和 Java 不同
     cout << "s1:" << s1 << endl;
 
+    // 通过构建函数创建
     string s2("Hello");
     cout << "s2:" << s2 << endl;
 
-    // 重复次数
+    // 重复某个字符
     string s3(4, 'K');
     cout << "s3:" << s3 << endl;
 
@@ -25,13 +28,14 @@ void test_1() {
     string s4("12345", 1, 36);
     cout << "s4:" << s4 << endl;
 
-    string s5(s4, 0, 3);
+    // 取字串，指定起始位置
+    string s5 = string("hello").substr(2);
     cout << "s5:" << s5 << endl;
 
-    // 取子串，只给定起始位置
+    // 取子串，给定字串长度
+    // 【易错点】第二个参数表示字串长度，不是起始位置
     string s6("hello", 1);
     cout << "s6: " << s6 << endl;
-
 
     // 获取字符串长度
     string s7;
@@ -45,7 +49,7 @@ void test_1() {
     cout << "the value of pointer:" << s8 << endl;
     delete s8;
 
-
+    // 在栈中开辟空间
     char t[10] = "hello";
     string s9(t);
     cout << "s9: " << s9 << endl;
@@ -59,7 +63,7 @@ void test_2() {
     char s2[] = "nihao";
     char s3[] = "hello";
     char s4[] = "\0\0";
-    char *s5 = (char*)malloc(sizeof(char)*10);
+    char *s5 = (char *) malloc(sizeof(char) * 10);
 
     s1 += s2;
     s1 += s3;
@@ -123,7 +127,7 @@ void test_4() {
         cout << n << endl;
     } catch (...) {
         // 捕获到任何异常都抛出
-        throw ;
+        throw;
     }
 }
 
@@ -155,7 +159,7 @@ void test_6() {
 
     //替换所有指定子串
     int pos = 0;
-    while((pos = s.find('/')) != -1){
+    while ((pos = s.find('/')) != -1) {
         s.replace(pos, 1, "\\");
     }
 
@@ -198,8 +202,43 @@ void test_10() {
     cout << c1 << endl;
 }
 
+/**
+ * 字符串分割
+ */
+void test_11() {
+    string ip("127.0.0.1");
+
+}
+
+/**
+ * 字符串查找某个字符
+ */
+void test_12() {
+    string s("hello,world,0526");
+    int p = 0;
+    while (1) {
+        p = s.find(',', p);
+        if (p != -1) {
+            cout << p << endl;
+        } else {
+            break;
+        }
+        p++;
+    }
+}
+
+/**
+ * 十六进制字符串转数字
+ */
+void test_13() {
+    long n = strtol("0x000F", NULL, 16);
+    if (n == 0x000F) {
+        cout << n << endl;
+    }
+}
+
 int main() {
-    test_10();
+    test_1();
 
     return 0;
 }
