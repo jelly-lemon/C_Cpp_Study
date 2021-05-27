@@ -46,6 +46,7 @@ void test_1() {
     for (int i = 0; i < 10; i++) {
         q.push(rand()%20);
     }
+
     // 取出堆顶元素
     while (!q.empty()) {
         cout << q.top() << " ";
@@ -58,6 +59,11 @@ void test_1() {
  * 设置堆的容量
  */
 void test_2() {
+
+}
+
+void test_3() {
+    priority_queue<int, vector<int>, less<int> > maxHeap;
 
 }
 

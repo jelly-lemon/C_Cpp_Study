@@ -29,13 +29,21 @@ void test_1() {
     print_vector(v3);
     cout << endl;
 
+    // 如果 first 和 last 地址相同，则新 vector 为空
+    vector<int> v6(a, a);
+    printf("v6:");
+    print_vector(v6);
+    cout << endl;
+
     // 类似数组的写法
     vector<int> v4{3,5,2,6,4};
     print_vector(v4);
+    cout << endl;
 
     // 创建数组写法
     vector<int> v5 = {1,2,3,4,5};
     print_vector(v5);
+    cout << endl;
 }
 
 
@@ -94,7 +102,7 @@ void test_4() {
 
 
 int main() {
-    test_4();
+    test_1();
 
     return 0;
 }

@@ -13,3 +13,11 @@
  返回值：
  [4,4,6,6,6,5]
  */
+
+/**
+ * 思路 1：构建大顶堆，新元素入堆前，删除堆中最先入堆的元素
+ * 但是优先队列中没有删除任意元素的函数，只能删除堆顶元素
+ */
+vector<int> maxInWindows(const vector<int>& num, unsigned int size) {
+
+}
