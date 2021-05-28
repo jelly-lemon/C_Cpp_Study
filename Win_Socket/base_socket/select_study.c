@@ -7,14 +7,15 @@
 #include <winsock2.h>
 
 /**
- * select read
+ * 使用 select
  */
 void test_0() {
     // nfds 参数只在兼容 Berkeley socket 时才使用，平时置为 0
     // 正常情况，返回三个集合中满足期望条件的 socket 总数
-    // 超时，返回 0；
+    // 超时：返回 0；
+    // 是否可写？可能是抢占资源，要先抢占到，才能进行写
 
-    select(0, )
+    select(0, );
 }
 
 int main() {

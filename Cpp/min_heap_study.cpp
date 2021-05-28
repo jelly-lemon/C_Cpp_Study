@@ -28,6 +28,7 @@ void test_0() {
     priority_queue<int, vector<int>, greater<int> > q;
     for (int i = 0; i < 10; i++) {
         q.push(rand()%20);
+
     }
     // 取出堆顶元素
     while (!q.empty()) {
