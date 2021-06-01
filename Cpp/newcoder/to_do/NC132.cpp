@@ -5,3 +5,39 @@ n-1 轮结束以后，只剩下一个人，问最后留下的这个人编号是�
  输入：5,2
  返回值：3
  */
+
+/**
+ * 思路 1：使用 vector 来模拟环形
+ * 结果运行超时
+ */
+int ysf(int n, int m) {
+    // write code here
+    vector<int> v;
+    for (int i = 1; i <= n; i++) {
+        v.push_back(i);
+    }
+    int count = 0;
+    int start = 0;
+    while (count < n-1) {
+        int i = 0;
+        int step = 0;
+        for (int j = start; ; j++) {
+            if (j >= n)
+                j = 0;
+            if (v[j] != 0) {
+                step++;
+                if (step == m) {
+                    count++;
+                    v[j] = 0;
+                    start = j+1;
+                    break;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        if (v[i] != 0)
+            return v[i];
+    }
+    return 0;
+}
