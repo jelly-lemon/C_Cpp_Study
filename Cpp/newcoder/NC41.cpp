@@ -11,6 +11,31 @@ using namespace std;
 
 
 /**
+ * 运行时间：27ms
+超过92.52% 用C++提交的代码
+占用内存：3568KB
+超过33.51%用C++提交的代码
+
+ 思路 1：使用哈希表，
+ */
+int maxLength(vector<int>& arr) {
+    unordered_map<int, int> hashTab;
+    int maxLen = 1;
+    for (int start = 0, end = 0; end < arr.size(); end++) {
+        // 若最新元素已存在于哈希表中
+        if (hashTab.find(arr[end]) != hashTab.end()) {
+            // 将 start 赋值为最新元素（即重复的元素）后边一位的下标
+            start = max(start, hashTab[arr[end]]+1);
+        }
+        // 比较当前最长字串长度和历史最长长度
+        maxLen = max(maxLen, end-start+1);
+        // 记录重复元素的最近下标
+        hashTab[arr[end]] = end;
+    }
+    return maxLen;
+}
+
+/**
  * 用 map 实现，超时
  *
  * @param arr int 整型 vector the array
@@ -115,3 +140,4 @@ int maxLength(vector<int> &arr) {
     }
     return maxLen;
 };
+
