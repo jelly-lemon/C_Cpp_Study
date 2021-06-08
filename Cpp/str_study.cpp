@@ -91,6 +91,9 @@ void test_2() {
     // 取 string 首地址
     string s6("hello");
     printf("s6=%s\n", &s6[0]);
+
+    string s7 = "hello";
+    s7 += '.';
 }
 
 /**
