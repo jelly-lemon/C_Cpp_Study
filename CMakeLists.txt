@@ -25,6 +25,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(return_study Cpp/return_study.cpp)
 add_executable(NC136 Cpp/newcoder/to_do/NC136.cpp)
 add_executable(reg_study Cpp/reg_study.cpp)
 add_executable(select_study Win_Socket/base_socket/select_study.c)
@@ -84,7 +85,7 @@ add_executable(basic_data_type c/basic_data_type.c)
 #add_executable(clear_number_3rd c/algorithm_study/set_3rd_number.c)
 #add_executable(use_error Cpp/use_error.c)
 #add_executable(shared_pointer Cpp/shared_pointer.cpp)
-#add_executable(sample_linked_list Cpp/list_study.cpp)
+add_executable(list_study Cpp/list_study.cpp)
 #add_executable(tranverse_tree c/algorithm_study/tranverse_tree.c)
 #add_executable(messagebox win32/messagebox.cpp)
 #add_executable(1 wmi/1.cpp)

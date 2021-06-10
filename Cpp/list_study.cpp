@@ -7,6 +7,29 @@
 
 using namespace std;
 
+class A {
+private:
+    list<int> memberList;
+
+
+public:
+    bool isFull() {
+        printf("size=%d\n", memberList.size());
+        return memberList.size() == 10;
+    }
+
+};
+
+class B {
+private:
+    A a;
+
+public:
+    bool isAFull() {
+        return a.isFull();
+    }
+};
+
 /**
  * 遍历 list
  */
@@ -27,8 +50,13 @@ void test_2() {
 }
 
 
+void test_3() {
+    B b;
+    b.isAFull();
+}
+
 int main() {
-    test_2();
+    test_3();
 
 
     return 0;
