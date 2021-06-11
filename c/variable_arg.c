@@ -81,13 +81,14 @@ void myPrint(const char *format, ...) {
 int printf_1(const char *format, ...) {
     va_list arg;
     int done;
-    const int len = 24;
+    const int len = 24; // 字符数组长度
     char msg[len];
 
     va_start(arg, format);
     // 【易错点】要用 vsnprintf，不能用 snprintf
     // 带 v 的都是使用变量 va_list 传递变参
     // 如果格式化后的字符串长度超过 10，则会被截断，并返回 -1
+    // 减 4 表示给省略号和\0的位置，即:"...\0"的位置
     done = vsnprintf(msg, len-4, format, arg);
     va_end(arg);
 
@@ -117,7 +118,7 @@ void test_0() {
  * 测试包装的 printf
  */
 void test_1() {
-    printf_1("%s:%d", "hello", 23);
+    printf_1("%s:%d", "hellofjkonbosnbknbvlnxzbndfsobnoi", 23);
 }
 
 int main() {

@@ -7,28 +7,6 @@
 
 using namespace std;
 
-class A {
-private:
-    list<int> memberList;
-
-
-public:
-    bool isFull() {
-        printf("size=%d\n", memberList.size());
-        return memberList.size() == 10;
-    }
-
-};
-
-class B {
-private:
-    A a;
-
-public:
-    bool isAFull() {
-        return a.isFull();
-    }
-};
 
 /**
  * 遍历 list
@@ -43,6 +21,9 @@ void test_1() {
     }
 }
 
+/**
+ * 取 list 首元素
+ */
 void test_2() {
     list<string> msgList;
     string s = msgList.front();
@@ -51,13 +32,13 @@ void test_2() {
 
 
 void test_3() {
-    B b;
-    b.isAFull();
+    list<int> myList;
+    int size = myList.size();
+    printf("size=%d\n", size);
 }
 
 int main() {
     test_3();
-
 
     return 0;
 }
