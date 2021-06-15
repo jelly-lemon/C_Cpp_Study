@@ -147,11 +147,25 @@ void sin_ratio() {
 }
 
 
-int main() {
+/**
+ * CPU 利用率 sin 函数
+ */
+void test_0() {
     // 关闭 stdout 缓冲
     setbuf(stdout, NULL);
 
     sin_ratio();
+}
 
+/**
+ * 打印逻辑核心数
+ */
+void test_1() {
+    getLogicCores();
+}
+
+int main() {
+    test_1();
+    
     return 0;
 }
