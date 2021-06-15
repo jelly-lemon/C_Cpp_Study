@@ -48,7 +48,7 @@ DWORD WINAPI WorkerThread(LPVOID WorkThreadContext) {
                                   (LPOVERLAPPED *) &lpOverlapped, INFINITE);
 
         // 如果客户端已经关闭，跳出本次循环
-        // 【疑问】为啥 lpOverlapped 可以转成 IO_DATA ?
+        // 【疑问】为啥 lpOverlapped 可以转成 IO_DATA ?难道是因为Overlapped是结构体第一个成员？
         lpIOContext = (IO_DATA *) lpOverlapped;
         if (dwIoSize == 0) {
             cout << "Client disconnect" << endl;
@@ -57,15 +57,18 @@ DWORD WINAPI WorkerThread(LPVOID WorkThreadContext) {
             continue;
         }
 
-        // 如果客户端有数据
+        // WSARecv 完成，也就是读操作完成
         if (lpIOContext->opCode == IO_READ) {
+            cout << "recv: " << lpIOContext->wsabuf.buf << endl;
+
             ZeroMemory(&lpIOContext->Overlapped, sizeof(lpIOContext->Overlapped));
-            lpIOContext->wsabuf.buf = buffer;
-            lpIOContext->wsabuf.len = strlen(buffer) + 1;
+            char s[100] = "hello, I'm server.";
+            lpIOContext->wsabuf.buf = s;
+            lpIOContext->wsabuf.len = strlen(s) + 1;
             lpIOContext->opCode = IO_WRITE;
-            lpIOContext->nBytes = strlen(buffer) + 1;
+            lpIOContext->nBytes = strlen(s) + 1;
             dwFlags = 0;
-            nBytes = strlen(buffer) + 1;
+            nBytes = strlen(s) + 1;
 
             // 响应客户端
             nRet = WSASend(
@@ -81,8 +84,9 @@ DWORD WINAPI WorkerThread(LPVOID WorkThreadContext) {
             }
             memset(buffer, '\0', sizeof(buffer));
         } else if (lpIOContext->opCode == IO_WRITE) {
-            //a write operation complete
-            // Write operation completed, so post Read operation.
+            cout << "send: " << lpIOContext->wsabuf.buf << endl;
+
+            // WSASend 完成，也就是写操作完成
             lpIOContext->opCode = IO_READ;
             nBytes = 1024;
             dwFlags = 0;
@@ -103,7 +107,6 @@ DWORD WINAPI WorkerThread(LPVOID WorkThreadContext) {
                 delete lpIOContext;
                 continue;
             }
-            cout << "lpIOContext->wsabuf.buf: " << lpIOContext->wsabuf.buf << endl;
         }
     }
     return 0;
@@ -170,7 +173,6 @@ int main() {
                 closesocket(client);
                 delete data;
             }
-            cout << "data->wsabuf.buf: " << data->wsabuf.buf << endl;
         }
     }
     closesocket(m_socket);
