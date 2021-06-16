@@ -48,7 +48,7 @@ DWORD WINAPI WorkerThread(LPVOID WorkThreadContext) {
                                   (LPOVERLAPPED *) &lpOverlapped, INFINITE);
 
         // 如果客户端已经关闭，跳出本次循环
-        // 【疑问】为啥 lpOverlapped 可以转成 IO_DATA ?难道是因为Overlapped是结构体第一个成员？
+        // 【疑问】为啥 lpOverlapped 可以转成 IO_DATA ?难道是因为Overlapped是结构体第一个成员？对的
         lpIOContext = (IO_DATA *) lpOverlapped;
         if (dwIoSize == 0) {
             cout << "Client disconnect" << endl;

@@ -35,7 +35,7 @@ int main()
         if(rev == 0)
             cout<<"recv nothing!"<<endl;
         cout<<buffer<<endl;
-        Sleep(10000);
+        Sleep(10);
     }
 
     closesocket(client);

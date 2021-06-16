@@ -104,7 +104,7 @@ add_executable(list_study Cpp/list_study.cpp)
 #add_executable(pipe_client Win_Socket/namedpipe/pipe_client.c)
 #add_executable(ano_pipe_server Win_Socket/AnonymousPipes/ano_pipe_server.c)
 add_executable(overload_operators Cpp/overload_operators.cpp)
-#add_executable(override_study Cpp/override_study.cpp)
+add_executable(override_study Cpp/override_study.cpp)
 add_executable(vector_study Cpp/vector_study.cpp)
 #add_executable(gtest_study Cpp/gtest_study.cpp)
 ## 静态链接库
