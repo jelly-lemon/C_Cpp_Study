@@ -53,9 +53,22 @@ void test_1() {
  */
 void test_2() {
     // 注意路径文件，相对路径是相对 *.exe 而言的，不是 *.cpp
-    ofstream outFile("D:\\0-3-CLion\\C_Cpp_Study\\Cpp\\test.txt", ios::out | ios::binary);
+    ofstream outFile("D:\\0-2-CLion\\C_Cpp_Study\\Cpp\\test.txt", ios::out | ios::binary);
+    if (outFile) {
+        cout << "yes" << endl;
+    }
+    cout << outFile.is_open() << endl;
     string s("你好\n欢迎光临\r\n今天天气不错\n");
     outFile.write(&s[0], s.length());
+    outFile.close();
+
+    // 如果文件不存在， is_ipen() 返回 false，或者直接 if 判断
+    outFile = ofstream("D:\\0-2-CLion\\C_Cpp_Study\\abc\\test.txt");
+    if (outFile) {
+        cout << "yes" << endl;
+    }
+    cout << outFile.is_open() << endl;
+    outFile.write(s.c_str(), s.length());
     outFile.close();
 }
 
@@ -84,7 +97,7 @@ void test_4() {
 
 
 int main() {
-    test_4();
+    test_2();
 
     return 0;
 }

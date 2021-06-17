@@ -84,12 +84,22 @@ void test_5() {
     puts(s);
 }
 
-
+/**
+ * 查看 string 的 capacity
+ */
 void test_6() {
+    string s;
+    printf("s.capacity():%lld\n", s.capacity());
+    s = "hello,world";
+    cout << s << endl;
+    printf("s.capacity():%lld\n", s.capacity());
+    s = "hello,world,ababaababababab";
+    cout << s << endl;
+    printf("s.capacity():%lld\n", s.capacity());
 
 }
 
 int main() {
-    test_1();
+    test_6();
     return 0 ;
 }
