@@ -25,6 +25,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(log_study Cpp/log_study.cpp)
 add_executable(IOCP_client Win_Socket/IOCP/IOCP_client.cpp)
 target_link_libraries(IOCP_client ws2_32.lib)
 add_executable(IOCP_server Win_Socket/IOCP/IOCP_server.cpp)
