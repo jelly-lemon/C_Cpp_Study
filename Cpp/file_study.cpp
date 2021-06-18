@@ -92,12 +92,34 @@ void test_4() {
     char dir[] = "./hello/hello";
     int n = CreateDirectory(dir, NULL);
     cout << n << endl;
+
+
+
+}
+
+/**
+ * 判断文件夹是否存在
+ */
+void test_5() {
+    if (_access("hello", 0) == -1) {
+        cout << "hello folder not exists" << endl;
+    }
+
+    // 判断文件夹是否存在只能用绝对路径
+    if (_access("D:/0-2-CLion/C_Cpp_Study/Cpp/leetcode", 0) != -1) {
+        cout << "leetcode folder exists" << endl;
+    }
+
+
+    if (_access(".\\leetcode", 0) != -1) {
+        cout << "leetcode folder exists" << endl;
+    }
 }
 
 
 
 int main() {
-    test_2();
+    test_5();
 
     return 0;
 }

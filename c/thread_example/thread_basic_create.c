@@ -15,6 +15,9 @@
 #include <windows.h>
 
 
+/**
+ * 线程 1 函数体
+ */
 void* thread1(void *args) {
     pid_t pid;
     pthread_t tid;
@@ -31,6 +34,9 @@ void* thread1(void *args) {
     return NULL;
 }
 
+/**
+ * 线程 2 函数体
+ */
 void* thread2(void *args) {
     pid_t pid;
     pthread_t tid;
@@ -47,7 +53,10 @@ void* thread2(void *args) {
     return NULL;
 }
 
-void startThread() {
+/**
+ * 创建线程
+ */
+void test_0() {
     pthread_t t1;
     pthread_t t2;
     pid_t pid;
@@ -58,7 +67,8 @@ void startThread() {
 
     printf("start t1\n");
     // TODO 第二个参数？
-    pthread_create(&t1, NULL, thread1, NULL);   // 启动 t1 线程
+    // 若线程创建成功，则返回 0。若线程创建失败，则返回出错编号
+    int n = pthread_create(&t1, NULL, thread1, NULL);   // 启动 t1 线程
     printf("start t2\n");
     pthread_create(&t2, NULL, thread2, NULL);   // 启动 t2 线程
 
@@ -70,7 +80,7 @@ void startThread() {
 }
 
 int main() {
-    startThread();
+    test_0();
 
     return 0;
 }

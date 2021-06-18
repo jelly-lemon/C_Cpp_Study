@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+#include <cstdarg>
+
 using namespace std;
 
 
@@ -46,14 +48,24 @@ void test_1() {
     int n = snprintf(msg, 10, "hello,%s\n", "world");
     puts(msg);
     printf("%d\n", n);
+
+    char msg2[11];
+    int n2 = snprintf(msg2, 10, "%s", "abcdefghiadgjn");
+    cout << "n2: " << n2 << endl;
 }
 
 /**
  * vsnprintf 使用
  */
-void test_2() {
+void myprint(const char *format, ...) {
+    va_list arg; // 可变参数栈
+    va_start(arg, format); // 初始化参数列表
+
     char msg[10];
-//    vsnprintf(msg, 5, );
+    int n = vsnprintf(msg, 5, format, arg);
+    va_end(arg);
+    cout << "n:" << n << endl;
+    cout << "msg: " << msg << endl;
 }
 
 
@@ -96,10 +108,21 @@ void test_6() {
     s = "hello,world,ababaababababab";
     cout << s << endl;
     printf("s.capacity():%lld\n", s.capacity());
-
 }
 
+void test_7() {
+    myprint("fajsdkfjkaljfdasklfjla%s", "hello, worldkslfdjlikasjfklajfkljalfjasl");
+}
+
+
+void test_8() {
+    char msg[10] = "abc...\n";
+    string s(msg);
+    cout << msg << endl;
+}
+
+
 int main() {
-    test_6();
-    return 0 ;
+    test_8();
+    return 0;
 }
