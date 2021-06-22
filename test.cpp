@@ -1,7 +1,10 @@
+#include <iostream>
+
+using namespace std;
 
 
-auto main() ->int {
+int main() {
+	cout << "hello" << endl;
 
-
-    return 0;
+	return 0;
 }
