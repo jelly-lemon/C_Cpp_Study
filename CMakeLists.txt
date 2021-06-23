@@ -28,6 +28,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(delete_study Cpp/delete_study.cpp)
 #add_executable(circular_reference Cpp/circular_reference.cpp)
 #add_executable(intellijent_pointer Cpp/intellijent_pointer.cpp)
 add_executable(thread_study_c11 Cpp/thread_study_c11.cpp)
