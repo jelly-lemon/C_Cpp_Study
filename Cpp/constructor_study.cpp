@@ -64,7 +64,7 @@ public:
         return *this;
     }
 
-    // 移动拷贝构造函数
+    // 移动拷贝构造函数：现有对象 a，现有有对象 b，把 a 拥有的用 new 申请的空间交给 b 管理，a 置为 nullptr
     // Move constructor should be marked noexcept
     // 该关键字告诉编译器，函数中不会发生异常，这有利于编译器对程序做更多的优化。
     Human(Human &&h) noexcept:pAge(h.pAge), name(h.name) {

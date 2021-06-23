@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 # set(CMAKE_CXX_FLAGS "-static ${CMAKE_CXX_FLAGS}")   # 强制静态链接
 
 # 编译选项
-add_compile_options(-fno-elide-constructors) # 取消编译优化
+#add_compile_options(-fno-elide-constructors) # 取消编译优化（MSVC不支持）
 
 # 打印信息
 #message("CMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}")
@@ -30,7 +30,7 @@ link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 # 运行目标
 #add_executable(circular_reference Cpp/circular_reference.cpp)
 #add_executable(intellijent_pointer Cpp/intellijent_pointer.cpp)
-#add_executable(thread_study_c11 Cpp/thread_study_c11.cpp)
+add_executable(thread_study_c11 Cpp/thread_study_c11.cpp)
 #add_executable(constructor_study Cpp/constructor_study.cpp)
 #add_executable(log_study Cpp/log_study.cpp)
 #add_executable(IOCP_client Win_Socket/IOCP/IOCP_client.cpp)
@@ -45,7 +45,7 @@ link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 #add_executable(NC145 Cpp/newcoder/NC145.cpp)
 #add_executable(NC59 Cpp/newcoder/NC59.cpp)
 #add_executable(hash_table_study Cpp/hash_table_study.cpp)
-#add_executable(reference_study Cpp/reference_study.cpp)
+add_executable(reference_study Cpp/reference_study.cpp)
 #add_executable(int_overflow Cpp/int_overflow.cpp)
 #add_executable(queue_study Cpp/queue_study.cpp)
 #add_executable(NC3 Cpp/newcoder/NC3.cpp)
