@@ -8,6 +8,10 @@
 #include <memory>   // 智能指针所在文件
 using namespace std;
 
+struct A {
+    int a[102400];
+};
+
 /**
  * shared_ptr 使用
  *
@@ -65,8 +69,19 @@ void test_3() {
 
 }
 
+/**
+ * 结构体复制
+ */
+void test_4() {
+    A a = {};
+    A b = {};
+    a = b;
+    a = b;
+    a = b;
+}
+
 int main() {
-    test_2();
+    test_4();
 
     return 0;
 }
