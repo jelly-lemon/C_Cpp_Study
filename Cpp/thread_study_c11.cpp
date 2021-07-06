@@ -2,8 +2,20 @@
 #include<thread>
 #include <mutex>
 #include <windows.h>
+//#include <functional>
 using namespace std;
 
+
+
+
+
+class A {
+public:
+    static void* sayHello(void *args) {
+        cout << "hello" << endl;
+        return NULL;
+    }
+};
 
 void t_main() {
     cout << "t_main" << endl;
@@ -11,7 +23,6 @@ void t_main() {
 
     cout << "t_main finished" << endl;
 }
-
 
 int g_n = 1;
 mutex m;
@@ -35,6 +46,7 @@ void t_2() {
 }
 
 
+
 /**
  * 创建线程并运行
  *
@@ -45,6 +57,7 @@ void t_2() {
  * 则释放所有分配的资源。调用 detach 后， *this 不再占有任何线程。
  * detach 之后，主线程退出，子线程会被强制消灭。
  */
+
 void test_0() {
     thread t0(t_main);  // 创建线程，并直接运行
     //t0.join();  // 调用该函数会阻塞当前线程，直到由 *this 所标示的线程执行完毕 join 才返回。
@@ -61,8 +74,18 @@ void test_1() {
     thread2.join();
 }
 
+
+/**
+ * 用静态函数创建线程
+ */
+void test_2() {
+    thread t(A::sayHello, (void*)NULL);
+}
+
 int main() {
-    test_1();
+
+
+
 
     return 0;
 }
