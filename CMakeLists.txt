@@ -28,6 +28,7 @@ include_directories(include/my_openssl1.1.0g)   # applink.c
 link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
+add_executable(future_study Cpp/future_study.cpp)
 add_executable(basic_data_type Cpp/basic_data_type.cpp)
 add_executable(lambda_study Cpp/lambda_study.cpp)
 add_executable(functor_study Cpp/functor_study.cpp)
@@ -116,7 +117,7 @@ add_executable(test test.cpp)
 ##add_executable(pipe_client Win_Socket/namedpipe/pipe_client.c)
 ##add_executable(ano_pipe_server Win_Socket/AnonymousPipes/ano_pipe_server.c)
 #add_executable(overload_operators Cpp/overload_operators.cpp)
-#add_executable(override_study Cpp/override_study.cpp)
+add_executable(override_study Cpp/override_study.cpp)
 #add_executable(vector_study Cpp/vector_study.cpp)
 ##add_executable(gtest_study Cpp/gtest_study.cpp)
 ### 静态链接库

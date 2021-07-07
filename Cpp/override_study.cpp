@@ -38,6 +38,8 @@ public:
 
 /**
  * 用基类指针调用子类函数
+ * 如果基类没有标注 virtual，那么基类指针调用的函数就基类的
+ * 标注了 virtual，就是调用子类的
  */
 void test_0() {
     B b;
@@ -57,7 +59,7 @@ void test_1() {
 }
 
 int main() {
-    test_1();
+    test_0();
 
     return 0;
 }
