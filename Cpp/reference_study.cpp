@@ -8,6 +8,21 @@
 
 using namespace std;
 
+
+class A {
+private:
+    int mAge;
+public:
+
+    void setAge(int age) {
+        mAge = age;
+    }
+
+    int getAge() {
+        return mAge;
+    }
+};
+
 int getAge() {
     int age = 10;
     return age;
@@ -112,11 +127,22 @@ void test_4() {
     int &&a2 = move(a1);
     a2 =15;
 
-    int &&a3 = a1;
+    // 非法：右值引用一个变量
+    //int &&a3 = a1;
 }
 
+
+
+
+void test_5() {
+
+}
+
+
+
+
 int main() {
-    test_3();
+    test_5();
 
     return 0;
 }

@@ -7,7 +7,7 @@
 using namespace std;
 
 struct A {
-    int age;
+    int mAge;
     char name[1024000];
 };
 
