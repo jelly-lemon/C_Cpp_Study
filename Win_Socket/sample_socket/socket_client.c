@@ -99,7 +99,7 @@ void test_1() {
     SOCKADDR_IN addrSrv;    // 保存服务端的信息
     addrSrv.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");  // inet_addr 将一个IP字符串转化为一个网络字节序的整数值
     addrSrv.sin_family = AF_INET;   // AF_INET 表示 IPv4 地址
-    addrSrv.sin_port = htons(12345); // 端口号  htons是将整型变量从主机字节顺序转变成网络字节顺序， 就是整数在地址空间存储方式变为高位字节存放在内存的低地址处。
+    addrSrv.sin_port = htons(80); // 端口号  htons是将整型变量从主机字节顺序转变成网络字节顺序， 就是整数在地址空间存储方式变为高位字节存放在内存的低地址处。
 
     // 和服务端进行连接（阻塞等待），成功连接返回 0，否则返回 SOCKET_ERROR
     if (connect(sockClient, (SOCKADDR *) &addrSrv, sizeof(SOCKADDR)) == SOCKET_ERROR) {
@@ -124,6 +124,7 @@ void test_1() {
     } else {
         printf("Send successful\n");
     }
+
     // 接收来自服务端的消息（阻塞等待），成功接收返回接收的字节数，正常关闭返回0，其余情况返回 SOCKET_ERROR
     result = recv(sockClient, recvBuf, 50, 0);
     if (result == SOCKET_ERROR) {
@@ -233,24 +234,24 @@ void test_3() {
     SOCKADDR_IN addrSrv;    // 保存服务端的信息
     addrSrv.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");  // inet_addr 将一个IP字符串转化为一个网络字节序的整数值
     addrSrv.sin_family = AF_INET;   // AF_INET 表示 IPv4 地址
-    addrSrv.sin_port = htons(12345); // 端口号  htons是将整型变量从主机字节顺序转变成网络字节顺序， 就是整数在地址空间存储方式变为高位字节存放在内存的低地址处。
+    addrSrv.sin_port = htons(80); // 端口号  htons是将整型变量从主机字节顺序转变成网络字节顺序， 就是整数在地址空间存储方式变为高位字节存放在内存的低地址处。
 
     // 和服务端进行连接（阻塞等待），成功连接返回 0，否则返回 SOCKET_ERROR
     // 如果 socket 设置为了非阻塞模式，那么 connect 就一定会失败，因为 tcp
     // 连接的建立需要 3 次握手，必须要等一会儿
-    if (connect(sockClient, (SOCKADDR *) &addrSrv, sizeof(SOCKADDR)) == SOCKET_ERROR) {
+    printf(" ------\n");
+    while (connect(sockClient, (SOCKADDR *) &addrSrv, sizeof(SOCKADDR)) == SOCKET_ERROR) {
         errorNumber = WSAGetLastError();
         printf("Unable to connect to server: %ld\n", errorNumber);
         if (errorNumber == WSAECONNREFUSED) {
             printf("Remote refuse connect\n");
         }
-        close(sockClient);
-        return;
-    } else {
-        printf("Connection successful\n");
-        showLocalSocketInfo(sockClient);
-        showPeerSocketInfo(sockClient);
+        Sleep(1000);
     }
+    printf("Connection successful\n");
+    showLocalSocketInfo(sockClient);
+    showPeerSocketInfo(sockClient);
+
 
     // 发送消息。如果发送成功，返回发送成功的字节数，否则返回 SOCKET_ERROR
     if (send(sockClient, "hello", strlen("hello") + 1, 0) == SOCKET_ERROR) {
@@ -260,6 +261,7 @@ void test_3() {
     } else {
         printf("Send successful\n");
     }
+
     // 接收来自服务端的消息（阻塞等待），成功接收返回接收的字节数，正常关闭返回0，其余情况返回 SOCKET_ERROR
     result = recv(sockClient, recvBuf, 50, 0);
     if (result == SOCKET_ERROR) {
@@ -279,8 +281,7 @@ void test_3() {
 
 
 int main() {
-    test_1();
-
+    test_3();
     return 0;
 }
 
