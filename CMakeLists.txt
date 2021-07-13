@@ -20,12 +20,12 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 # 依赖设置
 # gtest
-include_directories(include/my_gtest1.10)   # 依赖头文件
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) # 链接库目录，link_directories 不能用相对路径
+#include_directories(include/my_gtest1.10)   # 依赖头文件
+#link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) # 链接库目录，link_directories 不能用相对路径
 # openssl
-include_directories(C:\\OpenSSL-Win64\\include) # 头文件夹
-include_directories(include/my_openssl1.1.0g)   # applink.c
-link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
+#include_directories(C:\\OpenSSL-Win64\\include) # 头文件夹
+#include_directories(include/my_openssl1.1.0g)   # applink.c
+#link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 # 运行目标
 add_executable(new_study Cpp/new_study.cpp)
@@ -76,7 +76,7 @@ add_executable(reference_study Cpp/reference_study.cpp)
 ##add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
 ##target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
 ##add_executable(base64_encode c/base64_encode.c)
-#add_executable(912 c/leetcode/912.c)
+add_executable(912 c/leetcode/912.c)
 #add_executable(str_study Cpp/str_study.cpp)
 ##add_executable(change_pointer c/change_pointer.c)
 ##add_executable(byte_alignment c/byte_alignment.c)

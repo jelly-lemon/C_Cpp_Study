@@ -1,20 +1,11 @@
-#include<stdio.h>
-#include <malloc.h>
+#include <stdio.h>
+#include <memory.h>
+#include <stdlib.h>
 
 void swap(int *a, int *b);
-int* SelectionSort(int nums[], int numsSize);
 int* sortArray(int* nums, int numsSize, int* returnSize);
-int* copy(const int* nums, int numsSize);
-int* QuickSort(int nums[], int numsSize);
-int* MergerSort(int nums[], int numsSize);
-
-void printNum(int nums[], int n) {
-    int i;
-    for (i = 0; i < n; i++) {
-        printf("%d ", nums[i]);
-    }
-    printf("\n");
-}
+int* quickSort_1(int *nums, int numsSize);
+void printNum(int nums[], int n);
 
 /*
  * 912. 排序数组
@@ -24,162 +15,211 @@ void printNum(int nums[], int n) {
  */
 int* sortArray(int* nums, int numsSize, int* returnSize){
     *returnSize = numsSize;
-    return MergerSort(nums, numsSize);
+    return NULL;
+}
+
+void printNum(int nums[], int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        printf("%d ", nums[i]);
+    }
+    printf("\n");
 }
 
 /**
- * 选择排序，升序排序
+ * 冒泡排序
+ */
+int *bubbleSort(int nums[], int numsSize) {
+    int i, j;
+    for (i = 0; i < numsSize-1; i++) {
+        //
+        // 一趟冒泡，数组可以分成两部分，已冒泡和未冒泡部分
+        // 每一趟冒泡操作，都是两两交换
+        //
+        for (j = 1; j < numsSize-i; j++) {
+            if(nums[j-1] > nums[j]) {
+                swap(&nums[j-1], &nums[j]);
+            }
+        }
+        printNum(nums, numsSize);
+    }
+
+    return nums;
+}
+
+/**
+ * 选择排序
+ * 思想：将数组看作两个部分：已排序和未排序部分
  * 每次选择待排序数组中最小的数，放在已排序数组最后面
  */
-int* SelectionSort(int nums[], int numsSize) {
-    int i, j;
-    int min, t;
-    int* returnNums = copy(nums, numsSize);
-
-    //
-    // i 可以理解成待进行选择最小值的数组
-    // 最后只剩一个数，肯定是最大的，直接插入到已排序数组最后面
-    //
-    for (i = 0; i < numsSize - 1; i++) {
+int* selectSort(int *nums, int numsSize) {
+    int iLeft = 0, iRight = 0;
+    while (iLeft < numsSize) {
         //
-        // 找最小值
+        // 找未排序部分最小的数
         //
-        min = returnNums[i];  // 默认第 1 个数为最小
-        t = i;
-        for (j = i + 1; j < numsSize; j++) {
-            if (returnNums[j] < min) {
-                min = returnNums[j];
-                t = j;
+        int iMin = iRight;
+        for (int i = iRight+1; i < numsSize; i++) {
+            if(nums[i] < nums[iMin]) {
+                iMin = i;
             }
         }
 
         //
-        // 放在已排序数组最后面
+        // 插入到已排序部分末尾
         //
-        swap(&returnNums[i], &returnNums[t]);
+        swap(&nums[iLeft], &nums[iMin]);
+        iLeft++, iRight++;
+        printNum(nums, numsSize);
     }
 
-    return returnNums;
+    return nums;
 }
+
 
 /**
  * 归并排序：归并两个有序的数组为一个有序数组
+ * 缺点：每一次调用，都会创建一个子数组，当数组长度很大时，将会递归调用多次，
+ * 导致占用空间过多
  */
-int* MergerSort(int nums[], int numsSize) {
-    //
-    // 返回一个新的数组
-    //
-    int* returnNums = copy(nums, numsSize);
-
-    //
-    // 递归终止条件
-    //
-    if (numsSize <= 1) {
-        return returnNums;
-    }
-
-    //
-    // 分
-    //
-    int leftNum = numsSize / 2;
-    int rightNum = numsSize - leftNum;
-    int* left = MergerSort(nums, leftNum);
-    int* right = MergerSort(nums + leftNum, rightNum);
-
-    //
-    // 合并
-    //
-    int i, j, k;
-    i = j = 0;
-    for (k = 0; k < numsSize; k++) {
-        if (i >= leftNum && j < rightNum) {
-            returnNums[k] = right[j];
-            j++;
-            continue;
-        }
-        if (i < leftNum && j >= rightNum) {
-            returnNums[k] = left[i];
-            i++;
-            continue;
-        }
-        if (left[i] <= right[j]) {
-            returnNums[k] = left[i];
-            i++;
-        } else {
-            returnNums[k] = right[j];
-            j++;
-        }
-    }
-
-    return returnNums;
-}
-
-/**
- * 快速排序，写法 1。fixme 此算法有问题
- * 具体思路：
- * 中轴元素先不动。先交换：前大 <--> 后小。
- *
- * @param nums 数组
- * @param numsSize 数组大小
- */
-int* QuickSort(int nums[], int numsSize) {
-    // 递归终止条件
+int* mergeSort_1(int *nums, int numsSize) {
     if (numsSize <= 1) {
         return nums;
     }
 
-    // 中轴元素的值，前下标，后下标
-    int midValue, i, j;
+    //
+    // 创建一个新数组
+    //
+    int newArr[numsSize];
+    memcpy(newArr, nums, sizeof(int)*numsSize);
 
-    i = 0, j = numsSize - 1;
-    midValue = nums[0];
-    while (i < j) {
-        // j 找比中轴元素小的数，找到就跳出 while
-        while (nums[j] >= midValue) {
-            j--;
-            if (j == i) {
-                break;
-            }
-        }
-        if (j == i) {
-            break;
-        }
+    //
+    // 分：二分数组
+    //
+    int leftNum = numsSize / 2;
+    int rightNum = numsSize - leftNum;
+    mergeSort_1(newArr, leftNum);
+    printNum(newArr, leftNum);
+    mergeSort_1(newArr + leftNum, rightNum);
+    printNum(newArr+leftNum, rightNum);
 
-        // i 找比中轴元素大的数，找到就跳出 while
-        while (nums[i] <= midValue) {
-            i++;
-            if (i == j) {
-                break;
-            }
-        }
-
-        // 判断是否遍历完毕
-        if (i == j) {
-            break;
+    //
+    // 【难点，编程极易出错】合：合并两个有序的数组
+    //
+    int iLeft = 0, iRight = leftNum;
+    for (int k = 0; k < numsSize; k++) {
+        if (iLeft == leftNum) {
+            nums[k] = newArr[iRight++];
+        } else if (iRight == numsSize) {
+            nums[k] = newArr[iLeft++];
         } else {
-            // 【易错点】进行交换的是：一个比中轴大的数，一个是比中轴小的数，不是和中轴进行交换
-            swap(nums + i, nums + j);
+            if (newArr[iLeft] <= newArr[iRight]) {
+                nums[k] = newArr[iLeft++];
+            } else{
+                nums[k] = newArr[iRight++];
+            }
         }
     }
+    printNum(nums, numsSize);
 
-    // 前面大小元素交换完了，最后才把中轴元素放到正确的位置上
-    // 把中轴元素放到中间，此时 i == j
-    swap(nums, nums + i);
+    return nums;
+}
 
-    for (int k = 0; k < i; k++) {
-        printf("%d ", nums[k]);
+/**
+ * 归并排序
+ */
+int* mergeSort_2(int *nums, int numsSize) {
+    if (numsSize <= 1) {
+        return nums;
     }
-    printf("_%d_ ", nums[i]);
-    for (int k = i+1; k < numsSize; k++) {
-        printf("%d ", nums[k]);
+
+    //
+    // 创建一个新数组
+    //
+    int newArr[numsSize];
+    memcpy(newArr, nums, sizeof(int)*numsSize);
+
+    //
+    // 分：二分数组
+    //
+    int leftNum = numsSize / 2;
+    int rightNum = numsSize - leftNum;
+    mergeSort_1(newArr, leftNum);
+    printNum(newArr, leftNum);
+    mergeSort_1(newArr + leftNum, rightNum);
+    printNum(newArr+leftNum, rightNum);
+
+    //
+    // 合：第二种写法
+    //
+    int i = 0, j = leftNum;
+    int k = 0;
+    while (i < leftNum && j < numsSize) {
+        if (newArr[i] <= newArr[j]) {
+            nums[k++] = newArr[i++];
+        } else {
+            nums[k++] = newArr[j++];
+        }
     }
-    printf("\n");
+    while (i < leftNum) {
+        nums[k++] = newArr[i++];
+    }
+    while (j < numsSize) {
+        nums[k++] = newArr[j++];
+    }
 
-    // 对左边进行快排
-    QuickSort(nums, i);
+    return nums;
+}
 
-    // 对右边进行快排
-    QuickSort(&nums[i + 1], numsSize - (i + 1));
+
+
+/**
+ * 快速排序
+ */
+int* quickSort_1(int *nums, int numsSize) {
+    //
+    // 递归终止条件
+    //
+    if (numsSize <= 1) {
+        return nums;
+    }
+
+    //
+    // 随机选取中轴
+    //
+    int mid = rand() % (numsSize-1);
+    printf("mid: %d\n", mid);
+
+    //
+    // 将中轴交换到正确位置
+    // 思路：分别从后往前看、从前往后看。
+    // 从后往前看时，没有需要交换的数，到中轴就停止！从前往后看同理。
+    //
+    int i = 0, j = numsSize-1;
+    while (i < j) {
+        while (mid < j && nums[j] >= nums[mid]) {
+            j--;
+        }
+        if (j != mid && nums[j] < nums[mid]) {
+            swap(&nums[j], &nums[mid]);
+            mid = j;
+        }
+        while (i < mid && nums[i] <= nums[mid]) {
+            i++;
+        }
+        if (i != mid && nums[i] > numsSize) {
+            swap(&nums[i], &nums[mid]);
+            mid = i;
+        }
+    }
+    printNum(nums, numsSize);
+
+    //
+    // 对中轴元素左右两边子数组进行排序
+    // 【易错点】中轴元素不要算进去了
+    //
+    quickSort_1(nums, mid);
+    quickSort_1(nums + (mid + 1), numsSize - (mid + 1));
 
     return nums;
 }
@@ -194,27 +234,14 @@ void swap(int *a, int *b) {
     *b = t;
 }
 
-/**
- * 复制一个数组
- */
-int* copy(const int* nums, int numsSize) {
-    int* returnNums = malloc(sizeof(int) * numsSize);
-    int i;
-
-    for (i = 0; i < numsSize; i++) {
-        returnNums[i] = nums[i];
-    }
-
-    return returnNums;
-}
-
-
 
 /**
- * 测试快排
+ * 测试
  */
 void test_0() {
     int nums[] = {23, 2, 11, 6, 22, 34, 3, 61, 15, 11, 15, 37, 40, 44};
+//    int nums[] = {3, 2, 5, 1, 7};
+
     int N = sizeof(nums)/ sizeof(int);
 
     // 排序前
@@ -222,7 +249,7 @@ void test_0() {
     printNum(nums, N);
 
     // 排序
-    int* p = QuickSort(nums, N);
+    bubbleSort(nums, N);
 
     // 排序后
     printf("after: ");
