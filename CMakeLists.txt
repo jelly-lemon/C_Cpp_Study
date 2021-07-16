@@ -27,7 +27,14 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 #include_directories(include/my_openssl1.1.0g)   # applink.c
 #link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
+
 # 运行目标
+add_executable(encode_decode win32/encode_decode.cpp)
+add_executable(cmd_args win32/cmd_args.cpp)
+add_executable(create_window win32/ui/create_window.cpp)
+add_executable(inputbox win32/ui/inputbox.cpp)
+add_executable(NC92 Cpp/newcoder/NC92.cpp)
+add_executable(NC137 Cpp/newcoder/NC137.cpp)
 add_executable(new_study Cpp/new_study.cpp)
 add_executable(future_study Cpp/future_study.cpp)
 add_executable(basic_data_type Cpp/basic_data_type.cpp)
@@ -105,7 +112,7 @@ add_executable(test test.cpp)
 ##add_executable(shared_pointer Cpp/shared_pointer.cpp)
 #add_executable(list_study Cpp/list_study.cpp)
 ##add_executable(tranverse_tree c/algorithm_study/tranverse_tree.c)
-##add_executable(messagebox win32/messagebox.cpp)
+add_executable(messagebox win32/ui/messagebox.cpp)
 ##add_executable(1 wmi/1.cpp)
 ### target_link_libraries(1 wbemuuid.lib)
 ##add_executable(socket_server Win_Socket/sample_socket/socket_server.c)
@@ -148,7 +155,7 @@ add_executable(override_study Cpp/override_study.cpp)
 ##add_executable(mutual_include Cpp/mutual_include.cpp)
 #add_executable(map_study Cpp/map_study.cpp)
 #add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
-#add_executable(file_study Cpp/file_study.cpp)
+add_executable(file_study Cpp/file_study.cpp)
 ##add_executable(static_study Cpp/static_study.cpp)
 ##add_executable(hello c/hello.c)
 ##add_executable(hello_cpp Cpp/hello_cpp.cpp)

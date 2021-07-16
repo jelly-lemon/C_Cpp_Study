@@ -5,6 +5,9 @@
     <file url="file://$PROJECT_DIR$/c/global_init/a.h" charset="GBK" />
     <file url="file://$PROJECT_DIR$/c/global_init/b.h" charset="GBK" />
     <file url="file://$PROJECT_DIR$/c/leetcode/912.c" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/win32/cmd_args.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/win32/encode_decode.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/win32/ui/inputbox.cpp" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -9,7 +9,7 @@
  *
  *
  * 文本模式：ios::in，ios::out
- * 二进制模式：ios::binary
+ * 二进制模式：ios::binary （加了 ios::binary 就是二进制模式）
  */
 #include <fstream>
 #include <iostream>
@@ -52,8 +52,11 @@ void test_1() {
  * 写入文件的字节串，就是本文件的字节串，也就是本文件编码方式对写入字符串编码得到的字节串
  */
 void test_2() {
+    //
+    // 二进制写入
+    //
     // 注意路径文件，相对路径是相对 *.exe 而言的，不是 *.cpp
-    ofstream outFile("D:\\0-2-CLion\\C_Cpp_Study\\Cpp\\test.txt", ios::out | ios::binary);
+    ofstream outFile("./test_binary.txt", ios::out | ios::binary);
     if (outFile) {
         cout << "yes" << endl;
     }
@@ -62,8 +65,11 @@ void test_2() {
     outFile.write(&s[0], s.length());
     outFile.close();
 
+    //
+    // 文本写入
+    //
     // 如果文件不存在， is_ipen() 返回 false，或者直接 if 判断
-    outFile = ofstream("D:\\0-2-CLion\\C_Cpp_Study\\abc\\test.txt");
+    outFile = ofstream("./test_txt.txt");
     if (outFile) {
         cout << "yes" << endl;
     }
@@ -92,9 +98,6 @@ void test_4() {
     char dir[] = "./hello/hello";
     int n = CreateDirectory(dir, NULL);
     cout << n << endl;
-
-
-
 }
 
 /**
@@ -119,7 +122,7 @@ void test_5() {
 
 
 int main() {
-    test_5();
+    test_2();
 
     return 0;
 }
