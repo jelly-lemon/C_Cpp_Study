@@ -14,36 +14,38 @@
  */
 
 #include <string>
+#include <cstring>
+#include <stack>
+#include <algorithm>
+#include <iostream>
+
 using namespace std;
 
-/**
- * 思路 1：暴力法，挨个比对
- */
-string LCS(string s1, string s2) {
-
-}
 
 /**
- * 思路 2：动态规划
+ * 运行时间：15ms
+超过37.95% 用C++提交的代码
+占用内存：9464KB
+超过61.86%用C++提交的代码
+ *
+ *
+ * 思路 ：动态规划
  * 构建 c[i][j] 表需要 Θ(mn)，输出 1 个 LCS 的序列需要 Θ(m+n)
  * 【难点】找到了最长子序列的长度，如何找出子序列
  */
-string LCS_1(string s1, string s2) {
+string LCS(string s1, string s2) {
     int len1 = s1.size();
     int len2 = s2.size();
 
-    int dp[len1+1][len2+2];
-    //    int **dp = new int* [len1+1];
-    // 这里 len+1 很容易忘记
-    for (int i = 0; i < len1+1; i++) {
-        //        dp[i] = new int[len2+1];
-        dp[i][0] = 0;
-    }
-    for (int j = 0; j < len2+1; j++) {
-        dp[0][j] = 0;
-    }
+    //
+    // 动态规划数组要比原始数据多一行，多一列，用来初始化
+    //
+    int dp[len1+1][len2+1];
+    memset(dp, 0, sizeof(int)*(len1+1)*(len2+1));
 
+    //
     // 找出最大长度
+    //
     for (int m = 1; m <= len1; m++) {
         for (int n = 1; n <= len2; n++) {
             if (s1[m-1] == s2[n-1]) {
@@ -57,22 +59,64 @@ string LCS_1(string s1, string s2) {
         }
     }
 
-    // TODO 找出该序列
-    int subLen = dp[len1][len2];
-    int count = 0;
-    int i = len1;
-    int j = len2;
-    char s[subLen];
-    while (count <= subLen - 1) {
-        while (subLen - count == dp[i-1][j]) {
-            i--;
+    //
+    // 找出该序列
+    //
+    string maxSubStr;
+    int i = len1, j = len2;
+    while(dp[i][j] > 0) {
+        //
+        // 【易错点】dp数组和原字符数组小标要分清
+        //
+        int s_i = i-1;
+        int s_j = j-1;
+        if (s1[s_i] == s2[s_j]) {
+            //
+            // 该位置两个字符相等，那就是最长子序列的一部分
+            //
+            printf("s1[%d]=%d, s2[%d]=%d\n", s_i, s1[s_i], s_j, s2[s_j]);
+            maxSubStr += s1[s_i];
+            i--, j--;
+        } else {
+            if (dp[i-1][j] == dp[i][j-1]) {
+                //
+                // 此时：上 == 左
+                // 这里既可以选左边，也可以选上边，但整体必须保持一致
+                // 我选上
+                //
+                i--;
+            } else if (dp[i-1][j] > dp[i][j-1]){
+                //
+                // 此时：上 > 左，谁大就走哪边
+                //
+                i--;
+            } else {
+                //
+                // 此时：左 > 上
+                //
+                j--;
+            }
         }
-        while (subLen - count == dp[i][j-1]) {
-            j--;
-        }
-        s[subLen-count-1] = s1[i-1];
-        count++;
     }
-    string subStr(s);
-    return subStr;
+    reverse(maxSubStr.begin(), maxSubStr.end());
+
+    //
+    // 如果为空串，返回 -1
+    //
+    if (maxSubStr.empty()) {
+        maxSubStr = "-1";
+    }
+
+    return maxSubStr;
+}
+
+void test_0() {
+    string maxSubStr = LCS("13456778","357486782");
+    cout << maxSubStr << endl;
+}
+
+int main() {
+    test_0();
+
+    return 0;
 }

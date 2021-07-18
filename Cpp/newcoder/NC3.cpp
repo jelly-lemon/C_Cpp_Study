@@ -18,6 +18,8 @@ struct ListNode {
 超过49.34%用C++提交的代码
 占用内存：1096KB
 超过55.13%用C++提交的代码
+
+ 思路：快慢指针
  */
 ListNode *detectCycle(ListNode *head) {
     if (head == NULL || head->next == NULL)

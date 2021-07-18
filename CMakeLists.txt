@@ -29,6 +29,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(NC50 Cpp/newcoder/NC50.cpp)
 add_executable(encode_decode win32/encode_decode.cpp)
 add_executable(cmd_args win32/cmd_args.cpp)
 add_executable(create_window win32/ui/create_window.cpp)
