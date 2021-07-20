@@ -16,13 +16,18 @@ struct ListNode {
 class Solution {
 public:
     ListNode* ReverseList(ListNode* pHead) {
-        // 非法输入检查
+        //
+        // 非法输入检查：空、只有一个节点
+        //
         if (pHead == NULL)
             return NULL;
         if (pHead->next == NULL)
             return pHead;
 
+        //
         // 借助 3 个指针变量反转链表
+        // 【关键点】p1 为 NULL，p2 为第一个节点，p3 为第三个节点，while 结束后 p2 指向最后一个节点
+        //
         ListNode *p1 = NULL;
         ListNode *p2 = pHead;
         ListNode *p3 = p2->next;

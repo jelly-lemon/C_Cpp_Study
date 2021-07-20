@@ -29,7 +29,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
-add_executable(NC50 Cpp/newcoder/NC50.cpp)
+add_executable(NC50 Cpp/newcoder/over_80/NC50.cpp)
 add_executable(encode_decode win32/encode_decode.cpp)
 add_executable(cmd_args win32/cmd_args.cpp)
 add_executable(create_window win32/ui/create_window.cpp)
@@ -85,7 +85,7 @@ add_executable(reference_study Cpp/reference_study.cpp)
 ##target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
 ##add_executable(base64_encode c/base64_encode.c)
 add_executable(912 c/leetcode/912.c)
-#add_executable(str_study Cpp/str_study.cpp)
+add_executable(str_study Cpp/str_study.cpp)
 ##add_executable(change_pointer c/change_pointer.c)
 ##add_executable(byte_alignment c/byte_alignment.c)
 ##add_executable(big_number c/big_number.c)
@@ -154,7 +154,7 @@ add_executable(override_study Cpp/override_study.cpp)
 ##add_executable(read_write_lock c/thread_example/read_write_lock.c)
 ##add_executable(async_log c/thread_example/async_log.c)
 ##add_executable(mutual_include Cpp/mutual_include.cpp)
-#add_executable(map_study Cpp/map_study.cpp)
+add_executable(map_study Cpp/map_study.cpp)
 #add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
 add_executable(file_study Cpp/file_study.cpp)
 ##add_executable(static_study Cpp/static_study.cpp)
