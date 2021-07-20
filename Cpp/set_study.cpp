@@ -20,6 +20,9 @@ void printSet(set<int> &pSet) {
 
 /**
  * 创建 set
+ *
+ * set 是有序的，unordered_set 才是无序的
+ * set 添加元素不是 push，而是 insert
  */
 void test_0() {
     set<int> mySet;
@@ -61,7 +64,7 @@ void test_2() {
 }
 
 int main() {
-    test_2();
+    test_0();
 
     return 0;
 }

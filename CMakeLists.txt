@@ -29,6 +29,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(binary_study Cpp/binary_study.cpp)
 add_executable(NC50 Cpp/newcoder/NC50.cpp)
 add_executable(encode_decode win32/encode_decode.cpp)
 add_executable(cmd_args win32/cmd_args.cpp)
@@ -67,7 +68,7 @@ add_executable(reference_study Cpp/reference_study.cpp)
 #add_executable(NC73 Cpp/newcoder/NC73.cpp)
 #add_executable(NC17 Cpp/newcoder/NC17.cpp)
 #add_executable(NC52 Cpp/newcoder/NC52.cpp)
-#add_executable(set_study Cpp/set_study.cpp)
+add_executable(set_study Cpp/set_study.cpp)
 #add_executable(printf_sleep c/printf_sleep.c)
 #add_executable(NC61 Cpp/newcoder/NC61.cpp)
 #add_executable(minimal_k_number Cpp/algorithm_study/minimal_k_number.cpp)
