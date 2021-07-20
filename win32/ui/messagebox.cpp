@@ -20,9 +20,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 /**
  * 如果有 main 函数，则执行 main，不会执行 WinMain
+ * 也可以在 main 中调用 WinMain
  */
-//int main() {
-//
-//
-//    return 0;
-//}
+int main() {
+    WinMain(NULL, NULL, NULL, SW_SHOW);
+
+
+    return 0;
+}

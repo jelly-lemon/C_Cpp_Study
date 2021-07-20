@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdio>
 #include <vector>
+#include <cstring>
 
 using namespace std;
 
@@ -240,8 +241,19 @@ void test_13() {
     }
 }
 
+
+/**
+ * 字符串比较
+ */
+void test_14() {
+    string s1("abc");
+    string s2("def");
+    int n = strcmp(s1.c_str(), s2.c_str());
+    cout << n << endl;
+}
+
 int main() {
-    test_1();
+    test_14();
 
     return 0;
 }

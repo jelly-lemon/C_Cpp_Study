@@ -28,8 +28,8 @@ void test_0() {
     priority_queue<int, vector<int>, greater<int> > q;
     for (int i = 0; i < 10; i++) {
         q.push(rand()%20);
-
     }
+
     // 取出堆顶元素
     while (!q.empty()) {
         cout << q.top() << " ";
@@ -39,7 +39,24 @@ void test_0() {
 }
 
 /**
- * 大顶堆
+ * 自定义堆比较函数
+ *
+ * 小顶堆：return a > b
+ * 大顶堆：return a < b
+ */
+struct cmp {
+    bool operator()(int a, int b) {
+        return a > b;
+    }
+};
+
+/**
+ * 结构体实现 < 运算符，那么就可以使用 STL 函数 less
+ */
+
+
+/**
+ * 大顶堆比较函数
  */
 void test_1() {
     // 默认比较函数就是 less，这个比较函数刚好和顶元素相反，注意一下

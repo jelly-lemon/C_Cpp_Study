@@ -213,7 +213,7 @@ int WINAPI WinMain(
     wndclass.lpfnWndProc = InputPINCodeProc;  //窗口过程
     wndclass.cbClsExtra = 0;  //暂时不需要理解
     wndclass.cbWndExtra = 0;  //暂时不需要理解
-    wndclass.hInstance = hInstance;  //当前窗口句柄
+    wndclass.hInstance = NULL;  //当前窗口句柄
     wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);  //窗口图标
     wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);  //鼠标样式
     wndclass.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH);  //窗口背景画刷

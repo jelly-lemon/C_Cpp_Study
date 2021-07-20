@@ -18,17 +18,18 @@ void test_1() {
 
 
 /**
- * map 必须得有键值对，不能只有一个键
+ * 通过迭代器获取 value
  */
 void test_2() {
-//    map<int> mymap;
-//    mymap[29];
-//    cout << mymap.at(29) << endl;
+    map<string, int> m1;
+    m1["name"] = 3;
+
+    printf("%d\n", m1.begin()->second);
 }
 
 int main() {
 
-    test_1();
+    test_2();
 
     return 0;
 }
