@@ -21,6 +21,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 # 依赖设置
 # gtest
 #include_directories(include/my_gtest1.10)   # 依赖头文件
+
 #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) # 链接库目录，link_directories 不能用相对路径
 # openssl
 #include_directories(C:\\OpenSSL-Win64\\include) # 头文件夹
@@ -28,7 +29,12 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 #link_directories(C:\\OpenSSL-Win64\\lib)        # 库文件夹
 
 
+
 # 运行目标
+add_executable(curl_test Cpp/curl_test.cpp)
+target_include_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compressed/curl-7.77.0/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/include)
+target_link_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compressed/curl-7.77.0/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/lib)
+target_link_libraries(curl_test libcurl)
 add_executable(binary_study Cpp/binary_study.cpp)
 add_executable(NC50 Cpp/newcoder/NC50.cpp)
 add_executable(encode_decode win32/encode_decode.cpp)

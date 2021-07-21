@@ -41,7 +41,7 @@ int WINAPI WinMain(
             300,  //窗口高度
             NULL,  //父窗口句柄
             NULL,  //窗口菜单句柄
-            hInstance,  //当前窗口的句柄
+            hInstance,  // 程序实例句柄
             NULL  //不使用该值
     );
 
