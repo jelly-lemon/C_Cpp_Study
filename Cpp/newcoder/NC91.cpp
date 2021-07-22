@@ -38,3 +38,53 @@ vector<int> LIS(vector<int>& arr) {
     // TODO 如何找出字典序最小的子序列？
     return v;
 }
+
+
+vector<int> LIS(vector<int>& arr) {
+    // write code here
+    // 动态规划求出最大长度
+    int i;
+    int arrLen = arr.size();
+    int dp[arrLen+1];
+    memset(dp, 0, sizeof(int)*(arrLen+1));
+    dp[0] = 0, dp[1] = 1;
+    for (i = 2; i < arrLen+1; i++) {
+        int maxLen = dp[i-1];
+        int j = i-1;
+        while (dp[j] == maxLen) {
+            if (arr[i-1] > arr[j-1]) {
+                dp[i] = dp[i-1] + 1;
+                break;
+            }
+            j--;
+        }
+        if (dp[i] == 0) {
+            dp[i] = dp[i-1];
+        }
+    }
+
+    // 找字典序最长的递增序列
+    vector<int> r;
+    int maxLen = dp[arrLen];
+    for (int iLen = 1; iLen <= maxLen; iLen++) {
+        // 找出等于 iLen 的起始位置
+        for (int iDP = 1; iDP < arrLen+1; iDP++) {
+            if (iLen == dp[iDP]) {
+                // 从可选数字中选出最小的
+                int minN = arr[iDP-1];
+                int lastMax = 0;
+                if (!r.empty()) {
+                    lastMax = r.back();
+                }
+                for (; iDP < arrLen+1 && dp[iDP] == iLen; iDP++) {
+                    if (minN > arr[iDP-1] && arr[iDP-1] > lastMax) {
+                        minn = arr[idp-1];
+                    }
+                }
+                r.push_back(minN);
+            }
+        }
+    }
+
+    return r;
+}

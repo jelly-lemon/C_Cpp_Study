@@ -39,6 +39,7 @@ void test_1() {
 
     ostringstream tmp;
     tmp << file.rdbuf();
+    // 中文乱码
     system("chcp 65001");   // 设置控制台 utf-8 编码
     cout << tmp.str();
 }

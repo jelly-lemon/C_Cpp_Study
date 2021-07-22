@@ -31,6 +31,8 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(get_cmd_args c/get_cmd_args.c)
+add_executable(url_decode c/url_decode.c)
 add_executable(curl_test Cpp/curl_test.cpp)
 target_include_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compressed/curl-7.77.0/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/include)
 target_link_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compressed/curl-7.77.0/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/lib)
