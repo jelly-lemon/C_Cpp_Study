@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(sort_study Cpp/sort_study.cpp)
 add_executable(str_study c/str_study.c)
 add_executable(get_cmd_args c/get_cmd_args.c)
 add_executable(url_decode c/url_decode.c)
