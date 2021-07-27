@@ -4,11 +4,15 @@ using namespace std;
 
 /**
  * 宏定义 __FILE__ 和 __LINE__ 当前文件和当前
+ * __FUNCTION__ 表示调用的函数
  */
 #define LOG(...) {\
-    fprintf(stderr, "%s:line %d:\t", __FILE__, __LINE__);\
-    fprintf(stderr, __VA_ARGS__);\
-    fprintf(stderr, "\n");\
+    fprintf(stderr, "file: %s\n", __FILE__); \
+    fprintf(stderr, "line: %d\n", __LINE__); \
+    fprintf(stderr, "err: ");                               \
+    fprintf(stderr, __VA_ARGS__);            \
+    fprintf(stderr, "\n");                               \
+    fprintf(stderr, "function: %s\n", __FUNCTION__);                  \
 }
 
 /**

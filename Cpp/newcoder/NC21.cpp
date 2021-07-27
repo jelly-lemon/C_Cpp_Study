@@ -17,12 +17,14 @@
 预期输入：{3,5},1,1
 预期输出：{3,5}
  */
-ListNode* reverseCore(ListNode *pStart, int len) {
-    if (pStart == NULL || len == 1) {
-        return NULL;
+
+
+void reverseCore(ListNode *pStart, int len) {
+    if (pStart == NULL || pStart->next == NULL) {
+        return;
     }
 
-    ListNode *p1, *p2, *p3, *pNewStart;
+    ListNode *p1, *p2, *p3;
     p1 = NULL;
     p2 = pStart;
     p3 = p2->next;
@@ -32,55 +34,61 @@ ListNode* reverseCore(ListNode *pStart, int len) {
         p2 = p3;
         if (p3 != NULL) {
             p3 = p3->next;
+        } else {
+            break;
         }
     }
-    return p1;
 }
 
 
 /**
  *
- * @param head ListNode类
- * @param m int整型
- * @param n int整型
- * @return ListNode类
+ * 运行时间：3ms
+超过52.77% 用C++提交的代码
+占用内存：524KB
+超过23.64%用C++提交的代码
  */
 ListNode* reverseBetween(ListNode* head, int m, int n) {
     if (head == NULL || head->next == NULL) {
         return head;
     }
-    ListNode* pStartPrevious = new ListNode(0);
-    pStartPrevious ->next = head;
+    ListNode* pSubStartPrevious = new ListNode(0);
+    pSubStartPrevious ->next = head;
 
     //
     // 找出子串前一个节点，以及字串头节点
     //
     for (int i = 0; i < m-1; i++) {
-        pStartPrevious = pStartPrevious->next;
+        pSubStartPrevious = pSubStartPrevious->next;
     }
-    ListNode *pSubEnd = pStartPrevious->next;
+    ListNode *pSubStart = pSubStartPrevious->next;
 
     //
-    // 找出字串尾节点后一个节点
+    // 找出字串尾节点，以及后一个节点
     //
-    ListNode *pEndNext = head;
-    for (int i = 0; i < n; i++) {
-        pEndNext = pEndNext->next;
+    ListNode *pSubEnd = head;
+    ListNode *pSubEndNext = NULL;
+    for (int i = 0; i < n-1; i++) {
+        pSubEnd = pSubEnd->next;
     }
+    pSubEndNext = pSubEnd->next;
 
     //
     // 反转子串
     //
-    ListNode *pNewStart = reverseCore(pStartPrevious->next, n-m+1);
+    reverseCore(pSubStart, n-m+1);
 
     //
     // 缝合子串
     //
-    pStartPrevious->next = pNewStart;
-    pSubEnd->next = pEndNext;
+    pSubStartPrevious->next = pSubEnd;
+    pSubStart->next = pSubEndNext;
 
+    //
+    // 返回翻转链表的头节点
+    //
     if (m == 1) {
-        return pStartPrevious->next;
+        return pSubStartPrevious->next;
     }
 
     return head;

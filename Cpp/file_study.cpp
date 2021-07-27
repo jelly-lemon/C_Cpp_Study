@@ -9,7 +9,7 @@
  *
  *
  * 文本模式：ios::in，ios::out
- * 二进制模式：ios::binary （加了 ios::binary 就是二进制模式）
+ * 二进制模式：ios::binary （加了 ios::binary 就是二进制模式，不加就是文本模式）
  */
 #include <fstream>
 #include <iostream>
@@ -55,8 +55,8 @@ void test_1() {
 void test_2() {
     //
     // 二进制写入
-    //
     // 注意路径文件，相对路径是相对 *.exe 而言的，不是 *.cpp
+    //
     ofstream outFile("./test_binary.txt", ios::out | ios::binary);
     if (outFile) {
         cout << "yes" << endl;
@@ -68,8 +68,8 @@ void test_2() {
 
     //
     // 文本写入
-    //
     // 如果文件不存在， is_ipen() 返回 false，或者直接 if 判断
+    //
     outFile = ofstream("./test_txt.txt");
     if (outFile) {
         cout << "yes" << endl;
@@ -83,9 +83,13 @@ void test_2() {
  * 创建文件夹 1
  */
 void test_3() {
+    //
     // mkdir 只能创建单级目录
-    // TODO 返回是个啥？感觉是随机数
-    int n = mkdir("./test");
+    // 若成功则返回0，否则返回-1
+    // 但经过测试，创建成功返回非 0
+    // / 或 \\ 都可以
+    //
+    int n = mkdir(".\\test");
     printf("n=%d\n");
 }
 
@@ -94,8 +98,10 @@ void test_3() {
  *
  */
 void test_4() {
+    //
     // CreateDirectory 只能创建单级目录，创建成功返回非 0
     // 如果文件夹已存在、创建失败返回 0
+    //
     char dir[] = "./hello/hello";
     int n = CreateDirectory(dir, NULL);
     cout << n << endl;
@@ -109,21 +115,39 @@ void test_5() {
         cout << "hello folder not exists" << endl;
     }
 
-    // 判断文件夹是否存在只能用绝对路径
+    //
+    // 用绝对路径
+    //
     if (_access("D:/0-2-CLion/C_Cpp_Study/Cpp/leetcode", 0) != -1) {
         cout << "leetcode folder exists" << endl;
     }
 
-
-    if (_access(".\\leetcode", 0) != -1) {
-        cout << "leetcode folder exists" << endl;
+    //
+    // 用相对路径
+    //
+    if (_access("./test", 0) != -1) {
+        cout << "test folder exists" << endl;
     }
 }
 
+/**
+ * 获取当前程序所在路径
+ * 方式 1：通过 main 参数
+ * 方式 2：通过 _pgmptr
+ */
+void test_6() {
+    cout << _pgmptr << endl;
+    string path(_pgmptr);
+    cout << path << endl;
+
+    int p = path.find_last_of('\\');
+    string dir = path.substr(0, p+1);
+    cout << dir << endl;
+}
 
 
 int main() {
-    test_2();
+    test_3();
 
     return 0;
 }

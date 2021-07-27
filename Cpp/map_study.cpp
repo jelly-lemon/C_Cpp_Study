@@ -27,6 +27,10 @@ void test_2() {
     printf("%d\n", m1.begin()->second);
 }
 
+void test_3() {
+
+}
+
 int main() {
 
     test_2();

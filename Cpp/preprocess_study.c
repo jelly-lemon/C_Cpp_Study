@@ -1,7 +1,8 @@
-/*
- * #error 的使用
+/**
+ * 预处理指令学习
  */
 
+//  * #error 的使用
 #ifndef __cplusplus
 #error "please use c++ compiler"
 #endif
