@@ -7,7 +7,7 @@ int* sortArray(int* nums, int numsSize, int* returnSize);
 int* quickSort_1(int *nums, int numsSize);
 void printNum(int nums[], int n);
 
-/*
+/**
  * 912. 排序数组
  * 给你一个整数数组 nums，请你将该数组升序排列。
  * 输入：nums = [5,2,3,1]
@@ -105,14 +105,19 @@ int* mergeSort_1(int *nums, int numsSize) {
 
     //
     // 【难点，编程极易出错】合：合并两个有序的数组
+    // leftNum == rightNum 或 leftNum = rightNum + 1
+    // iLeft 代表左边数组下标，iRight 代表右边数组下标
     //
     int iLeft = 0, iRight = leftNum;
     for (int k = 0; k < numsSize; k++) {
+        // 左边数组遍历完毕，只剩右边数组了
         if (iLeft == leftNum) {
             nums[k] = newArr[iRight++];
         } else if (iRight == numsSize) {
+            // 右边数组遍历完毕
             nums[k] = newArr[iLeft++];
         } else {
+            // 比较两个数组
             if (newArr[iLeft] <= newArr[iRight]) {
                 nums[k] = newArr[iLeft++];
             } else{
@@ -224,6 +229,46 @@ int* quickSort_1(int *nums, int numsSize) {
     return nums;
 }
 
+/**
+ * 快速排序
+ */
+int* quickSort_2(int *nums, int numsSize) {
+    if (numsSize <= 1) {
+        return nums;
+    }
+
+    int iLeft = 0, iRight = numsSize - 1;
+    int iMid = rand() % numsSize;
+    int key = nums[iMid];
+    printf("mid: %d\n", iMid);
+    while (iLeft < iRight) {
+        while (iLeft < iRight && key <= nums[iRight]) {
+            iRight--;
+        }
+        //
+        // 【易错点】iMid < iRight 判断不能少，要保证这个数在中轴右边，如果在左边，那它本来就该在左边。
+        //
+        if (iLeft < iRight && iMid < iRight) {
+            nums[iMid] = nums[iRight];
+            iMid = iRight;
+        }
+        while (iLeft < iRight && key >= nums[iLeft]) {
+            iLeft++;
+        }
+        if (iLeft < iRight && iLeft < iMid) {
+            nums[iMid] = nums[iLeft];
+            iMid = iLeft;
+        }
+    }
+    nums[iMid] = key;
+    printNum(nums, numsSize);
+
+    quickSort_2(nums, iMid);
+    quickSort_2(nums + iMid + 1, numsSize - (iMid+1));
+
+    return nums;
+}
+
 
 /**
  * 交换两个数
@@ -249,7 +294,7 @@ void test_0() {
     printNum(nums, N);
 
     // 排序
-    bubbleSort(nums, N);
+    quickSort_2(nums, N);
 
     // 排序后
     printf("after: ");
@@ -257,7 +302,7 @@ void test_0() {
 }
 
 
-int main(void) {
+int main() {
 
     test_0();
 
