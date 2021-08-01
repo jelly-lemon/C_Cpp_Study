@@ -31,6 +31,22 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(0801_iqy_4 written_examination/0801_iqy/0801_iqy_4.cpp)
+add_executable(0801_iqy_3 written_examination/0801_iqy/0801_iqy_3.cpp)
+add_executable(0801_iqy_2 written_examination/0801_iqy/0801_iqy_2.cpp)
+add_executable(0801_iqy_1 written_examination/0801_iqy_1.cpp)
+#add_executable(tx_0418_2 Cpp/algorithm_study/tx_0418_2.cpp)
+#add_executable(tx_0418_1 Cpp/algorithm_study/tx_0418_1.cpp)
+#add_executable(two_D_array Cpp/two_D_array.cpp)
+#add_executable(min_neighbor_diff Cpp/algorithm_study/min_neighbor_diff.cpp)
+#add_executable(ali_0416_2 Cpp/algorithm_study/ali_0416_2.cpp)
+#add_executable(ali_0416_1 Cpp/algorithm_study/ali_0416_1.cpp)
+add_executable(mem_bio OpenSSL_Study/base_BIO_example/mem_bio.c)
+target_link_libraries(mem_bio libcrypto)
+#add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
+#target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
+#add_executable(base64_encode c/base64_encode.c)
+#add_executable(912 c/leetcode/912.c)
 add_executable(sort_study Cpp/sort_study.cpp)
 add_executable(str_study c/str_study.c)
 add_executable(get_cmd_args c/get_cmd_args.c)
