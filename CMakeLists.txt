@@ -31,10 +31,13 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(0802_ali_4 written_examination/0802_ali/0802_ali_4.cpp)
+add_executable(0802_ali_3 written_examination/0802_ali/0802_ali_3.cpp)
+add_executable(0802_ali_2 written_examination/0802_ali/0802_ali_2.cpp)
+add_executable(0802_ali_1 written_examination/0802_ali/0802_ali_1.cpp)
 add_executable(0801_iqy_4 written_examination/0801_iqy/0801_iqy_4.cpp)
 add_executable(0801_iqy_3 written_examination/0801_iqy/0801_iqy_3.cpp)
 add_executable(0801_iqy_2 written_examination/0801_iqy/0801_iqy_2.cpp)
-add_executable(0801_iqy_1 written_examination/0801_iqy_1.cpp)
 #add_executable(tx_0418_2 Cpp/algorithm_study/tx_0418_2.cpp)
 #add_executable(tx_0418_1 Cpp/algorithm_study/tx_0418_1.cpp)
 #add_executable(two_D_array Cpp/two_D_array.cpp)
