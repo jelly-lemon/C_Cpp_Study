@@ -31,8 +31,6 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
-add_executable(0802_ali_4 written_examination/0802_ali/0802_ali_4.cpp)
-add_executable(0802_ali_3 written_examination/0802_ali/0802_ali_3.cpp)
 add_executable(0802_ali_2 written_examination/0802_ali/0802_ali_2.cpp)
 add_executable(0802_ali_1 written_examination/0802_ali/0802_ali_1.cpp)
 add_executable(0801_iqy_4 written_examination/0801_iqy/0801_iqy_4.cpp)
@@ -59,7 +57,6 @@ target_include_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compr
 target_link_directories(curl_test PRIVATE C:/Users/nsfocus-lm/Downloads/Compressed/curl-7.77.0/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/lib)
 target_link_libraries(curl_test libcurl)
 add_executable(binary_study Cpp/binary_study.cpp)
-add_executable(NC50 Cpp/newcoder/NC50.cpp)
 add_executable(encode_decode win32/encode_decode.cpp)
 add_executable(cmd_args win32/cmd_args.cpp)
 add_executable(create_window win32/ui/create_window.cpp)
