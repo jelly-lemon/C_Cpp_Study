@@ -49,8 +49,12 @@ int *bubbleSort(int nums[], int numsSize) {
 
 /**
  * 选择排序
+ *
  * 思想：将数组看作两个部分：已排序和未排序部分
  * 每次选择待排序数组中最小的数，放在已排序数组最后面
+ *
+ * 要与插入排序区别开来：插入排序也是分成已排序和未排序部分。
+ * 但是是选择第一个数，插入到已排序数组里的正确位置上。
  */
 int* selectSort(int *nums, int numsSize) {
     int iLeft = 0, iRight = 0;
@@ -110,14 +114,20 @@ int* mergeSort_1(int *nums, int numsSize) {
     //
     int iLeft = 0, iRight = leftNum;
     for (int k = 0; k < numsSize; k++) {
+        //
         // 左边数组遍历完毕，只剩右边数组了
+        //
         if (iLeft == leftNum) {
             nums[k] = newArr[iRight++];
         } else if (iRight == numsSize) {
+            //
             // 右边数组遍历完毕
+            //
             nums[k] = newArr[iLeft++];
         } else {
+            //
             // 比较两个数组
+            //
             if (newArr[iLeft] <= newArr[iRight]) {
                 nums[k] = newArr[iLeft++];
             } else{

@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(xipai Cpp/algorithm_study/xipai.cpp)
 add_executable(0802_ali_2 written_examination/0802_ali/0802_ali_2.cpp)
 add_executable(0802_ali_1 written_examination/0802_ali/0802_ali_1.cpp)
 add_executable(0801_iqy_4 written_examination/0801_iqy/0801_iqy_4.cpp)
@@ -112,7 +113,7 @@ add_executable(set_study Cpp/set_study.cpp)
 ##target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
 ##add_executable(base64_encode c/base64_encode.c)
 add_executable(912 c/leetcode/912.c)
-#add_executable(str_study Cpp/str_study.cpp)
+add_executable(string_study Cpp/string_study.cpp)
 ##add_executable(change_pointer c/change_pointer.c)
 ##add_executable(byte_alignment c/byte_alignment.c)
 ##add_executable(big_number c/big_number.c)

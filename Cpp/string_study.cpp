@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <vector>
 #include <cstring>
+#include <sstream>
 
 using namespace std;
 
@@ -250,6 +251,17 @@ void test_14() {
     string s2("def");
     int n = strcmp(s1.c_str(), s2.c_str());
     cout << n << endl;
+}
+
+/**
+ * 流缓存：一块自动伸缩的内存数组做缓存
+ * streambuf 是基类
+ * filebuf，stringbuf 又分别作为 fstream 文件流, stringstream 字符串流 底层的流缓存部分。
+    用 stream.rdbuf() 返回 所在流对应的 流缓存对象。
+ *
+ */
+void test_15() {
+    stringbuf buf;
 }
 
 int main() {

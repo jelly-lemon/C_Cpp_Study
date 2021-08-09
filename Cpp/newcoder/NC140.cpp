@@ -24,23 +24,33 @@ vector<int> MySort(vector<int>& arr) {
     return arr;
 }
 
+/**
+ * 快排
+ */
 void QuickSort(vector<int>& arr, int start, int end) {
     if (end - start > 1) {
         int index = QuickBase(arr, start, end);
         QuickSort(arr, start, index);
         QuickSort(arr, index+1, end);
     }
+    //
     // 【踩坑】 之前在 QuickSort 中有返回值 arr，直接导致超时，不清楚原因
+    //
 }
 
+/**
+ * 一次快排
+ */
 int QuickBase(vector<int>& arr, int start, int end) {
     int len = end - start;
     int axis = start;
     int low, high;
     low = start, high = end-1;
     while (low < high) {
+        //
         // 【易错点】不能只用 >，要是两个数相等，无限交换
-        while (arr[high] >= arr[axis] && low < high) {
+        //
+        while (low < high && arr[high] >= arr[axis]) {
             high--;
         }
         if (low < high) {
@@ -49,7 +59,7 @@ int QuickBase(vector<int>& arr, int start, int end) {
             arr[axis] = t;
             axis = high;
         }
-        while (arr[low] <= arr[axis] && low < high) {
+        while (low < high && arr[low] <= arr[axis]) {
             low++;
         }
         if (low < high) {
