@@ -6,7 +6,7 @@
  * 如果没有在父类函数中标记 virtual，那么父类指针调用重写函数时，执行父类函数。
  * 即使父类函数没有标记 virtual，子类也可以重写父类函数，只是不能实现多态。
  */
-#include <stdio.h>
+#include <cstdio>
 
 class A {
 

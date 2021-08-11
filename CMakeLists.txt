@@ -31,6 +31,9 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(singleton_study Cpp/singleton_study.cpp)
+add_executable(stackoverflow_study Cpp/stackoverflow_study.cpp)
+add_executable(polymorphic_study Cpp/polymorphic_study.cpp)
 add_executable(xipai Cpp/algorithm_study/xipai.cpp)
 add_executable(0802_ali_2 written_examination/0802_ali/0802_ali_2.cpp)
 add_executable(0802_ali_1 written_examination/0802_ali/0802_ali_1.cpp)
@@ -187,7 +190,7 @@ add_executable(override_study Cpp/override_study.cpp)
 add_executable(file_study Cpp/file_study.cpp)
 ##add_executable(static_study Cpp/static_study.cpp)
 ##add_executable(hello c/hello.c)
-##add_executable(hello_cpp Cpp/hello_cpp.cpp)
+add_executable(hello_cpp Cpp/hello_cpp.cpp)
 ##add_executable(delete_list_node Cpp/algorithm_study/delete_list_node.cpp)
 ### STATIC 生成 lib
 ### SHARED 生成 DLL
