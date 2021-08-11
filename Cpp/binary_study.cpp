@@ -10,6 +10,10 @@ void test_0() {
 
     int b = -015;
     cout << b << endl;
+
+    // 十六进制
+    int c = 0xAF;
+    cout << c << endl;
 }
 
 int main() {
