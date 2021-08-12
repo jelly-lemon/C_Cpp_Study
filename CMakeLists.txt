@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(forward_study Cpp/forward_study.cpp)
 add_executable(singleton_study Cpp/singleton_study.cpp)
 add_executable(stackoverflow_study Cpp/stackoverflow_study.cpp)
 add_executable(polymorphic_study Cpp/polymorphic_study.cpp)
