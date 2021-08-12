@@ -16,6 +16,13 @@ void test_0() {
     lambdaFunc("hello");
 }
 
+
+
+void test_1() {
+
+
+}
+
 int main() {
     test_0();
 
