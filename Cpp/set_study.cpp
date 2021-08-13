@@ -30,7 +30,7 @@ void test_0() {
     mySet.insert(2);
     mySet.insert(3);
     mySet.insert(4);
-    mySet.insert(1);    //【知识点】set 不会保存重复的元素
+    mySet.insert(1);    //【知识点】set 不会保存重复的元素，插入重复的元素不会报错
     printSet(mySet);
 }
 
