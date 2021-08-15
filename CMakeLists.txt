@@ -31,6 +31,8 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(0815_kedaxunfei_2 written_examination/0815_kedaxunfei/0815_kedaxunfei_2.cpp)
+add_executable(0815_kedaxunfei_1 written_examination/0815_kedaxunfei/0815_kedaxunfei_1.cpp)
 add_executable(forward_study Cpp/forward_study.cpp)
 add_executable(singleton_study Cpp/singleton_study.cpp)
 add_executable(stackoverflow_study Cpp/stackoverflow_study.cpp)
