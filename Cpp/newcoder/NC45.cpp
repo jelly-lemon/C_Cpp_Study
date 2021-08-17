@@ -1,7 +1,10 @@
-/*
- * 分别按照二叉树先序，中序和后序打印所有的节点。
- * 输入：{1,2,3}
- * 输出：[[1,2,3],[2,1,3],[2,3,1]]
+/**
+ 分别按照二叉树先序，中序和后序打印所有的节点。
+
+ 输入：{1,2,3}
+ 输出：[[1,2,3],[2,1,3],[2,3,1]]
+
+ 迭代遍历：会用到栈
  */
 
 
@@ -28,6 +31,9 @@ vector<vector<int> > threeOrders(TreeNode* root) {
     return result;
 }
 
+/**
+ * 先序，递归
+ */
 vector<int> preOrder(TreeNode* root) {
     vector<int> v;
     if (root == NULL)
@@ -44,6 +50,9 @@ vector<int> preOrder(TreeNode* root) {
     return v;
 }
 
+/**
+ * 中序遍历，递归
+ */
 vector<int> midOrder(TreeNode* root) {
     vector<int> v;
     if (root == NULL)
@@ -60,6 +69,9 @@ vector<int> midOrder(TreeNode* root) {
     return v;
 }
 
+/**
+ * 后续，递归
+ */
 vector<int> postOrder(TreeNode* root) {
     vector<int> v;
     if (root == NULL)
