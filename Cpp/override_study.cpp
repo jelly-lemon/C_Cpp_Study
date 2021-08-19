@@ -8,7 +8,7 @@
  */
 #include <cstdio>
 
-class A {
+class Student {
 
 public:
     void func_1() {

@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-class A {
+class Student {
 public:
     static void* sayHello(void *args) {
         cout << "hello" << endl;

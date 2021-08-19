@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class A {
+class Student {
 public:
     void test() {
         cout << "A" << endl;

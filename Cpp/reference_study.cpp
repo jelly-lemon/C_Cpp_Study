@@ -9,7 +9,7 @@
 using namespace std;
 
 
-class A {
+class Student {
 private:
     int mAge;
 public:

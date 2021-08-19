@@ -8,7 +8,7 @@
 #include <memory>   // 智能指针所在文件
 using namespace std;
 
-struct A {
+struct Student {
     int a[102400];
 };
 

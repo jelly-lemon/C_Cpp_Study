@@ -6,11 +6,11 @@
 
 using namespace std;
 
-class A{
+class Student{
 private:
     static A* p;
     static mutex mtx;
-    A() {
+    Student() {
         cout << "A" << endl;
     };
 

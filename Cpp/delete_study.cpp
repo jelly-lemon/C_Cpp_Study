@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-struct A {
+struct Student {
     int mAge;
     char name[1024000];
 };
