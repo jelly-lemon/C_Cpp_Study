@@ -70,6 +70,34 @@ vector<int> midOrder(TreeNode* root) {
 }
 
 /**
+ * 迭代中序遍历
+ */
+vector<int> midOrderByIteration(TreeNode* root) {
+    vector<int> v;
+    if (root == NULL)
+        return v;
+
+    stack<TreeNode*> myStack;
+    TreeNode *p = root;
+    myStack.push(p);
+
+    while (!myStack.empty()) {
+        p = myStack.top();
+        if (p->left) {
+            myStack.push(p->left);
+        } else {
+            myStack.pop();
+            v.push_back(p->val);
+        }
+        if (p->right) {
+            myStack.push(p->right);
+        }
+    }
+
+    return v;
+}
+
+/**
  * 后续，递归
  */
 vector<int> postOrder(TreeNode* root) {

@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(malloc_study c/malloc_study.c)
 add_executable(JZ17 Cpp/newcoder/JZ17.cpp)
 add_executable(0815_kedaxunfei_2 written_examination/0815_kedaxunfei/0815_kedaxunfei_2.cpp)
 add_executable(0815_kedaxunfei_1 written_examination/0815_kedaxunfei/0815_kedaxunfei_1.cpp)
@@ -195,7 +196,7 @@ add_executable(override_study Cpp/override_study.cpp)
 #add_executable(map_study Cpp/map_study.cpp)
 #add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
 add_executable(file_study Cpp/file_study.cpp)
-##add_executable(static_study Cpp/static_study.cpp)
+add_executable(static_study Cpp/static_study.cpp)
 ##add_executable(hello c/hello.c)
 add_executable(hello_cpp Cpp/hello_cpp.cpp)
 ##add_executable(delete_list_node Cpp/algorithm_study/delete_list_node.cpp)

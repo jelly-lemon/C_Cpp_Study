@@ -180,6 +180,8 @@ void InOrderTraverse(BiTree T) {
     InOrderTraverse(T->rchild);
 }
 
+
+
 /**
  * 递归后序遍历
  *
