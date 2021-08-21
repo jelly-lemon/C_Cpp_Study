@@ -31,6 +31,12 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(0821_jingdong_2 written_examination/0821_jingdong/0821_jingdong_2.cpp)
+add_executable(0821_jingdong_1 written_examination/0821_jingdong/0821_jingdong_1.cpp)
+add_executable(0821_wangyi_4 written_examination/0821_wangyi/0821_wangyi_4.cpp)
+add_executable(0821_wangyi_3 written_examination/0821_wangyi/0821_wangyi_3.cpp)
+add_executable(0821_wangyi_2 written_examination/0821_wangyi/0821_wangyi_2.cpp)
+add_executable(0821_wangyi_1 written_examination/0821_wangyi/0821_wangyi_1.cpp)
 add_executable(malloc_study c/malloc_study.c)
 add_executable(JZ17 Cpp/newcoder/JZ17.cpp)
 add_executable(0815_kedaxunfei_2 written_examination/0815_kedaxunfei/0815_kedaxunfei_2.cpp)
