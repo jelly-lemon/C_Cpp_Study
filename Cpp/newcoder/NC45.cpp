@@ -71,6 +71,12 @@ vector<int> midOrder(TreeNode* root) {
 
 /**
  * 迭代中序遍历
+
+ 思路：借助栈来完成迭代遍历。
+ 首先将根节点入栈。 只要栈不为空，就执行：
+ 1. 根节点入栈，如果存在左子树，左子树入栈。
+ 2. 如果不存在，立即访问该根节点。
+ 3. 如果存在右子树，右子树入栈。
  */
 vector<int> midOrderByIteration(TreeNode* root) {
     vector<int> v;
@@ -83,15 +89,21 @@ vector<int> midOrderByIteration(TreeNode* root) {
 
     while (!myStack.empty()) {
         p = myStack.top();
+
+        // 如果存在左子树
         if (p->left) {
             myStack.push(p->left);
         } else {
+            // 不存在左子树，访问根节点
             myStack.pop();
             v.push_back(p->val);
+
+            // 如果存在右子树
+            if (p->right) {
+                myStack.push(p->right);
+            }
         }
-        if (p->right) {
-            myStack.push(p->right);
-        }
+
     }
 
     return v;
