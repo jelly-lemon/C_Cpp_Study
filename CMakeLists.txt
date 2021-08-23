@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(heap_study Cpp/heap_study.cpp)
 add_executable(0821_jingdong_2 written_examination/0821_jingdong/0821_jingdong_2.cpp)
 add_executable(0821_jingdong_1 written_examination/0821_jingdong/0821_jingdong_1.cpp)
 add_executable(0821_wangyi_4 written_examination/0821_wangyi/0821_wangyi_4.cpp)
