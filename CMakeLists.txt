@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(sizeof_study Cpp/sizeof_study.cpp)
 add_executable(create_process_study win/create_process_study.cpp)
 add_executable(heap_study Cpp/heap_study.cpp)
 add_executable(0821_jingdong_2 written_examination/0821_jingdong/0821_jingdong_2.cpp)
