@@ -60,6 +60,7 @@ void *t_read(void *args) {
 void read_write_test() {
     int i;
     pthread_t pt[10];
+
     // 初始化读写锁
     pthread_rwlock_init(&rwlock, NULL);
     value = 0;
@@ -72,6 +73,7 @@ void read_write_test() {
         int k = i;
         pthread_create(&pt[i], NULL, t_read, (void *) &k);
     }
+
     // 主线程等待全部子线程完成
     for (i = 0; i < 10; i++) {
         // TODO 如果线程被阻塞了，join() 会立即返回吗？

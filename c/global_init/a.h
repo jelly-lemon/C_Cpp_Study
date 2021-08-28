@@ -9,8 +9,8 @@ class A {
 public:
     A() {
         x = 5;
-        cout << "全局变量x初始化" << endl;
+        cout << "全局变量 x 初始化" << endl;
     }
 };
 
-A a;
+A g_a;

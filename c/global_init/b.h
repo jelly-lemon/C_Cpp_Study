@@ -1,19 +1,17 @@
 #pragma once
 #include<iostream>
-#include"a.h"
+#include "a.h"
 using namespace std;
 
-extern A a;
-extern int x;
 int y;
+
 class B {
 public:
-    B() {
-        cout << "B()" << endl;
-    }
-    B(A) {
-        y = x;
-        cout << "ȫ�ֱ���y��ʼ��" << endl;
+    B(A &a) {
+        y = 9;
+        cout << "全局变量 y 初始化" << endl;
     }
 };
-B b(a);
+
+// 类 B 实例化时依赖类 A 对象
+B b(g_a);
