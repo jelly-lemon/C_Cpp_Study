@@ -83,25 +83,35 @@ public:
             return head;
         }
 
+        // 找到尾节点
         ListNode *p = head;
-        while (p) {
-            if (p->next == NULL) {
-                break;
-            } else {
-                p = p->next;
-            }
+        while (p->next) {
+            p = p->next;
         }
         p = mergeSort(head, p);
 
         return p;
     }
 
+    /**
+    编程时太容易出错了！很难！
+
+    运行时间：14ms
+超过84.63% 用C++提交的代码
+占用内存：1552KB
+超过95.81%用C++提交的代码
+*/
     ListNode *mergeSort(ListNode *begin, ListNode *end) {
-        if (begin == end) {
+        // 【易错点】end 表示子链表尾节点，不要设置成 [) 模式，应该设置为 [] 模式
+        if (begin == NULL) {
+            // 没有节点
+            return NULL;
+        } else if (begin == end) {
+            // 只有一个节点
             begin->next = NULL;
             return begin;
-        }
-        if (begin->next == end) {
+        } else if (begin->next == end) {
+            // 只有两个节点
             if (begin->val <= end->val) {
                 end->next = NULL;
                 return begin;
@@ -131,56 +141,37 @@ public:
         }
 
         // 分
+        // 【易错点】slowP->next 的值被第一次 mergeSort 改变了，slowP->next 已经不是原来的值了
+        ListNode *subBegin = slowP->next;
         ListNode *p1 = mergeSort(begin, slowP);
-        ListNode *p2 = mergeSort(slowP->next, fastP);
+        ListNode *p2 = mergeSort(subBegin, end);
 
         // 合
-        // TODO 优化一下，太多重复代码了
-        ListNode *newHead = NULL;
-        ListNode *p = newHead;
+        ListNode newHead = {0};
+        ListNode *p = &newHead;
         while (p1 || p2) {
             if (p1 != NULL && p2 != NULL) {
                 if (p1->val <= p2->val) {
-                    if (newHead == NULL) {
-                        newHead = p1;
-                        p = newHead;
-                    } else {
-                        p->next = p1;
-                        p = p->next;
-                    }
-                    p1 = p1->next;
-                } else {
-                    if (newHead == NULL) {
-                        newHead = p2;
-                        p = newHead;
-                    } else {
-                        p->next = p2;
-                        p = p->next;
-                    }
-                    p2 = p2->next;
-                }
-            } else if (p1 != NULL) {
-                if (newHead == NULL) {
-                    newHead = p1;
-                    p = newHead;
-                } else {
                     p->next = p1;
                     p = p->next;
-                }
-                p1 = p1->next;
-            } else if (p2 != NULL) {
-                if (newHead == NULL) {
-                    newHead = p2;
-                    p = newHead;
+                    p1 = p1->next;
                 } else {
                     p->next = p2;
                     p = p->next;
+                    p2 = p2->next;
                 }
+            } else if (p1 != NULL) {
+                p->next = p1;
+                p = p->next;
+                p1 = p1->next;
+            } else if (p2 != NULL) {
+                p->next = p2;
+                p = p->next;
                 p2 = p2->next;
             }
         }
         p->next = NULL;
 
-        return newHead;
+        return newHead.next;
     }
 };

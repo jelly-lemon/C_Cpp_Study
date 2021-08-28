@@ -31,6 +31,10 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(ip_to_int Cpp/ip_to_int.cpp)
+add_executable(sizeof_study Cpp/sizeof_study.cpp)
+add_executable(create_process_study win/create_process_study.cpp)
+add_executable(heap_study Cpp/heap_study.cpp)
 add_executable(0821_jingdong_2 written_examination/0821_jingdong/0821_jingdong_2.cpp)
 add_executable(0821_jingdong_1 written_examination/0821_jingdong/0821_jingdong_1.cpp)
 add_executable(0821_wangyi_4 written_examination/0821_wangyi/0821_wangyi_4.cpp)
@@ -201,7 +205,7 @@ add_executable(override_study Cpp/override_study.cpp)
 ##add_executable(mutual_include Cpp/mutual_include.cpp)
 #add_executable(map_study Cpp/map_study.cpp)
 #add_executable(how_member_obejct_init Cpp/how_member_obejct_init.cpp)
-add_executable(file_study Cpp/file_study.cpp)
+#add_executable(file_study Cpp/file_study.cpp)
 add_executable(static_study Cpp/static_study.cpp)
 ##add_executable(hello c/hello.c)
 add_executable(hello_cpp Cpp/hello_cpp.cpp)
