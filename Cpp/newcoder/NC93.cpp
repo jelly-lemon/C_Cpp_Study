@@ -1,12 +1,14 @@
 /**
- * 设计LRU(最近最少使用)缓存结构，该结构在构造时确定大小，假设大小为K，并有如下两个功能
+设计 LRU (最近最少使用)缓存结构，该结构在构造时确定大小，
+假设大小为 K，并有如下两个功能
 1. set(key, value)：将记录(key, value)插入该结构
 2. get(key)：返回key对应的value值
 
- 输入一个二维数组与K，二维数组每一维有2个或者3个数字，第1个数字为opt，第2，3个数字为key，value
-   若opt=1，接下来两个整数key, value，表示set(key, value)
-   若opt=2，接下来一个整数key，表示get(key)，若key未出现过或已被移除，则返回-1
-   对于每个opt=2，输出一个答案
+ 输入一个二维数组与 K，二维数组每一维有 2 个或者 3 个数字，
+ 第 1 个数字为 opt，第 2，3 个数字为 key，value
+若opt=1，接下来两个整数key, value，表示set(key, value)
+若opt=2，接下来一个整数key，表示get(key)，若key未出现过或已被移除，则返回-1
+对于每个opt=2，输出一个答案
 
  输入：
 [[1,1,1],[1,2,2],[1,3,2],[2,1],[1,4,4],[2,2]],3
@@ -58,7 +60,7 @@ public:
                 //
                 key = myList.back().first;
                 myList.pop_back();
-                hashTable.erase(key);
+                hashTable.erase(key);   // 哈表表擦除
             }
         } else {
             //
