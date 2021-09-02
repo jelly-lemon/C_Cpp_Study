@@ -13,3 +13,33 @@
 所以答案为 12+13=25
  */
 
+int getSum(TreeNode *root, string path) {
+    static int sum  = 0;
+
+    if (root == NULL) {
+        return 0;
+    }
+    path += to_string(root->val);
+    if (root->left == NULL && root->right == NULL) {
+        //
+        int n = atoi(path.c_str());
+        sum += n;
+    } else {
+        getSum(root->left, path);
+        getSum(root->right, path);
+    }
+
+    return sum;
+}
+
+/**
+运行时间：3ms
+超过44.21% 用C++提交的代码
+占用内存：408KB
+超过73.73%用C++提交的代码
+*/
+int sumNumbers(TreeNode* root) {
+    // write code here
+    string s;
+    return getSum(root, s);
+}
