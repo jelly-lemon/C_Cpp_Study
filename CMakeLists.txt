@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(0905_tx_1 written_examination/0905_tx/0905_tx_1.cpp)
 add_executable(atoi_study Cpp/atoi_study.cpp)
 add_executable(diagonal_output Cpp/algorithm_study/diagonal_output.cpp)
 add_executable(ip_to_int Cpp/ip_to_int.cpp)
