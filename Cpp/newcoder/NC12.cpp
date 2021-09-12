@@ -1,34 +1,40 @@
 /*
  * 输入某二叉树的前序遍历和中序遍历的结果，
  * 请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
- * 例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，
- * 则重建二叉树并返回。
- *
+
  * 输入：[1,2,3,4,5,6,7],[3,2,4,1,6,5,7]
- * 输出：{1,2,5,3,4,6,7}
+ * 输出：{1,2,5,3,4,6,7} （输出按层遍历的结果）
  */
 
 
 /**
  * 重建二叉树 = 找到根节点 + 重建左子树 + 重建右子树
  */
-TreeNode* rebuildTree(vector<int>& xianxu, vector<int>& zhongxu) {
-    if (xianxu.size() == 0 || zhongxu.size() == 0)
+TreeNode* rebuildTree(vector<int>& preSequence, vector<int>& inorderSequence) {
+    if (preSequence.size() == 0 || inorderSequence.size() == 0) {
         return NULL;
-    int val = xianxu[0];
+    }
 
+    // 创建根节点
+    int val = preSequence[0];
     auto *root = new TreeNode(val);
 
-    for (int i = 0; i < zhongxu.size(); i++) {
-        if (zhongxu[i] == val) {
+    for (int i = 0; i < inorderSequence.size(); i++) {
+        // 找出根节点在中序遍历中的位置
+        if (inorderSequence[i] == val) {
+            // 得到左子树长度
             int leftLen = i;
-            vector<int> xianxu_left(xianxu.begin()+1, xianxu.begin()+leftLen+1);
-            vector<int> zhongxu_left(zhongxu.begin(), zhongxu.begin()+leftLen);
-            root->left = rebuildTree(xianxu_left, zhongxu_left);
 
-            vector<int> xianxu_right(xianxu.begin()+1+leftLen, xianxu.end());
-            vector<int> zhongxu_right(zhongxu.begin()+leftLen+1, zhongxu.end());
-            root->right = rebuildTree(xianxu_right, zhongxu_right);
+            // 重建左子树
+            vector<int> preSequence_left(preSequence.begin()+1, preSequence.begin()+leftLen+1);
+            vector<int> inorderSequence_left(inorderSequence.begin(), inorderSequence.begin()+leftLen);
+            root->left = rebuildTree(preSequence_left, inorderSequence_left);
+
+            // 重建右子树
+            vector<int> preSequence_right(preSequence.begin()+1+leftLen, preSequence.end());
+            vector<int> inorderSequence_right(inorderSequence.begin()+leftLen+1, inorderSequence.end());
+            root->right = rebuildTree(preSequence_right, inorderSequence_right);
+
             return root;
         }
     }

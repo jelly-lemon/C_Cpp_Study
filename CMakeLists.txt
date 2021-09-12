@@ -31,6 +31,7 @@ set(CMAKE_C_STANDARD 11)    # c 标准
 
 
 # 运行目标
+add_executable(LittleEndian_study Cpp/LittleEndian_study.cpp)
 add_executable(0907_baidu_1 written_examination/0907_baidu/0907_baidu_1.cpp)
 add_executable(0905_tx_1 written_examination/0905_tx/0905_tx_1.cpp)
 add_executable(atoi_study Cpp/atoi_study.cpp)
