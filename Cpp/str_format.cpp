@@ -110,11 +110,16 @@ void test_6() {
     printf("s.capacity():%lld\n", s.capacity());
 }
 
+/**
+ * 自定义变参 printf
+ */
 void test_7() {
     myprint("fajsdkfjkaljfdasklfjla%s", "hello, worldkslfdjlikasjfklajfkljalfjasl");
 }
 
-
+/**
+ * char 数组转 string
+ */
 void test_8() {
     char msg[10] = "abc...\n";
     string s(msg);
