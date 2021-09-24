@@ -139,7 +139,7 @@ add_executable(set_study Cpp/set_study.cpp)
 ##add_executable(file_bio OpenSSL_Study/base_BIO_example/file_bio.cpp)  # 编译目标
 ##target_link_libraries(file_bio openssl libssl libcrypto )  # OpenSSL 相关的库
 ##add_executable(base64_encode c/base64_encode.c)
-add_executable(912 c/leetcode/912.c)
+add_executable(912 c/leetcode/912.c Cpp/todo/second_degree_friend.cpp)
 add_executable(string_study Cpp/string_study.cpp)
 ##add_executable(change_pointer c/change_pointer.c)
 ##add_executable(byte_alignment c/byte_alignment.c)

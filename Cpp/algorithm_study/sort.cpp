@@ -2,7 +2,6 @@
  * 排序算法
  */
 #include <iostream>
-#include <gtest/gtest.h>
 using namespace std;
 
 
@@ -28,7 +27,9 @@ void countSort() {
 
 }
 
-
+/**
+ * 桶排序
+ */
 void bucketSort() {
 
 }
@@ -47,9 +48,10 @@ void QuickSort(int* a, int len) {
     if (len <= 1)
         return;
 
-    i_center = 0;
+    i_center = 0;   // 中轴元素默认选择第一个
     i_front = 0;
     i_back = len - 1;
+    // while 循环，完成一次基快排
     while (i_front < i_back) {
         // 从后往前找比中轴元素小的元素
         while (i_front < i_back) {
@@ -189,91 +191,9 @@ void mergeSort_1(int a[], int len) {
     }
 }
 
-/**
- * 测试冒泡排序
- */
-TEST(testcase0, test_BubbleSort) {
-    int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
-    int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
-    int data_3[10] = {1,2,3,4,7,6,5,8,9,0};
-    int data_4[10] = {0,9,8,7,6,5,4,3,2,1};
-    int expect[10] = {0,1,2,3,4,5,6,7,8,9};
 
-    BubbleSort(data_1, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_1, expect, 10 * sizeof(int)), 0);
-
-    BubbleSort(data_2, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_2, expect, 10 * sizeof(int)), 0);
-
-    BubbleSort(data_3, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_3, expect, 10 * sizeof(int)), 0);
-
-    BubbleSort(data_4, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_4, expect, 10 * sizeof(int)), 0);
-}
-
-
-/**
- * 测试快速排序
- */
-TEST(testcase0, test_QuickSort) {
-    int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
-    int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
-    int data_3[10] = {1,2,3,4,7,6,5,8,9,0};
-    int data_4[10] = {0,9,8,7,6,5,4,3,2,1};
-    int expect[10] = {0,1,2,3,4,5,6,7,8,9};
-
-    QuickSort(data_1, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_1, expect, 10 * sizeof(int)), 0);
-
-    QuickSort(data_2, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_2, expect, 10 * sizeof(int)), 0);
-
-    QuickSort(data_3, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_3, expect, 10 * sizeof(int)), 0);
-
-    QuickSort(data_4, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_4, expect, 10 * sizeof(int)), 0);
-}
-
-/**
- * 测试归并排序
- */
-TEST(testcase0, test_MergeSort) {
-    int data_1[10] = {1,2,3,4,5,6,7,8,9,0};
-    int data_2[10] = {1,0,3,4,5,6,7,8,9,2};
-    int data_3[10] = {1,2,3,4,7,6,5,8,9,0};
-    int data_4[10] = {0,9,8,7,6,5,4,3,2,1};
-    int expect[10] = {0,1,2,3,4,5,6,7,8,9};
-
-    MergeSort(data_1, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_1, expect, 10 * sizeof(int)), 0);
-
-    MergeSort(data_2, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_2, expect, 10 * sizeof(int)), 0);
-
-    MergeSort(data_3, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_3, expect, 10 * sizeof(int)), 0);
-
-    MergeSort(data_4, 10);
-    // memcmp 按字节进行比较，全部字节相等则返回 0
-    EXPECT_EQ(memcmp(data_4, expect, 10 * sizeof(int)), 0);
-
-}
 
 int main() {
-    testing::InitGoogleTest();
 
-    return RUN_ALL_TESTS();
+    return 0;
 }
