@@ -43,7 +43,7 @@ void QuickSort(vector<int>& arr, int start, int end) {
  */
 int QuickBase(vector<int>& arr, int start, int end) {
     int len = end - start;
-    int axis = start;
+    int axis = start;   // 中轴元素
     int low, high;
     low = start, high = end-1;
     while (low < high) {

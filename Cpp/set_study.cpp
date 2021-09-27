@@ -10,7 +10,7 @@ using namespace std;
  * 打印 set
  */
 void printSet(set<int> &pSet) {
-    set<int>::iterator p1 = pSet.begin();
+    auto p1 = pSet.begin();
     while (p1 != pSet.end()) {
         cout << *p1 << " ";
         p1++;

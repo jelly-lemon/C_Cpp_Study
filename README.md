@@ -8,9 +8,12 @@
 
 
 # 目录说明
+```
 ----C_Cpp_Study     根目录
     |----include    第三方头文件
     |----lib        第三方库文件
+```
+
 
 # 问题
 Q: 一个文件被多次 include 后会怎样？
@@ -24,5 +27,5 @@ A: include 是预处理指令，编译器在编译之前会替换 include 文件
 gtest：1.10.0，libgtest.a 静态库是用 mingw64-x86_64-8.1.0-release-posix-sjlj 编译得到的。
 
 # 易错点
-- pragma comment(lib, "ws2_32.lib") 仅对 VC++ 编译器管用，GNU 编译器不认。
+`#pragma comment(lib, "ws2_32.lib")` 仅对 VC++ 编译器管用，GNU 编译器不认。
 

@@ -1,8 +1,11 @@
+/**
+ * 多态
+ */
 #include <iostream>
 
 using namespace std;
 
-class Student {
+class A {
 public:
     void test() {
         cout << "A" << endl;
