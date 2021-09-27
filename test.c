@@ -1,16 +1,23 @@
-#include <math.h>
-#include <stdio.h>
+# include <stdio.h>
+#include <string.h>
 
-int main() {
-    float x,y,z;
-    scanf("%f%f",&x,&y);
-    z = x/y;
-    while (1) {
-        if (fabs(z) > 1.0) {
-            x = y; y = z; z = x/y;
-        } else {
-            break;
-        }
-    }
-    printf("%f", y);
+void sayHello_1() {
+    int b = 4;
+    printf("%d\n", b);
+    b++;
+}
+
+void sayHello_2() {
+    static int b = 4;
+    printf("%d\n", b);
+    b++;
+}
+
+int main(void){
+    sayHello_2();
+    sayHello_2();
+    sayHello_2();
+
+
+    return 0;
 }
