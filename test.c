@@ -1,23 +1,11 @@
-# include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 
-void sayHello_1() {
-    int b = 4;
-    printf("%d\n", b);
-    b++;
-}
-
-void sayHello_2() {
-    static int b = 4;
-    printf("%d\n", b);
-    b++;
-}
-
-int main(void){
-    sayHello_2();
-    sayHello_2();
-    sayHello_2();
-
+int main(int argc, char *argv[]){
+    char *s1 = "12345";
+    char *s2 = "1234";
+    printf("%d\n", strlen(strcpy(s1, s2)));
 
     return 0;
 }
+
